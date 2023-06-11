@@ -7,19 +7,27 @@ const adminSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
+    required: false
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
     required: true
   },
   num_of_trainees: {
     type: Number,
-    required: true
+    required: false
   },
   num_of_trainings: {
     type: Number,
-    required: true
+    required: false
   },
   roles: {
     type: [String],
-    required: true
+    required: false
   }
 });
 
