@@ -7,8 +7,8 @@ const path = require('path');
 require('./models/db');
 
 //import routes
-const routes = require('./routes/index')
-// const adminRoute = require('./routes/AdminRoutes');
+const routes = require('./routes/index') // index contains all the routes
+
 //use routes
 app.use(routes);
 

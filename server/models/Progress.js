@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const progressSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    auto: true
+  },
   trainee_id: mongoose.Schema.Types.ObjectId,
   training_id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +23,6 @@ const progressSchema = new mongoose.Schema({
   }
 });
 
-const Progress = mongoose.model('Progress', progressSchema);
+const Progress = mongoose.model('Progress', progressSchema, 'progress', 'test');
 
 module.exports = Progress;
