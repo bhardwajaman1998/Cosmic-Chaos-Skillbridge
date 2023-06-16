@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const traineeChartDataSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    auto: true
+  },
   trainee_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Trainee'
@@ -15,6 +20,6 @@ const traineeChartDataSchema = new mongoose.Schema({
   duration: Number
 });
 
-const TraineeChartData = mongoose.model('TraineeChartData', traineeChartDataSchema);
+const TraineeChartData = mongoose.model('TraineeChartData', traineeChartDataSchema, 'trainee_chart_data', 'test');
 
 module.exports = TraineeChartData;

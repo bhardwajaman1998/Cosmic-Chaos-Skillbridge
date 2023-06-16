@@ -1,48 +1,56 @@
 const mongoose = require('mongoose');
 
 const traineeSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    auto: true
+  },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   photo: {
     type: String,
-    required: true
+    required: true,
   },
   department_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'DEPARTMENT',
-    required: true
+    type: String,
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   phone_number: {
     type: String,
-    required: true
+    required: true,
   },
-  assigned_training_programs: [{
+  mentor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'TRAINING'
-  }],
+    ref: 'Mentor'
+  },
+  assigned_training_programs: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Training',
+  },
   achievements: [{
-    type: String
+    type: String,
   }],
   progress: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'PROGRESS'
+    ref: 'Progress',
   }],
   quiz_results: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'QUIZ_RESULT'
+    ref: 'QuizResult',
   }],
   chart_data: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'trainee_chart_data'
-  }]
+    ref: 'ChartData',
+  }],
 });
 
-const Trainee = mongoose.model('Trainee', traineeSchema);
+const Trainee = mongoose.model('Trainee', traineeSchema, 'trainee', 'test');
 
 module.exports = Trainee;

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const adminSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    auto: true
+  },
   name: {
     type: String,
     required: true
@@ -31,6 +36,6 @@ const adminSchema = new mongoose.Schema({
   }
 });
 
-const Admin = mongoose.model('Admin', adminSchema);
+const Admin = mongoose.model('Admin', adminSchema, 'admins', 'test');
 
 module.exports = Admin;
