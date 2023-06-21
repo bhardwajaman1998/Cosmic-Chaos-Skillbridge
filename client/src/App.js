@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.scss";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './components/MUI-Theme/MUITheme'
+import './components/Dashboard/Dashboard'
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Skillbridge
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <div>
+          <Dashboard />
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
