@@ -44,7 +44,6 @@ const LandingPage = () => {
           recommended courses, and upcoming training activities.</p>
           <div className="card-container"> 
            <Card
-          div
           title="Set goals for your employees"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
           />
@@ -68,42 +67,25 @@ const LandingPage = () => {
 
           <h2>See what other startups are telling about us</h2>
         <p>Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis dis parturient montes. </p>
+        
         <div className='card-container2'>
           <div className='slider'>
         <Card
-          title="Monica"
+          title="Guille"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
           />
 
           <Card
-          title="Valbhav"
+          title="Guille"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
           />
 
           <Card
-          title="Aman"
+          title="Guille"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
           />
 
-           <Card
-          title="Aman"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
-           <Card
-          title="Aman"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
-           <Card
-          title="Aman"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
-           <Card
-          title="Aman"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
+          
           </div>
           </div>
 
