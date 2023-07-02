@@ -1,0 +1,67 @@
+/* ParentComponent.css */
+
+/* Card.css */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card-container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .slider {
+    display: flex;
+    animation: slide 15s infinite;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    14.29% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(calc(-100% - 20px));
+    }
+    34.29% {
+      transform: translateX(calc(-100% - 20px));
+    }
+    40% {
+      transform: translateX(calc(-200% - 40px));
+    }
+    54.29% {
+      transform: translateX(calc(-200% - 40px));
+    }
+    60% {
+      transform: translateX(calc(-300% - 60px));
+    }
+    74.29% {
+      transform: translateX(calc(-300% - 60px));
+    }
+    80% {
+      transform: translateX(calc(-400% - 80px));
+    }
+    94.29% {
+      transform: translateX(calc(-400% - 80px));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .card {
+    flex-basis: calc(33.33% - 20px); /* Adjust the width of each card as needed */
+    background-color: #f2f2f2;
+    
+  }
+
+  .member-card .top{
+    background-color: #1F2D37;
+  }
