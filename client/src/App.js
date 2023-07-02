@@ -4,6 +4,7 @@ import theme from './components/MUI-Theme/MUITheme'
 import './components/Dashboard/Dashboard'
 import Dashboard from './components/Dashboard/Dashboard';
 import LandingPage from './components/LandingPage/LandingPage';
+import Footer from './components/LandingPage/Footer';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         </div>
       </div>
     </ThemeProvider>
+  <LandingPage />
+        <Footer />
   );
 }
 
