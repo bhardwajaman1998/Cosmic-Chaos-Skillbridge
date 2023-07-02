@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 import './LandingPage.css';
 import Footer from './Footer';
 
+
 const LandingPage = () => {
+  const [cardImages, setCardImages] = useState([]);
+
+  const handleFileUpload = (index, event) => {
+    const file = event.target.files[0];
+    const updatedImages = [...cardImages];
+    updatedImages[index] = URL.createObjectURL(file);
+    setCardImages(updatedImages);
+  };
   return (
     <div className='container'>
       <header>
       <nav className="nav">
-        <a href="/" className="site-title">SkillBridge</a>
+      <a href="/" className="site-title"><img src='' alt="SkillBridge " /></a>
         <ul>
           <li><h4><a href="/HowItWorks">How it works</a></h4></li>
           <li><h4><a href="/Testimonials">Testimonials</a></h4></li>          
@@ -46,17 +55,26 @@ const LandingPage = () => {
            <Card
           title="Set goals for your employees"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
+          imgSrc={cardImages[0]}
+        >
+          <input type="file" onChange={(event) => handleFileUpload(0, event)} />
+        </Card>
 
-          <Card
+        <Card
           title="Create your courses"
           details="Morbi nec sapien sed dolor tempus tristique at a felis. Praesent eget dapibus lorem." 
-          />
+          imgSrc={cardImages[1]}
+        >
+          <input type="file" onChange={(event) => handleFileUpload(1, event)} />
+        </Card>
 
-          <Card
+        <Card
           title="Measure their growth"
           details="Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis" 
-          />
+          imgSrc={cardImages[2]}
+        >
+          <input type="file" onChange={(event) => handleFileUpload(2, event)} />
+        </Card>
           </div>
 
            <button className="btnRes">
@@ -69,24 +87,45 @@ const LandingPage = () => {
         <p>Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis dis parturient montes. </p>
         
         <div className='card-container2'>
-          <div className='slider'>
-        <Card
-          title="Guille"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
-          <Card
-          title="Guille"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
-          <Card
-          title="Guille"
-          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor" 
-          />
-
+        <div class="slideshow-container">
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+                  <div class="slide">
+                  <h3>"Guille"</h3>
+                  <h4>Jr. Frontend Developer</h4>
+                    <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
+                  </div>
+  
+</div>
           
-          </div>
           </div>
 
       <div style={{ marginTop: "5em" }}>
