@@ -6,8 +6,7 @@ function Card(props) {
   return (
     <div className="card">
       <div className="top">
-        <h2 className="name">{props.name}</h2>
-        <p className="title">{props.title}</p>
+        <h3 className="name">{props.name}</h3>
         <p className="roles">{props.roles}</p>
         <p className="details">{props.details}</p>
       </div>

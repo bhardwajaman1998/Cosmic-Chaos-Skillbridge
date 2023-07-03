@@ -2,13 +2,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  
 }
+
+.card-container .card {
+  background-color: white;
+}
+
 
 .card-container2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
+  height: 200px;
 }
 
 
@@ -55,12 +62,78 @@
 }
 
 .card {
+  display: flex;
   flex-basis: calc(33.33% - 20px); /* Adjust the width of each card as needed */
-  background-color: #f2f2f2;  
+  background-color: #1F2D37;  
 }
 
-
+.teams {
+  text-align: center;
+  background-color: #1F2D37;
+}
 
 .member-card .top{
+  display: flex;
   background-color: #1F2D37;
+  margin-top: 20px;
+}
+
+.member-card {
+  background-color: #1F2D37;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.column:last-child {
+  margin-right: 0;
+}
+
+.card-row {
+  display: flex;
+  flex-basis: calc(33.33% - 20px); /* Adjust the value as needed */
+  margin: 10px;
+}
+
+.card {
+  background-color: #1F2D37;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-row .Card {
+  
+  flex: 1;
+}
+
+.top {
+  text-align: center;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.roles {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.details {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.bottom .Info {
+  font-size: 0.9rem;
 }
