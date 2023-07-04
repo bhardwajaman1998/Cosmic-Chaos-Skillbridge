@@ -24,15 +24,11 @@ footer {
     margin-bottom: 150px;
   }
   
-  .footer-content .p {
+  .footer-content .address {
     color: #1F2D37;
   }
   
   .footer-nav {
-    display: flex;
-  }
-
-  .column {
     display: flex;
     flex-direction: column;
     align-items: center;
