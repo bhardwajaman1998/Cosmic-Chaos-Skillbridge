@@ -31,6 +31,7 @@ const c5 = () =>{
       ) 
 }
 const Home = () => {
+    const pageTitle = 'Dashboard';
   return (
     <React.Fragment>
         <div className='dashboard-layout'>
@@ -40,7 +41,7 @@ const Home = () => {
                         <Sidebar />
                     </div>
                     <div className='layout-header'>
-                        <Header />
+                        <Header title={pageTitle} />
                     </div> 
                     <div className='layout-main'>
                         <DashboardButtons />
