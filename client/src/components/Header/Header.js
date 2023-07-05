@@ -20,9 +20,9 @@ const Header = ({ title }) => {
   return (
     <div className='header'>
       {!isHomePage && (
-        <div className='header-back'>
+        <div className='header-title'>
           <ArrowBackIcon />
-          <span className='header-title'>
+          <span>
             {title}
         </span>
         </div>

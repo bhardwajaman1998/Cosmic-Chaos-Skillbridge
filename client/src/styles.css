@@ -122,6 +122,8 @@ body {
   margin-left: 3rem;
   font-size: 1.8rem;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header {

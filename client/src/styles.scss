@@ -110,11 +110,22 @@ body{
     border-radius: 5px;
     box-shadow: 2px 2px black;
 }
-.header-title{
-    margin-left: 3rem;
-    font-size: 1.8rem;
-    font-weight: bold;
+// .header-title{
+//     margin-left: 3rem;
+//     font-size: 1.8rem;
+//     font-weight: bold;
+// }
+
+.header-title {
+  margin-left: 3rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
+
 .header{
     height: 100%;
     display: flex;
