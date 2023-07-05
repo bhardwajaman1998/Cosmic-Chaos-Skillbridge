@@ -5,17 +5,22 @@ import './components/Dashboard/Dashboard'
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from "./pages/SamplePage/Home/Home";
 import Employee from "./pages/SamplePage/Employee/Employee";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
+    <Router>
     <ThemeProvider theme={theme}>
       <div className="App">
         <div>
-          <Home />
-          {/* <Employee /> */}
+          <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/employee" element={<Employee />} />
+          </Routes>
         </div>
       </div>
     </ThemeProvider>
+    </Router>
   );
 }
 

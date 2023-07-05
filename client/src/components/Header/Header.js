@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import profile from '../../assets/profile-icon.svg';
 import notification from '../../assets/notification-icon.svg';
+import { useLocation } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 const Header = ({ title }) => {
@@ -9,12 +11,28 @@ const Header = ({ title }) => {
     document.title = title;
   }, [title]);
 
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+
+
+
   return (
     <div className='header'>
+      {!isHomePage && (
+        <div className='header-back'>
+          <ArrowBackIcon />
+          <span className='header-title'>
+            {title}
+        </span>
+        </div>
+      )}
+      {isHomePage &&(
         <span className='header-title'>
             {title}
         </span>
 
+      )}       
         <div className='header-options'>
             <button className='create-button'>
                 + Create
