@@ -44,7 +44,7 @@ const Employee = () => {
                         <Header title={pageTitle} />
                     </div> 
                     <div className='layout-main'>
-                        <DashboardButtons />
+                        {/* <DashboardButtons /> */}
                     </div> 
                     <div className='layout-left'>
                         <DashboardTrainees />

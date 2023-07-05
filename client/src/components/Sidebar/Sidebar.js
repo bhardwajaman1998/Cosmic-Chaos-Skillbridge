@@ -22,7 +22,7 @@ const Sidebar = () => {
             <img src={logo} alt="Icon" />
         </div>
         {images.map((item, index) => (
-            <Link to={item.link} key={index}>
+            <Link to={item.link} key={index} className='link-color'>
             <SidebarIcons 
                 index={index}
                 title={item.title}

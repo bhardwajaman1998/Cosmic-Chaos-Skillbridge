@@ -81,7 +81,7 @@ body{
 
 }
 .divider-line {
-    border-top: 0.5px solid rgba(255, 255, 255, 0.3); /* Or use any other border properties */
+    border-top: 1.5px solid white; /* Or use any other border properties */
     margin-bottom: 1rem;
   } 
   .sidebar-icons{
@@ -90,6 +90,11 @@ body{
     align-items: center;
     gap: 5px;
     margin-bottom: 1.5rem;
+  }
+  .link-color{
+    color: white;
+    text-decoration: none;
+
   }
   .sidebar-logo{
     text-align: center;
