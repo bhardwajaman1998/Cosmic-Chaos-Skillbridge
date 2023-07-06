@@ -46,7 +46,9 @@ const Home = () => {
                         <Sidebar />
                     </div>
                     <div className='layout-header'>
-                        <Header />
+                        <Header 
+                          title={'Dashboard'}
+                        />
                     </div> 
                     <div className='layout-main'>
                         <DashboardButtons />
