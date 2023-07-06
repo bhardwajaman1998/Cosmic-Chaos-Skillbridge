@@ -31,8 +31,7 @@ import DashboardDataVisualSection from '../../../components/DataVisualize/Dashbo
 // }
 const Employee = () => {
 
-  const pageTitle="Trainee"
-  
+const pageTitle="Employee File"
   return (
     <React.Fragment>
         <div className='dashboard-layout'>
