@@ -36,8 +36,9 @@ const Home = () => {
         // Handle error
       }
     };
-  
+    const pageTitle="Dashbboard"
   return (
+    
     <React.Fragment>
         <div className='dashboard-layout'>
             <section>
@@ -47,7 +48,7 @@ const Home = () => {
                     </div>
                     <div className='layout-header'>
                         <Header 
-                          title={'Dashboard'}
+                          title={pageTitle}
                         />
                     </div> 
                     <div className='layout-main'>
