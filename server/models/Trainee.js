@@ -1,54 +1,54 @@
 const mongoose = require('mongoose');
 
-const traineeSchema = new mongoose.Schema({
-  _id: {
+const assignedTrainingProgramSchema = new mongoose.Schema({
+  course_id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    auto: true
+    required: true
   },
+  course_name: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['In progress', 'Completed', 'Not Started'],
+    required: true
+  },
+  start_date: Date,
+  deadline: {
+    type: Date,
+    required: true
+  },
+  end_date: Date,
+  evaluation: {
+    type: Number,
+    enum: [0, 1]
+  },
+  score: {
+    type: Number,
+    min: 0,
+    max: 100
+  }
+});
+
+
+const traineeSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
-  photo: {
-    type: String,
-    required: true,
-  },
-  department_id: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  phone_number: {
-    type: String,
-    required: true,
-  },
-  mentor: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Mentor'
-  },
-  assigned_training_programs: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Training',
-  },
-  achievements: [{
-    type: String,
-  }],
-  progress: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Progress',
-  }],
-  quiz_results: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'QuizResult',
-  }],
-  chart_data: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'ChartData',
-  }],
+  assigned_training_programs: [assignedTrainingProgramSchema],
+  photo: String,
+  email: String,
+  phone_number: String,
+  mentor: String,
+  department: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true
+    },
+    name: String
+  }
 });
 
 const Trainee = mongoose.model('Trainee', traineeSchema, 'trainee', 'test');

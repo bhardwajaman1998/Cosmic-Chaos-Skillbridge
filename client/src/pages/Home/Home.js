@@ -37,33 +37,32 @@ const Home = () => {
       }
     };
   
-  return (
-    <React.Fragment>
+    return (
+      <React.Fragment>
         <div className='dashboard-layout'>
-            <section>
-                <div  className="layout text-2xl text-white">
-                    <div className='layout-sidebar'>
-                        <Sidebar />
-                    </div>
-                    <div className='layout-header'>
-                        <Header 
-                          title={'Dashboard'}
-                        />
-                    </div> 
-                    <div className='layout-main'>
-                        <DashboardButtons />
-                    </div> 
-                    <div className='layout-left'>
-                        <DashboardTrainees />
-                    </div> 
-                    <div className='layout-right'>
-                        <DashboardDataVisualSection />
-                    </div> 
-                </div>   
-            </section>
+          <section>
+            <div className='layout text-2xl text-white'>
+              <div className='layout-sidebar'>
+                <Sidebar />
+              </div>
+              <div className='layout-header'>
+                <Header />
+              </div>
+              <div className='layout-main'>
+                <DashboardButtons />
+              </div>
+              <div className='layout-left'>
+                <DashboardTrainees courses={courses} onSelectCourse={handleCourseSelection} />
+              </div>
+              <div className='layout-right'>
+                <DashboardDataVisualSection traineesData={traineesData} />
+              </div>
+            </div>
+          </section>
         </div>
-    </React.Fragment>
-  )
+      </React.Fragment>
+    );
+  };
 }
 
 export default Home
