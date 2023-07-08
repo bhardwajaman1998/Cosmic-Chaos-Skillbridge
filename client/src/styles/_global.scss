@@ -1,0 +1,19 @@
+@import './typography';
+@import './variables';
+
+h1, h2, h3, h4, h5, h6, .button {
+  font-family: $font-heading;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $color-primary;
+}
+
+.header {
+    background-color: $color-secondary;
+}
+
+.button {
+    background-color: $color-accent;
+}
