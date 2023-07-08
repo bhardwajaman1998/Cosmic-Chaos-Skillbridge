@@ -88,7 +88,7 @@ body {
 }
 
 .divider-line {
-  border-top: 0.5px solid rgba(255, 255, 255, 0.3); /* Or use any other border properties */
+  border-top: 1.5px solid white; /* Or use any other border properties */
   margin-bottom: 1rem;
 }
 
@@ -98,6 +98,11 @@ body {
   align-items: center;
   gap: 5px;
   margin-bottom: 1.5rem;
+}
+
+.link-color {
+  color: white;
+  text-decoration: none;
 }
 
 .sidebar-logo {
@@ -122,6 +127,10 @@ body {
   margin-left: 3rem;
   font-size: 1.8rem;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .header {
@@ -178,7 +187,7 @@ body {
 }
 
 .filter-select {
-  width: 150px;
+  width: auto;
 }
 
 .trainee-section {
@@ -211,7 +220,7 @@ table {
 }
 
 tr:hover {
-  background-color: #6AD38B;
+  background-color: rgba(106, 211, 139, 0.2);
 }
 
 tr th {
@@ -317,15 +326,15 @@ td:last-child {
 }
 
 .completed {
-  background-color: red;
+  background-color: rgb(106, 211, 139);
 }
 
 .progress {
-  background-color: blue;
+  background-color: black;
 }
 
 .notStarted {
-  background-color: yellow;
+  background-color: rgb(188, 188, 188);
 }
 
 .label {

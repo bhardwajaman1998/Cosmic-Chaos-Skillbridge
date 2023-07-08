@@ -81,7 +81,7 @@ body{
 
 }
 .divider-line {
-    border-top: 0.5px solid rgba(255, 255, 255, 0.3); /* Or use any other border properties */
+    border-top: 1.5px solid white; /* Or use any other border properties */
     margin-bottom: 1rem;
   } 
   .sidebar-icons{
@@ -90,6 +90,11 @@ body{
     align-items: center;
     gap: 5px;
     margin-bottom: 1.5rem;
+  }
+  .link-color{
+    color: white;
+    text-decoration: none;
+
   }
   .sidebar-logo{
     text-align: center;
@@ -110,11 +115,22 @@ body{
     border-radius: 5px;
     box-shadow: 2px 2px black;
 }
-.header-title{
-    margin-left: 3rem;
-    font-size: 1.8rem;
-    font-weight: bold;
+// .header-title{
+//     margin-left: 3rem;
+//     font-size: 1.8rem;
+//     font-weight: bold;
+// }
+
+.header-title {
+  margin-left: 3rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
+
 .header{
     height: 100%;
     display: flex;
@@ -164,13 +180,14 @@ body{
     padding-left: 8rem;
     padding-top: 1.5rem;
 }
-.filter-section{
-    display: flex;
-    justify-content:flex-start ;
-    gap: 2rem;
+.filter-section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
 }
-.filter-select{
-    width: 150px;
+
+.filter-select {
+  width: auto;
 }
 
 .trainee-section{
@@ -200,7 +217,7 @@ table {
   }
 
   tr:hover{
-    background-color: $color-accent;
+    background-color: rgba(106, 211, 139, 0.2);
   }
 
   tr th {
@@ -302,15 +319,15 @@ table {
   }
   
   .completed {
-    background-color: red;
+    background-color: rgba(106, 211, 139, 1);
   }
   
   .progress {
-    background-color: blue;
+    background-color: black;
   }
   
   .notStarted {
-    background-color: yellow;
+    background-color: rgba(188, 188, 188, 1);
   }
   .label {
     margin-bottom: 10px;

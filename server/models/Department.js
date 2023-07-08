@@ -6,8 +6,7 @@ const departmentSchema = new mongoose.Schema({
     required: true,
     auto: true
   },
-  name: String,
-  description: String
+  name: String
 });
 
 const Department = mongoose.model('Department', departmentSchema, 'department', 'test');

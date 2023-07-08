@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Select from "react-select";
 import logo from '../../assets/avatar.png';
 import TraineeSection from './TraineeSection';
+import { match } from 'assert';
 
-const DashboardTrainees = () => {
-    const options = [
-        { value: "test value 1", label: "test value 1" },
-        { value: "test value 2", label: "test value 2" }
-      ];
+const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
+
+  const [selectedCourse, setSelectedCourse] = useState(courses.length > 0 ? courses[0] : null);
+
+
+  useEffect(() => {
+    setSelectedCourse(selectedCourse);
+  }, [selectedCourse, traineesData]);
+
+
+      const options = courses.map((course) => ({
+        value: course._id,
+        label: course.name
+      }));
       const customStyle = {
         dropdownIndicator: (base, state) => ({
           ...base,
@@ -15,17 +25,72 @@ const DashboardTrainees = () => {
           transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : null
         })
       };
+      
+      const handleChange = (selectedOption) => {
+        const selectedCourseId = selectedOption.value;
+        const matchingCourse = courses.find((course) => course._id === selectedCourseId);
+        setSelectedCourse(matchingCourse);
+        onSelectCourse(matchingCourse)
+      };
+    
 
-      const empData = [
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-        { name: 'Aman', imageUrl: logo, learningTime: '42min', finalScore: '87', courseStatus: 'Completed'},
-      ];
+      const calculateLearningTime = (startDate) => {
+        const now = new Date();
+        const start = new Date(startDate);
+        const differenceInMilliseconds = now - start;
+        const minutes = Math.floor(differenceInMilliseconds / 60000);
+      
+        if (minutes > 350) {
+          const hours = Math.floor(minutes / 60);
+          if (hours > 70) {
+            const days = Math.floor(hours / 24);
+            return days + " days";
+          }
+          return hours + " hours";
+        }
+      
+        return minutes + " minutes";
+      };
 
+      const getFinalScore = (selectedCourseProgram) => {
+        if (selectedCourseProgram.status === "Completed") {
+          if (selectedCourseProgram.evaluation === 0) {
+            return "Pending";
+          } else {
+            return selectedCourseProgram.score || "-";
+          }
+        } else {
+          return "-";
+        }
+      };
+
+      const empData = traineesData.map((trainee) => {
+        // Find the assigned training program for the selected course        
+        const selectedCourseProgram = trainee.assigned_training_programs.find(
+          (program) => program.course_id === selectedCourse._id
+        );
+        return {
+          name: trainee.name,
+          imageUrl: logo,
+          learningTime: selectedCourseProgram && selectedCourseProgram.start_date
+          ? calculateLearningTime(selectedCourseProgram.start_date)
+          : "-", // Calculate learning time only if program exists for selected course
+            finalScore: selectedCourseProgram ? getFinalScore(selectedCourseProgram) : ""
+            , // Display final score only if program exists for selected course
+          courseStatus: selectedCourseProgram ? selectedCourseProgram.status : "" // Display course status only if program exists for selected course
+        };
+      });
+
+
+    // Sort the empData array based on the courseStatus in the desired order
+    empData.sort((a, b) => {
+      const statusOrder = {
+        Completed: 1,
+        "In progress": 2,
+        "Not Started": 3
+      };
+      return statusOrder[a.courseStatus] - statusOrder[b.courseStatus];
+    });  
 
   return (
     <div className='analytics-left'>
@@ -33,7 +98,15 @@ const DashboardTrainees = () => {
         Learning Analytics
       </h1>
       <div className='filter-section'>
-        <Select className='filter-select' label='Course' options={options} openMenuOnFocus styles={customStyle} />
+        <Select
+          className='filter-select'
+          label='Course'
+          value={selectedCourse ? selectedCourse.value : null}
+          options={options}
+          openMenuOnFocus
+          onChange={handleChange}
+          styles={customStyle}
+        />
         <Select className='filter-select' label='Last week' options={options} openMenuOnFocus styles={customStyle} />
       </div>
       <div className='trainee-section'>
@@ -48,16 +121,17 @@ const DashboardTrainees = () => {
                     <th>Status</th>
                 </thead>
                 <tbody>
-                    {empData.map((item, index) => (
-                        <TraineeSection 
-                            index={index}
-                            name={item.name}
-                            imageUrl={item.imageUrl}
-                            learningTime={item.learningTime}
-                            finalScore={item.finalScore}
-                            courseStatus={item.courseStatus}
-                        />
-                    ))}
+                  {empData.map((item, index) => (
+                    <TraineeSection
+                      key={index}
+                      index={index}
+                      name={item.name}
+                      imageUrl={item.imageUrl}
+                      learningTime={item.learningTime}
+                      finalScore={item.finalScore}
+                      courseStatus={item.courseStatus}
+                    />
+                  ))}
                 </tbody>
             </table>
         </div>
