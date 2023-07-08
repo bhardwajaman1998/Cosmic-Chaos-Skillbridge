@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
-const Header = ({ title }) => {
+const Header = ({ title='Dashboard' }) => {
    
   useEffect(() => {
     document.title = title;

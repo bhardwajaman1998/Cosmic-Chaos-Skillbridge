@@ -8,6 +8,9 @@ router.get('/get_all_trainees', traineeController.getAll);
 // Get trainee by id
 router.post('/get_trainee', traineeController.getTrainee);
 
+// Get trainee by course id
+router.get('/trainees/course/:courseId', traineeController.getTraineesByCourseId);
+
 // Add trainee
 router.post('/add_trainee', traineeController.addTrainee);
 

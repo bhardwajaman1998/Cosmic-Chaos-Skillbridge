@@ -5,7 +5,7 @@ import DashboardButtons from '../../components/DashboardButtons/DashboardButtons
 import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees'
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection'
 
-import { fetchAllCourses, fetchAllTrainees } from '../../services/DashboardService';
+import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 
 const Home = () => {
@@ -19,22 +19,27 @@ const Home = () => {
         try {
           const coursesData = await fetchAllCourses();
           setCourses(coursesData);
+          if (coursesData.length > 0) {
+            setSelectedCourse(coursesData[0])
+            console.log(selectedCourse)
+            handleCourseSelection(coursesData[0]);
+          }
         } catch (error) {
           // Handle error
         }
       };
-  
       getCourses();
     }, []);
   
     const handleCourseSelection = async (courseId) => {
-      setSelectedCourse(courseId);
-      try {
-        const traineesData = await fetchAllTrainees(courseId);
-        setTraineesData(traineesData);
-      } catch (error) {
-        // Handle error
-      }
+      console.log(courseId)
+        setSelectedCourse(courseId);
+        try {
+          const traineesData = await fetchTraineesByCourseId(courseId._id);
+          setTraineesData(traineesData);
+        } catch (error) {
+          // Handle error
+        }
     };
   
     return (
@@ -52,10 +57,10 @@ const Home = () => {
                 <DashboardButtons />
               </div>
               <div className='layout-left'>
-                <DashboardTrainees courses={courses} onSelectCourse={handleCourseSelection} />
+                <DashboardTrainees key={selectedCourse} courses={courses} traineesData={traineesData} onSelectCourse={handleCourseSelection} />
               </div>
               <div className='layout-right'>
-                <DashboardDataVisualSection traineesData={traineesData} />
+                <DashboardDataVisualSection selectedCourse={selectedCourse} traineesData={traineesData} />
               </div>
             </div>
           </section>
@@ -63,6 +68,5 @@ const Home = () => {
       </React.Fragment>
     );
   };
-}
 
 export default Home

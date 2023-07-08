@@ -14,12 +14,18 @@ const assignedTrainingProgramSchema = new mongoose.Schema({
     enum: ['In progress', 'Completed', 'Not Started'],
     required: true
   },
-  start_date: Date,
+  start_date: {
+    type: Date,
+    required: false
+  },
   deadline: {
     type: Date,
     required: true
   },
-  end_date: Date,
+  end_date: {
+    type: Date,
+    required: false
+  },
   evaluation: {
     type: Number,
     enum: [0, 1]
