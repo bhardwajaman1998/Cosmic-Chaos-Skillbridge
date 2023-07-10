@@ -5,7 +5,7 @@ import DashboardButtons from '../../components/DashboardButtons/DashboardButtons
 import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees'
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection'
 
-import { fetchAllCourses, fetchAllTrainees } from '../../services/DashboardService';
+import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 
 const Home = () => {
@@ -19,52 +19,54 @@ const Home = () => {
         try {
           const coursesData = await fetchAllCourses();
           setCourses(coursesData);
+          if (coursesData.length > 0) {
+            setSelectedCourse(coursesData[0])
+            console.log(selectedCourse)
+            handleCourseSelection(coursesData[0]);
+          }
         } catch (error) {
           // Handle error
         }
       };
-  
       getCourses();
     }, []);
   
     const handleCourseSelection = async (courseId) => {
-      setSelectedCourse(courseId);
-      try {
-        const traineesData = await fetchAllTrainees(courseId);
-        setTraineesData(traineesData);
-      } catch (error) {
-        // Handle error
-      }
+      console.log(courseId)
+        setSelectedCourse(courseId);
+        try {
+          const traineesData = await fetchTraineesByCourseId(courseId._id);
+          setTraineesData(traineesData);
+        } catch (error) {
+          // Handle error
+        }
     };
-    const pageTitle="Dashbboard"
-  return (
-    
-    <React.Fragment>
+  
+    return (
+      <React.Fragment>
         <div className='dashboard-layout'>
-            <section>
-                <div  className="layout text-2xl text-white">
-                    <div className='layout-sidebar'>
-                        <Sidebar />
-                    </div>
-                    <div className='layout-header'>
-                        <Header 
-                          title={pageTitle}
-                        />
-                    </div> 
-                    <div className='layout-main'>
-                        <DashboardButtons />
-                    </div> 
-                    <div className='layout-left'>
-                        <DashboardTrainees />
-                    </div> 
-                    <div className='layout-right'>
-                        <DashboardDataVisualSection />
-                    </div> 
-                </div>   
-            </section>
+          <section>
+            <div className='layout text-2xl text-white'>
+              <div className='layout-sidebar'>
+                <Sidebar />
+              </div>
+              <div className='layout-header'>
+                <Header />
+              </div>
+              <div className='layout-main'>
+                <DashboardButtons />
+              </div>
+              <div className='layout-left'>
+                <DashboardTrainees key={selectedCourse} courses={courses} traineesData={traineesData} onSelectCourse={handleCourseSelection} />
+              </div>
+              <div className='layout-right'>
+                <DashboardDataVisualSection selectedCourse={selectedCourse} traineesData={traineesData} />
+              </div>
+            </div>
+          </section>
         </div>
-    </React.Fragment>
-  )
-}
+      </React.Fragment>
+    );
+  };
 
 export default Home
