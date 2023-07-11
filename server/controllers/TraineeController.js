@@ -1,5 +1,5 @@
 const trainee = require('../models/Trainee');
-const training = require('../models/Training');
+// const training = require('../models/Training');
 // Controller methods for trainee routes
 const getAll = async (req, res) => {
   try {
@@ -33,6 +33,20 @@ const getTrainee = async (req, res) => {
     res.json(traineeId);
   } catch (error) {
     console.error('Error fetching trainee by ID:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+const getTraineesByCourseId = async (req, res) => {
+  const { courseId } = req.params;
+  console.log(req.params)
+  try {
+    const trainees = await trainee.find({
+      'assigned_training_programs.course_id': courseId
+    });
+    res.json(trainees);
+  } catch (error) {
+    console.error('Error fetching trainees by course id:', error);
     res.status(500).json({ error: 'Server error' });
   }
 };
@@ -90,6 +104,7 @@ module.exports = {
     getAll,
     addTrainee,
     getTrainee,
+    getTraineesByCourseId,
     assignMentor,
     assignTraining
 };

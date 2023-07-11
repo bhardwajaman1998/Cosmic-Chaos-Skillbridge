@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+const lessonSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+  length: Number
+});
+
+
 const courseSchema = new mongoose.Schema({
   _id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -7,7 +14,10 @@ const courseSchema = new mongoose.Schema({
     auto: true
   },
   name: String,
-  description: String
+  lessons: {
+    type: [lessonSchema],
+    default: []
+  }
 });
 
 const Course = mongoose.model('Course', courseSchema, 'course', 'test');
