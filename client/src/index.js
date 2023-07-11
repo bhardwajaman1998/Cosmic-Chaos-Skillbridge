@@ -4,7 +4,7 @@ import './styles.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StyledEngineProvider } from '@mui/material/styles';
-import Sidebar from './components/sidebar';
+//import Sidebar from './components/sidebar';
 import TableList from './components/TableList/TableList';
 
 ReactDOM.createRoot(document.querySelector("#root")).render(
@@ -16,13 +16,7 @@ ReactDOM.createRoot(document.querySelector("#root")).render(
 );
 
 
-ReactDOM.createRoot(document.querySelector("#root")).render(
-  <React.StrictMode>
-    <StyledEngineProvider injectFirst>
-      <Sidebar />
-    </StyledEngineProvider>
-  </React.StrictMode>
-);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
