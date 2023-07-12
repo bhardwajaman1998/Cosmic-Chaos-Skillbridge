@@ -1,8 +1,9 @@
+const db = process.env.DATABASE;
 const mongoose = require('mongoose');
 
 mongoose.set ('strictQuery' ,true) ;
 
-const dbURI = 'mongodb+srv://skillbridge:skillbridge@skillbridge-development.7ydtqsx.mongodb.net/?retryWrites=true&w=majority'
+const dbURI = db;
 
 
 mongoose.connect ( dbURI, {useNewUrlParser: true});
