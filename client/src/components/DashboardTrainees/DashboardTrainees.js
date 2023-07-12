@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Select from "react-select";
 import logo from '../../assets/avatar.png';
 import TraineeSection from './TraineeSection';
-import { match } from 'assert';
 
 const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
 

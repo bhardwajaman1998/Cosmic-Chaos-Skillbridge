@@ -5,7 +5,7 @@ import DashboardButtons from '../../components/DashboardButtons/DashboardButtons
 import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees'
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection'
 
-import { fetchAllCourses, fetchAllTrainees, fetchTraineesByCourseId } from '../../services/DashboardService';
+import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
         }
       };
       getCourses();
-    }, []);
+    }, [selectedCourse]);
   
     const handleCourseSelection = async (courseId) => {
       console.log(courseId)

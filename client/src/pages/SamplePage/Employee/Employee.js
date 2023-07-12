@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../../components/Sidebar/Sidebar'
 import Header from '../../../components/Header/Header'
-import DashboardButtons from '../../../components/DashboardButtons/DashboardButtons'
+// import DashboardButtons from '../../../components/DashboardButtons/DashboardButtons'
 import DashboardTrainees from '../../../components/DashboardTrainees/DashboardTrainees'
 import DashboardDataVisualSection from '../../../components/DataVisualize/DashboardDataVisualSection'
 // const c1 = () =>{
