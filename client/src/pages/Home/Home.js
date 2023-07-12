@@ -20,8 +20,13 @@ const Home = () => {
           const coursesData = await fetchAllCourses();
           setCourses(coursesData);
           if (coursesData.length > 0) {
-            setSelectedCourse(coursesData[0])
-            console.log(selectedCourse)
+            setSelectedCourse((prevSelectedCourse) => {
+              // Update selectedCourse only if it hasn't been set yet
+              if (!prevSelectedCourse) {
+                return coursesData[0];
+              }
+              return prevSelectedCourse;
+            });
             handleCourseSelection(coursesData[0]);
           }
         } catch (error) {
