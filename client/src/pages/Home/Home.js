@@ -29,7 +29,7 @@ const Home = () => {
         }
       };
       getCourses();
-    }, [selectedCourse]);
+    }, []);
   
     const handleCourseSelection = async (courseId) => {
       console.log(courseId)
