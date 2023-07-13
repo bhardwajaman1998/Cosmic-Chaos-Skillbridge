@@ -18,7 +18,24 @@ const TraineeSection = ({index, name, imageUrl, learningTime, finalScore, course
       statusCellBgColor = 'rgba(188, 188, 188, 1)';
       statusCellTextColor = 'black';
     }
+    const isMobile = window.innerWidth <= 768;
   return (
+    <>
+      {isMobile ? (
+        <tr className='tarinee-row' key={index}>
+        <td>
+            <img src={imageUrl} alt="Icon" /> 
+        </td>
+        <td>
+            <span className='table-name'>{name}</span>
+        </td>
+        <td>
+            <div className={statusCellClassName} style={{ backgroundColor: statusCellBgColor, color: statusCellTextColor }}>
+                <span className='status-cell-text'>{courseStatus}</span>
+            </div>
+        </td>
+      </tr>
+      ) : (
         <tr className='tarinee-row' key={index}>
             <td>
                 <img src={imageUrl} alt="Icon" /> 
@@ -34,11 +51,12 @@ const TraineeSection = ({index, name, imageUrl, learningTime, finalScore, course
             </td>
             <td>
                 <div className={statusCellClassName} style={{ backgroundColor: statusCellBgColor, color: statusCellTextColor }}>
-                    <span>{courseStatus}</span>
+                    <span className='status-cell-text'>{courseStatus}</span>
                 </div>
-                
             </td>
-        </tr>
+          </tr>
+        )}
+    </>
   )
 }
 
