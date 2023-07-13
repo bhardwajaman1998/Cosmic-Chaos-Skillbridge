@@ -45,3 +45,18 @@ export const fetchTraineesByCourseId = async (courseId) => {
     throw error;
   }
 };
+
+export const fetchAssignedCourses = async (traineeId) => {
+  try {
+    const path = `${API_BASE_URL}/trainees/${traineeId}/courses`;
+    const response = await fetch(path);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching assigned courses:', error);
+    throw error;
+  }
+};
+
+
+
