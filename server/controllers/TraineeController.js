@@ -61,7 +61,7 @@ const assignMentor = async (req, res) => {
 
     const mentor = await Mentor.findById(mentorId);
     if (!mentor) {
-      return res.status(404).json({ error: 'Mentor not found' });
+      return res.status(404).json({ error: 'Mentor not found' }); 
     }
 
     trainee.mentor = mentorId;
@@ -100,11 +100,37 @@ const assignTraining = async (req, res) => {
 };
 
 
+const getAssignedCourses= async (req, res) => {
+  try {
+    const { traineeId, courseId } = req.params;
+
+    const trainee = await Trainee.findById(traineeId);
+    if (!trainee) {
+      return res.status(404).json({ error: 'Trainee not found' });
+    }
+
+    const course = trainee.assigned_training_programs.find(
+      (assignedCourse) => assignedCourse._id.toString() === courseId
+    );
+    if (!course) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    res.json(course);
+  } catch (error) {
+    console.error('Error fetching course by ID:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+
+
 module.exports = {
     getAll,
     addTrainee,
     getTrainee,
     getTraineesByCourseId,
     assignMentor,
-    assignTraining
+    assignTraining,
+    getAssignedCourses
 };
