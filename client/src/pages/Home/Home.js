@@ -5,7 +5,7 @@ import DashboardButtons from '../../components/DashboardButtons/DashboardButtons
 import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees'
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection'
 
-import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
+import { fetchAllCourses, fetchAllTrainees, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 
 const Home = () => {
@@ -41,7 +41,6 @@ const Home = () => {
           // Handle error
         }
     };
-  
     return (
       <React.Fragment>
         <div className='dashboard-layout'>

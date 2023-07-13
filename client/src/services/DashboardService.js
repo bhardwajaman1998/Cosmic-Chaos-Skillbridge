@@ -9,7 +9,7 @@ export const fetchAllCourses = async () => {
         const path = `${API_BASE_URL}/course/get_all_courses`
         const response = await fetch(path);
         const data = await response.json();
-        // console.log(path)
+        console.log(path)
         // console.log(data)
         return data;
       } catch (error) {

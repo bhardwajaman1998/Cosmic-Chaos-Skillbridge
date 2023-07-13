@@ -110,16 +110,18 @@ const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
         <Select className='filter-select' label='Last week' options={options} openMenuOnFocus styles={customStyle} />
       </div>
       <div className='trainee-section'>
-        <h3 className='trainee-section-title'>Employees</h3>
+        <h3 className='trainee-section-title'>Top Employees</h3>
         <div className='trainee-list'>
             <table>
-                <thead>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Learning Time</th>
-                    <th>Final Score</th>
-                    <th>Status</th>
-                </thead>
+             <thead>
+                <tr className="header-row">
+                  <th></th>
+                  <th>Name</th>
+                  <th>Learning Time</th>
+                  <th>Final Score</th>
+                  <th>Status</th>
+                </tr>
+               </thead>
                 <tbody>
                   {empData.map((item, index) => (
                     <TraineeSection
