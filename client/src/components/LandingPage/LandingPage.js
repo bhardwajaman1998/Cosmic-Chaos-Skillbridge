@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import ContactCard from './ContactCard';
-import SwiperCore, { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './LandingPage.css';
 import Footer from './Footer';
 
-SwiperCore.use([Navigation]);
-
 const LandingPage = () => {
   const [cardImages, setCardImages] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleFileUpload = (index, event) => {
     const file = event.target.files[0];
@@ -18,6 +17,39 @@ const LandingPage = () => {
     updatedImages[index] = URL.createObjectURL(file);
     setCardImages(updatedImages);
   };
+
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const sliderSettings = {
+    dots: true, // Enable dots
+    dotsClass: 'slider-dots', // Custom CSS class for the dots
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    speed: 500,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+    beforeChange: (current, next) => {
+      handleSlideChange(next);
+    },
+  };
+
+  
 
   return (
     <div className='container'>
@@ -29,7 +61,7 @@ const LandingPage = () => {
             <li><h4><a href="/Testimonials">Testimonials</a></h4></li>
             <li><h4><a href="/team">Team</a></h4></li>
             <li><h4><a href="/SignIn">Signin</a></h4></li>
-            <button className="btnRes">
+            <button className="btnRes-signup">
               <a href="#Create your account">
                 <b>Sign Up</b>
               </a>
@@ -39,45 +71,52 @@ const LandingPage = () => {
       </header>
 
       <div className='first'>
-        <h1>Empower your employees to grow</h1>
+        <h1>Empower your
+           employees to grow</h1>
         <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
         <div className="image">
           <img src="" alt="css" />
         </div>
       </div>
+
       <button className="btnRes">
         <a href="#Get started now!t">
           <b>Get started now!</b>
         </a>
       </button>
 
+      <div className='second'>
       <h2>How it works?</h2>
       <p>The web app operates on a user-friendly platform that makes it easy for employees to navigate and access its features. Upon logging in, employees are greeted with a personalized dashboard that provides them with an overview of their learning progress, recommended courses, and upcoming training activities.</p>
 
       <div className="card-container">
         <Card
+          imgSrc={cardImages[0]}
           title="Set goals for your employees"
           details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"
-          imgSrc={cardImages[0]}
+          
         >
           <input type="file" onChange={(event) => handleFileUpload(0, event)} />
         </Card>
 
         <Card
-          title="Create your courses"
-          details="Morbi nec sapien sed dolor tempus tristique at a felis. Praesent eget dapibus lorem."
           imgSrc={cardImages[1]}
+          title="Create your courses"
+          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"
+          
         >
           <input type="file" onChange={(event) => handleFileUpload(1, event)} />
         </Card>
 
         <Card
-          title="Measure their growth"
-          details="Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis"
           imgSrc={cardImages[2]}
+          title="Measure their growth"
+          details="Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"
+          
         >
-          <input type="file" onChange={(event) => handleFileUpload(2, event)} />
+  
         </Card>
+      </div>
       </div>
 
       <button className="btnRes">
@@ -86,104 +125,44 @@ const LandingPage = () => {
         </a>
       </button>
 
-      <h2>See what other startups are telling about us</h2>
-      <p>Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis dis parturient montes.</p>
 
-      <div className='card-container2'>
-      <Swiper navigation slidesPerView={3}>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="slide">
-              <h3>"Guille"</h3>
-              <h4>Jr. Frontend Developer</h4>
-              <p>"Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor"</p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+      <div className='slide-container'>
+  <h2>See what other startups are telling about us</h2>
+  <p>Maecenas vitae congue sapien, id molestie magna. Orci varius natoque penatibus et magnis dis parturient montes. 
+    Sed vel sem id dui rutrum porta. Morbi nec sapien sed dolor tempus tristique at a felis. Praesent eget dapibus lorem.</p>
+  
+  <div className='card-container2'>
+    <Slider {...sliderSettings}>
+      <div className="slide1 slide">
+        <h3>"Guille"</h3>
+        <h4>Jr. Frontend Developer</h4>
+        <p>Maecenas iaculis varius pulvs.
+        "Morbi nec sapien sed dolor tempus. Vivamus non elit condimentum ante finibus gravida eget dignissim neque"</p>
       </div>
+      <div className="slide2 slide">
+        <h3>"Guille"</h3>
+        <h4>Jr. Frontend Developer</h4>
+        <p>"Morbi nec sapien sed dolor tempus. Vivamus non elit condimentum ante finibus gravida eget dignissim neque"</p>
+      </div>
+      <div className="slide3 slide">
+        <h3>"Guille"</h3>
+        <h4>Jr. Frontend Developer</h4>
+        <p>"Morbi nec sapien sed dolor tempus. Vivamus non elit condimentum ante finibus gravida eget dignissim neque"</p>
+      </div>
+    </Slider>
+    <div className="slider-dots">
+      {Array.from({ length: sliderSettings.slidesToShow }).map((_, index) => (
+        <div
+          key={index}
+          className={`dot ${currentSlide === index ? 'active' : ''}`}
+          onClick={() => setCurrentSlide(index)}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+    
 
       <div className='teams'>
         <h2>Meet the team</h2>
@@ -244,6 +223,8 @@ const LandingPage = () => {
         </div>
       </div>
 
+      
+
       <h2>Have Questions? Get in touch with our experts!</h2>
       <p>If you have any questions or need further information about SkillBridge and how it can revolutionize your HR training management, we're here to help. Contact us today, and our friendly team will be delighted to assist you. Let's connect and address any inquiries you may have. Reach out now and discover the power of SkillBridge for seamless training program management!</p>
 
@@ -253,9 +234,11 @@ const LandingPage = () => {
         </b>
       </button>
 
+    
       <Footer />
     </div>
   );
 };
+
 
 export default LandingPage;

@@ -14,6 +14,8 @@ const Footer = () => {
         <a href="/how-it-works">How it Works</a>
           <a href="/the-team">The Team</a>
           <a href="/contact-us">Contact Us</a>
+          </div>
+          <div className="footer-nav2">
           <a href="/create-account">Create Account</a>
           <a href="/sign-in">Sign In</a>
             </div>         

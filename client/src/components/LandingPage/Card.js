@@ -1,18 +1,12 @@
 import React from "react";
-import Info from "./Info";
 import "./Card.css";
 
 function Card(props) {
   return (
     <div className="card">
       <div className="top">
-        <h3 className="name">{props.name}</h3>
-        <p className="roles">{props.roles}</p>
+        <h3 className="title">{props.title}</h3>
         <p className="details">{props.details}</p>
-      </div>
-      <div className="bottom">
-        <Info detailInfo={props.tel} />
-        <Info detailInfo={props.email} />
       </div>
     </div>
   );
