@@ -34,6 +34,16 @@ const assignedTrainingProgramSchema = new mongoose.Schema({
     type: Number,
     min: 0,
     max: 100
+  },
+  lessons: {
+    total: {
+      type: Number,
+      required: true
+    },
+    completed: {
+      type: Number,
+      required: true
+    }
   }
 });
 

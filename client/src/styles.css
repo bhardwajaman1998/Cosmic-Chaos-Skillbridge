@@ -312,6 +312,25 @@ td:last-child {
   width: 350px;
 }
 
+.progress-title {
+  color: var(--secondary, #1F2D36);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.progress-data {
+  color: var(--accent-emerald, #6AD38B);
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 49.743px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 .dot-container {
   display: flex;
   flex-direction: column;
