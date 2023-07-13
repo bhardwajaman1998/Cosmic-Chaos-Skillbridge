@@ -65,7 +65,7 @@ const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
       };
 
       const empData = traineesData.map((trainee) => {
-        // Find the assigned training program for the selected course        
+        // Find the assigned training program for the selecte d course        
         const selectedCourseProgram = trainee.assigned_training_programs.find(
           (program) => program.course_id === selectedCourse._id
         );
