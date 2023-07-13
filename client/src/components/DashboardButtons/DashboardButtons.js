@@ -6,16 +6,17 @@ import CreateButton from './CreateButton';
 
 const DashboardButtons = () => {
     const data = [
-        { title: 'Create new course', imageUrl: newCourse },
-        { title: 'Create new account', imageUrl: newAccount },
-        { title: 'Manage employees', imageUrl: employees },
-      ];
+        { title: 'Create New Course', mobileTitle: 'New Course', imageUrl: newCourse },
+        { title: 'Create New Account', mobileTitle: 'New Account', imageUrl: newAccount },
+        { title: 'Manage Employees', mobileTitle: 'Employees', imageUrl: employees },
+    ];
   return (
     <div className='dashboard-buttons'>
         {data.map((item, index) => (
             <CreateButton
                 index={index}
                 title={item.title}
+                mobileTitle={item.mobileTitle}
                 icon={item.imageUrl}
             />
         ))}
