@@ -104,19 +104,16 @@ const getAssignedCourses= async (req, res) => {
   try {
     const { traineeId, courseId } = req.params;
 
-    const trainee = await Trainee.findById(traineeId);
-    if (!trainee) {
+    const traineeData = await trainee.findById(traineeId);
+    if (!traineeData) {
       return res.status(404).json({ error: 'Trainee not found' });
     }
 
-    const course = trainee.assigned_training_programs.find(
-      (assignedCourse) => assignedCourse._id.toString() === courseId
-    );
-    if (!course) {
+    const courses = traineeData.assigned_training_programs
+    if (courses.length < 1) {
       return res.status(404).json({ error: 'Course not found' });
     }
-
-    res.json(course);
+    res.json(courses);
   } catch (error) {
     console.error('Error fetching course by ID:', error);
     res.status(500).json({ error: 'Server error' });

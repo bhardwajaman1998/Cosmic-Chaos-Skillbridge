@@ -48,9 +48,11 @@ export const fetchTraineesByCourseId = async (courseId) => {
 
 export const fetchAssignedCourses = async (traineeId) => {
   try {
-    const path = `${API_BASE_URL}/trainees/${traineeId}/courses`;
+    const path = `${API_BASE_URL}/trainee/trainees/${traineeId}/courses`;
     const response = await fetch(path);
     const data = await response.json();
+    console.log(path)
+    console.log(data)
     return data;
   } catch (error) {
     console.error('Error fetching assigned courses:', error);

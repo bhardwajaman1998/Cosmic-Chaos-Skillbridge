@@ -10,9 +10,9 @@ const [assignedCourses, setAssignedCourses] = useState([]);
 useEffect(() => {
   const fetchCourses = async () => {
     try {
-      const trainee = await fetchAssignedCourses(traineeId);
-      if (trainee && trainee.assigned_training_programs) {
-        setAssignedCourses(trainee.assigned_training_programs);
+      const courses = await fetchAssignedCourses(traineeId);
+      if (courses) {
+        setAssignedCourses(courses);
       }
     } catch (error) {
       console.error('Error fetching assigned courses:', error);
