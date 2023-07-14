@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import profile from '../../assets/avatar.png';
 import notification from '../../assets/notification-icon.svg';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
 
-const Header = ({ title='Dashboard' }) => {
+const Header = ({ title='Dashboard', showBackButton }) => {
    
   useEffect(() => {
     document.title = title;
@@ -23,7 +23,7 @@ const Header = ({ title='Dashboard' }) => {
 
     const location = useLocation();
 
-    const isHomePage = location.pathname === '/';
+    // const isHomePage = location.pathname === '/';
 
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -39,6 +39,12 @@ const Header = ({ title='Dashboard' }) => {
     }, []);
 
 
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+      navigate('/trainees');
+    };
+
     return (
       <div className="header">
         {isSmallScreen ? (
@@ -47,13 +53,13 @@ const Header = ({ title='Dashboard' }) => {
           </div>
         ) : (
           <>
-            {!isHomePage && (
+            {showBackButton && (
               <div className="header-title">
-                <ArrowBackIcon className="arrow-back-icon" />
+                <ArrowBackIcon className="arrow-back-icon"  onClick={handleGoBack}/>
                 <span>{title}</span>
               </div>
             )}
-            {isHomePage && <span className="header-title">{title}</span>}
+            {!showBackButton && <span className="header-title">{title}</span>}
           </>
         )}
         <div className="header-options">

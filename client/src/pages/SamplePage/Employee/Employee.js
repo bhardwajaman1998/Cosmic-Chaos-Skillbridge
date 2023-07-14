@@ -15,7 +15,7 @@ const Employee = () => {
               <Sidebar />
             </div>
             <div className='layout-header'>
-              <Header title={pageTitle} />
+              <Header title={pageTitle} showBackButton={false} />
             </div>
             <div className='trainee-information'>
               <h1>Trainee Information</h1>

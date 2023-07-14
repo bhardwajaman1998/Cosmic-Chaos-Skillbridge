@@ -22,7 +22,7 @@ const TraineePage= () => {
               <Sidebar />
             </div>
             <div className='layout-header'>
-              <Header title={pageTitle} />
+              <Header title={pageTitle} showBackButton={true} />
             </div>
             <div className='trainee-information'>
               <h1>Trainee Information</h1>
