@@ -3,28 +3,6 @@ import { useParams } from 'react-router-dom';
 import { fetchAssignedCourses } from '../../services/DashboardService';
 
 const CourseInformation = ({ assignedCourses, traineeId}) => {
-  // const { traineeId } = useParams();
-// const traineeId = '64a88a2ca3983f20ee0505bb';
-// const match = useRouteMatch();
-  // const { traineeId } = match.params;
-// console.log(traineeId);
-// const [assignedCourses, setAssignedCourses] = useState([]);
-
-// useEffect(() => {
-//   const fetchCourses = async () => {
-//     try {
-//       const courses = await fetchAssignedCourses(traineeId);
-//       if (courses) {
-//         setAssignedCourses(courses);
-//       }
-//     } catch (error) {
-//       console.error('Error fetching assigned courses:', error);
-//     }
-//   };
-
-//     fetchCourses();
-//   }, [traineeId]);
-
   return (
     <div>
       <h2>Assigned Courses for Trainee ID: {traineeId}</h2>

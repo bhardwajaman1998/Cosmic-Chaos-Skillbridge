@@ -32,6 +32,21 @@ export const fetchAllTrainees = async () => {
       }
 };
 
+export const fetchTraineeByID = async (traineeId) => {
+  try {
+      const path = `${API_BASE_URL}/trainee/get_trainee/${traineeId}`
+      const response = await fetch(path);
+      const data = await response.json();
+      console.log(path)
+      console.log(data)
+      return data;
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      throw error;
+    }
+  };
+
+
 export const fetchTraineesByCourseId = async (courseId) => {
   try {
     const path = `${API_BASE_URL}/trainee/trainees/course/${courseId}`

@@ -19,7 +19,7 @@ const TraineeInformation = () => {
 
     fetchData();
   }, []);
-  // console.log(traineeId);
+
   return (
     
     <div >
@@ -49,7 +49,7 @@ const TraineeInformation = () => {
                   <img src={trainee.photo} alt="Trainee" />
                 </td>
                 <td>
-                  <Link to={`/trainees/${trainee._id}`}>See Profile</Link>
+                  <Link to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
                 </td>
               </tr>
             ))}

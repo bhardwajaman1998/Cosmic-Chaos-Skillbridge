@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { fetchAllTrainees } from '../../services/DashboardService';
-import { Link } from 'react-router-dom';
+import { fetchTraineeByID } from '../../services/DashboardService';
 import CourseInformation from './CourseInformation';
 
-const SingleTrainee = () => {
-  const [trainees, setTrainees] = useState([]);
-  const [assignedPrograms, setPrograms] = useState([]);
+const SingleTrainee = ({ traineeId }) => {
+  const [selectedTrainee, setSelectedTrainee] = useState(null);
+  const [assignedPrograms, setAssignedPrograms] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const traineesData = await fetchAllTrainees();
-        setTrainees(traineesData);
-        setPrograms(traineesData. assigned_training_programs)
+        if (traineeId) {
+          const traineeData = await fetchTraineeByID(traineeId);
+          setSelectedTrainee(traineeData);
+          setAssignedPrograms(traineeData.assigned_training_programs);
+        }
       } catch (error) {
-        console.error('Error fetching trainees:', error);
+        console.error('Error fetching trainee:', error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [traineeId]);
 
-  const firstTrainee = trainees.length > 0 ? trainees[0] : null;
+  if (!selectedTrainee) {
+    return <div>Loading trainee information...</div>;
+  }
 
   return (
     <div>
@@ -34,28 +36,30 @@ const SingleTrainee = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Employee ID</th>
-              {/* <th>Phone Number</th> */}
               <th>Role</th>
               <th>Photo</th>
             </tr>
           </thead>
           <tbody>
-            {firstTrainee && (
-              <tr key={firstTrainee._id}>
-                <td>{firstTrainee.name}</td>
-                <td>{firstTrainee.email}</td>
-                <td>{firstTrainee._id}</td>
-                {/* <td>{firstTrainee.phone_number}</td> */}
-                <td>{firstTrainee.department.name}</td>
-                <td>
-                  <img src={firstTrainee.photo} alt="Trainee" />
-                </td>
-              </tr>
-            )}
+            <tr key={selectedTrainee._id}>
+              <td>{selectedTrainee.name}</td>
+              <td>{selectedTrainee.email}</td>
+              <td>{selectedTrainee._id}</td>
+              <td>{selectedTrainee.department.name}</td>
+              <td>
+                <img src={selectedTrainee.photo} alt="Trainee" />
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <CourseInformation assignedCourses={assignedPrograms} traineeId={firstTrainee._id} />
+      <div>
+      {selectedTrainee ? (
+        <CourseInformation assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} /> 
+        ) : (
+          <></>
+       )}
+        </div>
     </div>
   );
 };

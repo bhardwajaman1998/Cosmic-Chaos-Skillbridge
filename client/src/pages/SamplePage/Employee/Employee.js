@@ -20,9 +20,6 @@ const Employee = () => {
             <div className='trainee-information'>
               <h1>Trainee Information</h1>
               <TraineeInformation />
-              {/* <Routes>
-                <Route path="/trainees/:Id" element={<CourseInformation />} />
-              </Routes> */}
             </div>
           </div>
         </section>
