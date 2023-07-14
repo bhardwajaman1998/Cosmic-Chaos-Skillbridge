@@ -1,66 +1,42 @@
 .card-container {
-  display: flex;
+  margin-top: 2em;
+  display:flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  gap: 20px;
 }
 
 .card-container .card {
-  background-color: white;
+  flex: 1 1 300px;
+  max-width: 360px;
+  height: 180px;
+  margin: 10px;
+  padding: 20px;
+ background-color: #EBF2E7;
+border: 1px solid #6AD38B;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-
+.details {
+  text-align: center; /* Align the text to the center */
+}
 .card-container2 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  overflow: hidden;
-  height: 200px;
+  justify-content: center;
+  align-items: center;
+  margin: -10px;
 }
 
-
-
-.slider {
-  display: flex;
-  animation: slide 15s infinite;
+.card-container2 .slide1,
+.card-container2 .slide2,
+.card-container2 .slide3 {
+  width: 100% !important;
 }
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  14.29% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(calc(-100% - 20px));
-  }
-  34.29% {
-    transform: translateX(calc(-100% - 20px));
-  }
-  40% {
-    transform: translateX(calc(-200% - 40px));
-  }
-  54.29% {
-    transform: translateX(calc(-200% - 40px));
-  }
-  60% {
-    transform: translateX(calc(-300% - 60px));
-  }
-  74.29% {
-    transform: translateX(calc(-300% - 60px));
-  }
-  80% {
-    transform: translateX(calc(-400% - 80px));
-  }
-  94.29% {
-    transform: translateX(calc(-400% - 80px));
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .card {
   display: flex;
   flex-basis: calc(33.33% - 20px); /* Adjust the width of each card as needed */
@@ -70,12 +46,17 @@
 .teams {
   text-align: center;
   background-color: #1F2D37;
+  padding: 10px;
+}
+
+.teams h2 {
+  margin-bottom: 10px; /* Add margin-bottom to create space below the title */
 }
 
 .member-card .top{
   display: flex;
   background-color: #1F2D37;
-  margin-top: 20px;
+  margin-top: 20px; 
 }
 
 .member-card {

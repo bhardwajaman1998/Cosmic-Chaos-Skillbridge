@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './LandingPage.css';
 import Footer from './Footer';
 
+
 const LandingPage = () => {
   const [cardImages, setCardImages] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
