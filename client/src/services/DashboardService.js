@@ -19,7 +19,9 @@ export const fetchAllCourses = async () => {
 
 export const fetchAllTrainees = async () => {
     try {
+      console.log('abc')
         const path = `${API_BASE_URL}/trainee/get_all_trainees`
+        console.log(path)
         const response = await fetch(path);
         const data = await response.json();
          console.log(path)

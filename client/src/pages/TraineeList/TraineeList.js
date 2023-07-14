@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Header from '../../components/Header/Header'
-import DashboardButtons from '../../components/DashboardButtons/DashboardButtons'
-import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees'
-import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection'
+import TraineeListComponent from '../../components/TraineeList/TraineeListComponent';
 
-import { fetchAllTrainees } from '../../services/DashboardService';
+import { fetchAllTrainees, fetchAllCourses } from '../../services/DashboardService';
 
 
 const TraineeList = () => {
   const [trainees, setTrainees] = useState([]);
 
+  
+
+
   useEffect(() => {
     const fetchAllTrainee = async () => {
-      try {
-        const response = await fetchAllTrainees(); // Replace with your API endpoint
-        const data = await response.json();
-        setTrainees(data);
-      } catch (error) {
-        console.error('Error fetching trainees:', error);
+        try {
+          const traineesData = await fetchAllTrainees();
+          setTrainees(traineesData);
+          console.log(traineesData)
+        } catch (error) {
+          // Handle error
       }
     };
-
     fetchAllTrainee();
   }, []);
 
@@ -39,9 +39,8 @@ const TraineeList = () => {
                 <Header />
               </div>
                <div className='layout-main'>
-               <TraineeList />
+               <TraineeListComponent traineesData={trainees}/>
               </div>
-              
             </div>
           </section>
         </div>
