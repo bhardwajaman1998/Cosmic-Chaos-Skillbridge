@@ -6,6 +6,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Home from "./pages/Home/Home";
 import Employee from "./pages/SamplePage/Employee/Employee";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TraineePage from "./pages/SamplePage/Employee/TraineePage";  
+
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
         <div>
           <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/employee" element={<Employee />} />
+          <Route path="/trainees" element={<Employee />} />
+          <Route path="/trainees/:id" element={<TraineePage />} />
           </Routes>
         </div>
       </div>

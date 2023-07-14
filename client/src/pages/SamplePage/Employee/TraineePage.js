@@ -1,11 +1,13 @@
 import React from 'react';
-import TraineeInformation from '../../../components/TraineePage/TraineeInformation';
+// import TraineeInformation from '../../../components/TraineePage/TraineeInformation';
 import Header from '../../../components/Header/Header';
 import Sidebar from '../../../components/Sidebar/Sidebar';
-// import CourseInformation from '../../../components/TraineePage/CourseInformation';
-// import { Route, Routes } from 'react-router-dom';
-const pageTitle = "Employees";
-const Employee = () => {
+import CourseInformation from '../../../components/TraineePage/CourseInformation';
+import SingleTrainee from '../../../components/TraineePage/SingleTrainee';
+// import { Routes, Route } from 'react-router-dom';
+
+const pageTitle='Employee File'
+const TraineePage= () => {
   return (
     <React.Fragment>
       <div className='dashboard-layout'>
@@ -19,10 +21,8 @@ const Employee = () => {
             </div>
             <div className='trainee-information'>
               <h1>Trainee Information</h1>
-              <TraineeInformation />
-              {/* <Routes>
-                <Route path="/trainees/:Id" element={<CourseInformation />} />
-              </Routes> */}
+              <SingleTrainee />
+              <CourseInformation />
             </div>
           </div>
         </section>
@@ -33,4 +33,4 @@ const Employee = () => {
 
 
 
-export default Employee;
+export default TraineePage;

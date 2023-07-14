@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { fetchAllTrainees } from '../../services/DashboardService';
 import { Link } from 'react-router-dom';
+import CourseInformation from './CourseInformation';
 
-
-const TraineeInformation = () => {
+const SingleTrainee = () => {
   const [trainees, setTrainees] = useState([]);
+  const [assignedPrograms, setPrograms] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const traineesData = await fetchAllTrainees();
         setTrainees(traineesData);
+        setPrograms(traineesData. assigned_training_programs)
       } catch (error) {
         console.error('Error fetching trainees:', error);
       }
@@ -19,10 +21,11 @@ const TraineeInformation = () => {
 
     fetchData();
   }, []);
-  // console.log(traineeId);
+
+  const firstTrainee = trainees.length > 0 ? trainees[0] : null;
+
   return (
-    
-    <div >
+    <div>
       <h1>Trainee Page</h1>
       <div className="table-wrapper">
         <table>
@@ -34,30 +37,27 @@ const TraineeInformation = () => {
               {/* <th>Phone Number</th> */}
               <th>Role</th>
               <th>Photo</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {trainees.map((trainee) => (
-              <tr key={trainee._id}>
-                <td>{trainee.name}</td>
-                <td>{trainee.email}</td>
-                <td>{trainee._id}</td>
-                {/* <td>{trainee.phone_number}</td> */}
-                <td>{trainee.department.name}</td>
+            {firstTrainee && (
+              <tr key={firstTrainee._id}>
+                <td>{firstTrainee.name}</td>
+                <td>{firstTrainee.email}</td>
+                <td>{firstTrainee._id}</td>
+                {/* <td>{firstTrainee.phone_number}</td> */}
+                <td>{firstTrainee.department.name}</td>
                 <td>
-                  <img src={trainee.photo} alt="Trainee" />
-                </td>
-                <td>
-                  <Link to={`/trainees/${trainee._id}`}>See Profile</Link>
+                  <img src={firstTrainee.photo} alt="Trainee" />
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
+      <CourseInformation assignedCourses={assignedPrograms} traineeId={firstTrainee._id} />
     </div>
   );
 };
 
-export default TraineeInformation;
+export default SingleTrainee;
