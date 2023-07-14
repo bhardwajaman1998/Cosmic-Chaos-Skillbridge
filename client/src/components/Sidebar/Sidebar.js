@@ -13,7 +13,7 @@ const Sidebar = () => {
     const images = [
         { title: 'Dashboard', imageUrl: dashboard, link: '/' },
         { title: 'Courses', imageUrl: courses, link: '/courses' },
-        { title: 'Trainee', imageUrl: trainees, link: '/employee' },
+        { title: 'Trainee', imageUrl: trainees, link: '/trainees' },
       ];
 
   return (

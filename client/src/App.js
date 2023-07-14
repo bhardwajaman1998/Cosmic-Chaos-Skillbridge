@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import Employee from "./pages/SamplePage/Employee/Employee";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./components/LandingPage/LandingPage";
-
+import TraineePage from "./pages/SamplePage/Employee/TraineePage";  
 function App() {
   return (
     <Router>
@@ -16,7 +16,8 @@ function App() {
           <Routes>
           {/* <Route path="/" element={<LandingPage />} /> */}
           <Route path="/" element={<Home />} />
-          <Route path="/employee" element={<Employee />} />
+          <Route path="/trainees" element={<Employee />} />
+          <Route path="trainees/traineePage" element={<TraineePage />} />
           </Routes>
         </div>
       </div>
