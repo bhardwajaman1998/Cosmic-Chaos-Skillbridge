@@ -9,7 +9,7 @@ import Logo from '../LandingPage/image/Logo.png';
 import image from '../LandingPage/image/image.png';
 import profile from '../LandingPage/image/Profile.png';
 import training from '../LandingPage/image/training.svg';
-import Group from '../LandingPage/image/Group.svg'
+import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.svg';
 
 
