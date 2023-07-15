@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Select from "react-select";
 import logo from '../../assets/avatar.png';
-import TraineeSection from './TraineeSection';
+// import TraineeSection from '../DashboardTrainees/TraineeSection';
+import TraineeTable from './TraineeTable';
+import { match } from 'assert';
 
-const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
+const TraineeLessons = ({key ,courses, traineesData, onSelectCourse}) => {
 
   const [selectedCourse, setSelectedCourse] = useState(courses.length > 0 ? courses[0] : null);
 
@@ -64,7 +66,7 @@ const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
       };
 
       const empData = traineesData.map((trainee) => {
-        // Find the assigned training program for the selecte d course        
+        // Find the assigned training program for the selected course        
         const selectedCourseProgram = trainee.assigned_training_programs.find(
           (program) => program.course_id === selectedCourse._id
         );
@@ -123,7 +125,7 @@ const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
                </thead>
                 <tbody>
                   {empData.map((item, index) => (
-                    <TraineeSection
+                    <TraineeTable
                       key={index}
                       index={index}
                       name={item.name}
@@ -141,4 +143,4 @@ const DashboardTrainees = ({key ,courses, traineesData, onSelectCourse}) => {
   )
 }
 
-export default DashboardTrainees
+export default TraineeLessons
