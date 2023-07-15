@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './LandingPage.css';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 
 const LandingPage = () => {
@@ -61,11 +62,9 @@ const LandingPage = () => {
             <li><h4><a href="/HowItWorks">How it works</a></h4></li>
             <li><h4><a href="/Testimonials">Testimonials</a></h4></li>
             <li><h4><a href="/team">Team</a></h4></li>
-            <li><h4><a href="/SignIn">Signin</a></h4></li>
+            <li><h4><Link to="/SignIn">Sign In</Link></h4></li>
             <button className="btnRes-signup">
-              <a href="#Create your account">
-                <b>Sign Up</b>
-              </a>
+            <Link to="/SignUp">Sign Up</Link>
             </button>
           </ul>
         </nav>
