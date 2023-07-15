@@ -25,8 +25,12 @@ const addTrainee = async (req, res) => {
 };
 
 const getTrainee = async (req, res) => {
+  console.log("Inside function")
   try {
-    const traineeId = await trainee.findById(req.params.id);
+    const trainee_Id = req.params.traineeId;
+    console.log(trainee_Id)
+    const traineeId = await trainee.findById(trainee_Id);
+    console.log(traineeId);
     if (!traineeId) {
       return res.status(404).json({ error: 'trainee not found' });
     }
@@ -61,7 +65,7 @@ const assignMentor = async (req, res) => {
 
     const mentor = await Mentor.findById(mentorId);
     if (!mentor) {
-      return res.status(404).json({ error: 'Mentor not found' });
+      return res.status(404).json({ error: 'Mentor not found' }); 
     }
 
     trainee.mentor = mentorId;
@@ -100,11 +104,74 @@ const assignTraining = async (req, res) => {
 };
 
 
+// const getAssignedCourses= async (req, res) => {
+//   try {
+//     const { traineeId, courseId } = req.params;
+
+//     const traineeData = await trainee.findById(traineeId);
+//     if (!traineeData) {
+//       return res.status(404).json({ error: 'Trainee not found' });
+//     }
+
+//     const courses = traineeData.assigned_training_programs
+//     if (courses.length < 1) {
+//       return res.status(404).json({ error: 'Course not found' });
+//     }
+//     res.json(courses);
+//   } catch (error) {
+//     console.error('Error fetching course by ID:', error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
+
+// const getAssignedCourses = async (req, res) => {
+//   try {
+//     const { traineeId } = req.params;
+
+//     const traineeData = await trainee.findById(traineeId);
+//     if (!traineeData) {
+//       return res.status(404).json({ error: 'Trainee not found' });
+//     }
+
+//     const courses = traineeData.assigned_training_programs;
+//     if (!courses || courses.length === 0) {
+//       return res.status(404).json({ error: 'No assigned courses found for the trainee' });
+//     }
+
+//     res.json(courses);
+//   } catch (error) {
+//     console.error('Error fetching assigned courses:', error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
+const getAssignedCourses = async (req, res) => {
+  try {
+    const { traineeId } = req.params;
+
+    const traineeData = await trainee.findById(traineeId);
+    if (!traineeData) {
+      return res.status(404).json({ error: 'Trainee not found' });
+    }
+
+    const assignedCourses = traineeData.assigned_training_programs;
+    if (assignedCourses.length < 1) {
+      return res.status(404).json({ error: 'No assigned courses found for Trainee ID' });
+    }
+
+    res.json(assignedCourses);
+  } catch (error) {
+    console.error('Error fetching assigned courses:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+
 module.exports = {
     getAll,
     addTrainee,
     getTrainee,
     getTraineesByCourseId,
     assignMentor,
-    assignTraining
+    assignTraining,
+    getAssignedCourses
 };

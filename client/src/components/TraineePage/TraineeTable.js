@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TraineeSection = ({index, name, imageUrl, learningTime, finalScore, courseStatus}) => {
+const TraineeTable = ({index, name, imageUrl, learningTime, finalScore, courseStatus}) => {
     let statusCellClassName = '';
     let statusCellBgColor = '';
     let statusCellTextColor = '';
@@ -60,4 +60,4 @@ const TraineeSection = ({index, name, imageUrl, learningTime, finalScore, course
   )
 }
 
-export default TraineeSection
+export default TraineeTable
