@@ -4,7 +4,7 @@ import CourseInformation from './CourseInformation';
 import ProfilePic from '../../assets/profile-pic-male-01.png'
 import EmployeeProgressChart from './EmployeeProgressChart';
 import TraineeDataVisual from './TraineeDataVisual';
-import ChartLabel from '../DataVisualize/ChartLabel';
+// import ChartLabel from '../DataVisualize/ChartLabel';
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
     const [selectedTrainee, setSelectedTrainee] = useState(null);

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchAssignedCourses } from '../../services/DashboardService';
+import React from 'react'
 
 const CourseInformation = ({ assignedCourses, traineeId}) => {
   return (

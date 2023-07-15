@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import DoughnutChart from '../DataVisualize/DoughnutChart';
+import React, { useEffect, useState } from 'react';
+// import DoughnutChart from '../DataVisualize/DoughnutChart';
 import ProgressSection from '../DataVisualize/ProgressSection';
-import ChartLabel from '../DataVisualize/ChartLabel';
-import EmployeeProgressChart from './EmployeeProgressChart';
+// import ChartLabel from '../DataVisualize/ChartLabel';
+// import EmployeeProgressChart from './EmployeeProgressChart';
 
 const TraineeDataVisual = ({ traineeData }) => {
   const [averageCompletionRate, setAverageCompletionRate] = useState(0);
@@ -10,23 +10,24 @@ const TraineeDataVisual = ({ traineeData }) => {
   const [coursesInProgress, setCoursesInProgress] = useState([]);
   const [completedCourses, setCompletedCourses] = useState([]);
 
-  const chartRef = useRef(null);
+  // const chartRef = useRef(null);
 
-  const calculateCoursesInProgress = () => {
-    const inProgressCourses = traineeData.assigned_training_programs.filter(
-      (program) => program.status === 'In progress'
-    );
-    setCoursesInProgress(inProgressCourses);
-  };
 
-  const calculateCompletedCourses = () => {
-    const completedCourses = traineeData.assigned_training_programs.filter(
-      (program) => program.status === 'Completed' && program.evaluation === 1
-    );
-    setCompletedCourses(completedCourses);
-  };
 
   useEffect(() => {
+    const calculateCoursesInProgress = () => {
+      const inProgressCourses = traineeData.assigned_training_programs.filter(
+        (program) => program.status === 'In progress'
+      );
+      setCoursesInProgress(inProgressCourses);
+    };
+  
+    const calculateCompletedCourses = () => {
+      const completedCourses = traineeData.assigned_training_programs.filter(
+        (program) => program.status === 'Completed' && program.evaluation === 1
+      );
+      setCompletedCourses(completedCourses);
+    };
     calculateCoursesInProgress();
     calculateCompletedCourses();
   }, [traineeData]);
@@ -61,39 +62,39 @@ const TraineeDataVisual = ({ traineeData }) => {
     calculateAverageCompletionRate();
   }, [completedCourses, coursesInProgress]);
 
-  const data = {
-    labels: ['In Progress', 'Completed'],
-    datasets: [
-      {
-        data: [coursesInProgress.length, completedCourses.length],
-        backgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-        hoverBackgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-      },
-    ],
-  };
+  // const data = {
+  //   labels: ['In Progress', 'Completed'],
+  //   datasets: [
+  //     {
+  //       data: [coursesInProgress.length, completedCourses.length],
+  //       backgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
+  //       hoverBackgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
+  //     },
+  //   ],
+  // };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: true,
-        callbacks: {
-          label: (context) => {
-            const label = context.label || '';
-            if (label) {
-              const value = context.raw || 0;
-              return `${label}: ${value}`;
-            }
-            return null;
-          },
-        },
-      },
-    },
-  };
+  // const options = {
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  //   plugins: {
+  //     legend: {
+  //       display: false,
+  //     },
+  //     tooltip: {
+  //       enabled: true,
+  //       callbacks: {
+  //         label: (context) => {
+  //           const label = context.label || '';
+  //           if (label) {
+  //             const value = context.raw || 0;
+  //             return `${label}: ${value}`;
+  //           }
+  //           return null;
+  //         },
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <div className="single-trainee-container">  

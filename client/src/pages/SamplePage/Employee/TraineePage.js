@@ -2,7 +2,7 @@ import React from 'react';
 // import TraineeInformation from '../../../components/TraineePage/TraineeInformation';
 import Header from '../../../components/Header/Header';
 import Sidebar from '../../../components/Sidebar/Sidebar';
-import CourseInformation from '../../../components/TraineePage/CourseInformation';
+// import CourseInformation from '../../../components/TraineePage/CourseInformation';
 import SingleTrainee from '../../../components/TraineePage/SingleTrainee';
 import { useLocation } from 'react-router-dom'
 

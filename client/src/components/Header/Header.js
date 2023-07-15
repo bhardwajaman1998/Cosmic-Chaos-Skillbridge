@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import profile from '../../assets/avatar.png';
 import notification from '../../assets/notification-icon.svg';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -20,8 +20,6 @@ const Header = ({ title='Dashboard', showBackButton }) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, [title]);
-
-    const location = useLocation();
 
     // const isHomePage = location.pathname === '/';
 
