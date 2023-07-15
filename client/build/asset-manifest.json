@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.a1705c40.chunk.css",
-    "main.js": "/static/js/main.64648720.chunk.js",
-    "main.js.map": "/static/js/main.64648720.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.38d7b41b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.38d7b41b.js.map",
-    "static/js/2.616677a9.chunk.js": "/static/js/2.616677a9.chunk.js",
-    "static/js/2.616677a9.chunk.js.map": "/static/js/2.616677a9.chunk.js.map",
-    "static/js/3.1bc9c41e.chunk.js": "/static/js/3.1bc9c41e.chunk.js",
-    "static/js/3.1bc9c41e.chunk.js.map": "/static/js/3.1bc9c41e.chunk.js.map",
+    "main.css": "/static/css/main.3cb329db.chunk.css",
+    "main.js": "/static/js/main.58831eb4.chunk.js",
+    "main.js.map": "/static/js/main.58831eb4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d1421fa9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d1421fa9.js.map",
+    "static/js/2.107da1d1.chunk.js": "/static/js/2.107da1d1.chunk.js",
+    "static/js/2.107da1d1.chunk.js.map": "/static/js/2.107da1d1.chunk.js.map",
+    "static/js/3.81d28faa.chunk.js": "/static/js/3.81d28faa.chunk.js",
+    "static/js/3.81d28faa.chunk.js.map": "/static/js/3.81d28faa.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.a1705c40.chunk.css.map": "/static/css/main.a1705c40.chunk.css.map",
-    "static/js/2.616677a9.chunk.js.LICENSE.txt": "/static/js/2.616677a9.chunk.js.LICENSE.txt",
+    "static/css/main.3cb329db.chunk.css.map": "/static/css/main.3cb329db.chunk.css.map",
+    "static/js/2.107da1d1.chunk.js.LICENSE.txt": "/static/js/2.107da1d1.chunk.js.LICENSE.txt",
     "static/media/arrow-icon.b9af3255.svg": "/static/media/arrow-icon.b9af3255.svg",
     "static/media/courses-icon.f8f5708b.svg": "/static/media/courses-icon.f8f5708b.svg",
     "static/media/dashboard-icon.e7262e60.svg": "/static/media/dashboard-icon.e7262e60.svg",
@@ -20,13 +20,13 @@
     "static/media/newAccount-icon.bafcca2e.svg": "/static/media/newAccount-icon.bafcca2e.svg",
     "static/media/newCourse-icon.3571c0ca.svg": "/static/media/newCourse-icon.3571c0ca.svg",
     "static/media/notification-icon.963cc83a.svg": "/static/media/notification-icon.963cc83a.svg",
-    "static/media/profile-icon.43111ad0.svg": "/static/media/profile-icon.43111ad0.svg",
+    "static/media/profile-pic-male-01.8acf6464.png": "/static/media/profile-pic-male-01.8acf6464.png",
     "static/media/trainees-icon.9133dbb2.svg": "/static/media/trainees-icon.9133dbb2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.38d7b41b.js",
-    "static/js/2.616677a9.chunk.js",
-    "static/css/main.a1705c40.chunk.css",
-    "static/js/main.64648720.chunk.js"
+    "static/js/runtime-main.d1421fa9.js",
+    "static/js/2.107da1d1.chunk.js",
+    "static/css/main.3cb329db.chunk.css",
+    "static/js/main.58831eb4.chunk.js"
   ]
 }
