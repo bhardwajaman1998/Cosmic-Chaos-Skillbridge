@@ -12,6 +12,8 @@ import training from '../LandingPage/image/training.svg';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.svg';
 
+import { Link } from 'react-router-dom';
+
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -63,13 +65,10 @@ const LandingPage = () => {
             <div className='nav-work'>
             <li><h4><a href="/HowItWorks">How it works</a></h4></li>
             <li><h4><a href="/Testimonials">Testimonials</a></h4></li>
-            <li><h4><a href="/team">Team</a></h4></li></div>
-            <div className='signin'>
-            <li><h4><a href="/SignIn">Signin</a></h4></li>
+            <li><h4><a href="/team">Team</a></h4></li>
+            <li><h4><Link to="/SignIn">Sign In</Link></h4></li>
             <button className="btnRes-signup">
-              <a href="#Create your account">
-                <b>Sign Up</b>
-              </a>
+            <Link to="/SignUp">Sign Up</Link>
             </button>
             </div>
           </ul>

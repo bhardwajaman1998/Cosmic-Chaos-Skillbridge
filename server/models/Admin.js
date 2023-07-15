@@ -22,6 +22,10 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   num_of_trainees: {
     type: Number,
     required: false

@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const path = require('path');
+app.use(express.json())
 app.use(cors());
 
 require('./models/db');
