@@ -6,7 +6,9 @@ import Home from "./pages/Home/Home";
 import Employee from "./pages/SamplePage/Employee/Employee";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from "./components/LandingPage/LandingPage";
-
+import TraineePage from "./pages/SamplePage/Employee/TraineePage";  
+import SignUp from "./components/Authentication/SignUp";
+import SignIn from "./components/Authentication/SignIn";
 function App() {
   return (
     <Router>
@@ -15,8 +17,11 @@ function App() {
         <div>
           <Routes>
           <Route path="/" element={<LandingPage />} />
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/employee" element={<Employee />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/trainees" element={<Employee />} />
+          <Route path="trainees/traineePage" element={<TraineePage />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SignIn" element={<SignIn />} />
           </Routes>
         </div>
       </div>

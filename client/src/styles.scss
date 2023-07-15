@@ -137,7 +137,24 @@ body{
     margin-right: 3rem;
 }
 // ==========================HEADER ENDS======================
+// ==========================TABLE STYLING ===================
 
+.trainee-information{
+  // display: flex;
+  // gap: 2rem;
+  // display: flex;
+  grid-column: span 2;
+  // justify-content: center;
+
+}
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+tr{
+  gap: 1rem;
+}
 // =========================DASHBOARD BUTTONS STARTS====================
 
 .dashboard-buttons{
