@@ -225,8 +225,9 @@ const LandingPage = () => {
       
       <div className='final'>
       <h2>Have Questions? Get in touch with our experts!</h2>
-      <p>If you have any questions or need further information about SkillBridge and how it can revolutionize your HR training management, we're here to help. 
-        Reach out now and discover the power of SkillBridge for seamless training program management!</p>
+      <p>If you have any questions or need further information about <strong>SkillBridge</strong> and how it can revolutionize your HR training management, we're here to help.</p>
+      <p> 
+        Reach out now and discover the power of <strong>SkillBridge</strong> for seamless training program management!</p>
       </div>
       <button className="btnRes-touch">
         <b href="#Get in touch">
