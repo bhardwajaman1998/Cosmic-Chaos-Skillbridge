@@ -12,8 +12,6 @@ import training from '../LandingPage/image/training.svg';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.svg';
 
-import { Link } from 'react-router-dom';
-
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -32,20 +30,7 @@ const LandingPage = () => {
     slidesToScroll: 1,
     autoplay: false,
     speed: 500,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+    
     beforeChange: (current, next) => {
       handleSlideChange(next);
     },
@@ -65,10 +50,13 @@ const LandingPage = () => {
             <div className='nav-work'>
             <li><h4><a href="/HowItWorks">How it works</a></h4></li>
             <li><h4><a href="/Testimonials">Testimonials</a></h4></li>
-            <li><h4><a href="/team">Team</a></h4></li>
-            <li><h4><Link to="/SignIn">Sign In</Link></h4></li>
+            <li><h4><a href="/team">Team</a></h4></li></div>
+            <div className='signin'>
+            <li><h4><a href="/SignIn">Signin</a></h4></li>
             <button className="btnRes-signup">
-            <Link to="/SignUp">Sign Up</Link>
+              <a href="#Create your account">
+                <b>Sign Up</b>
+              </a>
             </button>
             </div>
           </ul>
