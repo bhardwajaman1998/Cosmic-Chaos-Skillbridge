@@ -29,7 +29,7 @@ const SignIn = () => {
     <div>
       <AuthNavigation />
       <div className='authentication-form'>
-      <h2>Sign In</h2>
+      <h2>It's good to have you back!</h2>
       <div className="custom-input-label-wrapper">
         <label for="Email">Email</label>
         <input type="email"  placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />

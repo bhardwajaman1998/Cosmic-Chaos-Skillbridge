@@ -40,7 +40,7 @@ const SignUp = () => {
     <div>
       <AuthNavigation />
       <div className="authentication-form">
-        <h2>Sign Up</h2>
+        <h2>Create Your Account</h2>
         <div className="custom-input-label-wrapper">
           <label for='email'>Email</label>
           <input type="email" id='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" />
