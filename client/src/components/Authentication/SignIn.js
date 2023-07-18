@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AuthNavigation from './AuthNavigation';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -25,11 +26,19 @@ const SignIn = () => {
   };
 
   return (
-    <div>
+    
+    <div className='authentication-form'>
+      <AuthNavigation />
       <h2>Sign In</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignIn}>Sign In</button>
+      <div className="custom-input-label-wrapper">
+        <label for="Email">Email</label>
+        <input type="email"  value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <div className="custom-input-label-wrapper">
+        <label for="password">Password</label>
+        <input id='password' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </div>
+      <button className="auth-buttons" onClick={handleSignIn}>Sign In</button>
     </div>
   );
 };

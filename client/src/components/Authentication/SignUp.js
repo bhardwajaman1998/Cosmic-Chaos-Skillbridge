@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AuthNavigation from './AuthNavigation';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const SignUp = () => {
 
   return (
     <div>
+      <AuthNavigation />
       <h2>Sign Up</h2>
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
