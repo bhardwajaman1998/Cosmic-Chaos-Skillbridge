@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const AuthNavigation = () => {
@@ -7,10 +7,13 @@ const AuthNavigation = () => {
 
   const isSignUpActive = location.pathname === '/SignUp';
   const isSignInActive = location.pathname === '/SignIn';
-
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate('/');
+  };
   return (
     <div className="auth-navbar">
-    <ArrowBackIcon className="arrow-back-icon" onClick={() => {}} />
+    <ArrowBackIcon className="arrow-back-icon" onClick={handleGoBack} />
       <div className="auth-nav">
           <NavLink
             to="/SignUp"

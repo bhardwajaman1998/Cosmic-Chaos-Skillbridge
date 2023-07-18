@@ -429,6 +429,10 @@ table {
   line-height: normal;
 }
 
+.arrow-back-icon{
+  cursor: pointer;
+}
+
 // =========================CHART STYLING ENDS====================
 // =========================CHART LABELS START====================
 .dot-container {
@@ -549,6 +553,8 @@ table {
   font-size: small;
   box-shadow: 4px 4px black;
 }
+
+
 
 .create-icon{
   display: none;
