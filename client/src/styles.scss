@@ -197,6 +197,19 @@ align-items: center;
   transition: height 0.3s;
 }
 
+.authentication-form{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-input-label-wrapper{
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 1rem;
+}
+
 
 // ==========================Authentication==========================
 // ==========================TABLE STYLING ===================

@@ -26,19 +26,20 @@ const SignIn = () => {
   };
 
   return (
-    
-    <div className='authentication-form'>
+    <div>
       <AuthNavigation />
+      <div className='authentication-form'>
       <h2>Sign In</h2>
       <div className="custom-input-label-wrapper">
         <label for="Email">Email</label>
-        <input type="email"  value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="email"  placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="custom-input-label-wrapper">
         <label for="password">Password</label>
         <input id='password' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button className="auth-buttons" onClick={handleSignIn}>Sign In</button>
+      </div>
     </div>
   );
 };
