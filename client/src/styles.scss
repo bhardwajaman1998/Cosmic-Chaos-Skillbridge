@@ -3,6 +3,11 @@
 @import './styles/mixins';
 @import './styles/typography';
 @import './styles/variables';
+/* Normalize */
+*{
+  margin: 0;
+  padding: 0;
+}
 
 /* All headers */
 h1, h2, h3, h4, h5, h6 {
@@ -261,6 +266,9 @@ color: #ED2763;
 }
 .welcome-message h2 , .welcome-message p{
   text-align: center !important;
+}
+.welcome-message button{
+  width: 415px;
 }
 
 
