@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthNavigation from './AuthNavigation';
+import WelcomeMessage from './WelcomeMessage';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const SignUp = () => {
   useEffect(() => {
     if (isSignUpSuccessful) {
       const timeout = setTimeout(() => {
-        navigate('/signin');
+        navigate('/WelcomeMessage');
       }, 5000);
 
       return () => clearTimeout(timeout);
@@ -59,7 +60,7 @@ const SignUp = () => {
         </div>
         <button className="auth-buttons" onClick={handleSignUp}>Sign Up</button>
         {/* Display a success message if sign-up is successful */}
-        {isSignUpSuccessful && <p>Successfully signed up!</p>}
+        {/* {isSignUpSuccessful && <WelcomeMessage />} */}
       </div>
     </div>
   );

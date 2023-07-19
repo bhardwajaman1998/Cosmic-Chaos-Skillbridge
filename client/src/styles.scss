@@ -210,6 +210,20 @@ align-items: center;
   margin-bottom: 1rem;
 }
 
+.welcome-message{
+  display: flex;
+  flex-flow:column wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: auto;
+  
+}
+.welcome-message h2 , .welcome-message p{
+  text-align: center !important;
+}
+
 
 // ==========================Authentication==========================
 // ==========================TABLE STYLING ===================
