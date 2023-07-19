@@ -139,14 +139,22 @@ body{
 // ==========================HEADER ENDS======================
 // ==========================Authentication==========================
 .auth-buttons{
-border-radius: 8px;
-border: 1px solid var(--secondary-gunmetal, #1F2D37);
-background: var(--accent-emerald, #6AD38B);
-box-shadow: 4px 4px 0px 0px #1F2D37;
-width: 10rem;
-height: 30px;
-flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-gunmetal, #1F2D37);
+  background: var(--accent-emerald, #6AD38B);
+  box-shadow: 4px 4px 0px 0px #1F2D37;
+  width: 10rem;
+  height: 30px;
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  padding: 16px;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .form-input{
 display: flex;
@@ -159,23 +167,27 @@ gap: 13px;
 flex-shrink: 0;
 }
 
-.auth-navbar {
-display: grid;
-grid-template-columns: repeat(3,1fr);
-align-items: center;
-  position: relative;
-  padding: 10px 0;
-  gap: 3rem;
-}
+// .auth-navbar {
+// display: grid;
+// grid-template-columns: repeat(3,1fr);
+// align-items: center;
+//   position: relative;
+//   padding: 10px 0;
+//   gap: 3rem;
+// }
 
 .auth-nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
-  justify-self: start;
-  grid-column: span 2;
+  width: 415px;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 .auth-nav-item {
-  padding: 10px 70px;
+  padding: 10px 76px;
   cursor: pointer;
   text-decoration: none;
   color: #333;
@@ -190,7 +202,7 @@ align-items: center;
   height: 1px; /* Adjust this value as needed */
   background-color: #1F2D37;
   position: absolute;
-  bottom: -12px; /* Adjust this value as needed to position the underline */
+  bottom: 0px;
   left: 0;
   width: 100%;  
   // margin: 2px;
@@ -202,13 +214,40 @@ align-items: center;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  width: 415px;
+  margin: auto;
+  gap: .5rem;
 }
 
 .custom-input-label-wrapper{
   display: flex;
   flex-flow: column;
   margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+  gap: .5rem;
 }
+
+.custom-input-label-wrapper input{
+  height: 40px;
+  border-radius: 8px;
+}
+
+.custom-input-label-wrapper label{
+  display: flex;
+  gap: .1rem;
+}
+.custom-input-label-wrapper label::after{
+content: "*";
+color: #ED2763;
+
+}
+.icon-auth{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 125px;
+}
+
 
 .welcome-message{
   display: flex;

@@ -44,19 +44,20 @@ const SignUp = () => {
         <h2>Create Your Account</h2>
         <div className="custom-input-label-wrapper">
           <label for='email'>Email</label>
-          <input type="email" id='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" />
+          <input type="email" id='email'  value={email} onChange={(e) => setEmail(e.target.value)} name="email" />
         </div>
         <div className="custom-input-label-wrapper">
           <label for='password'>Password</label>
-          <input type="password" id='password' placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div className="custom-input-label-wrapper">
           <label for='username'>Username</label>
-          <input type="text" id='username' placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" id='username'  value={username} onChange={(e) => setUsername(e.target.value)} />
+
         </div>
         <div className="custom-input-label-wrapper">
           <label for='name'>Name</label>
-          <input type="text" id='name' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="text" id='name'value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <button className="auth-buttons" onClick={handleSignUp}>Sign Up</button>
         {/* Display a success message if sign-up is successful */}
