@@ -23,7 +23,7 @@ export const fetchAllTrainees = async () => {
         const path = `${API_BASE_URL}/trainee/get_all_trainees`
         const response = await fetch(path);
         const data = await response.json();
-        // console.log(path)
+        console.log(path)
         // console.log(data)
         return data;
       } catch (error) {
@@ -38,7 +38,7 @@ export const fetchTraineeByID = async (traineeId) => {
       const response = await fetch(path);
       const data = await response.json();
       console.log(path)
-      console.log(data)
+      // console.log(data)
       return data;
     } catch (error) {
       console.error('Error fetching courses:', error);
@@ -52,7 +52,7 @@ export const fetchTraineesByCourseId = async (courseId) => {
     const path = `${API_BASE_URL}/trainee/trainees/course/${courseId}`
     const response = await fetch(path);
     const data = await response.json();
-    // console.log(path)
+    console.log(path)
     // console.log(data)
     return data;
   } catch (error) {
@@ -67,7 +67,7 @@ export const fetchAssignedCourses = async (traineeId) => {
     const response = await fetch(path);
     const data = await response.json();
     console.log(path)
-    console.log(data)
+    // console.log(data)
     return data;
   } catch (error) {
     console.error('Error fetching assigned courses:', error);
@@ -75,5 +75,17 @@ export const fetchAssignedCourses = async (traineeId) => {
   }
 };
 
-
+export const fetchQuizByCourseID = async (courseId) => {
+  try {
+      const path = `${API_BASE_URL}/quiz/get_quiz_courseId/${courseId}`
+      const response = await fetch(path);
+      const data = await response.json();
+      console.log(path)
+      console.log(data)
+      return data;
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      throw error;
+    }
+  };
 

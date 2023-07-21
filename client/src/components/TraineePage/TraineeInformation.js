@@ -49,7 +49,8 @@ const TraineeInformation = () => {
                   <img src={trainee.photo} alt="Trainee" />
                 </td>
                 <td>
-                  <Link to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
+                  <Link to='/trainees/traineePage/feedback' state={{ traineeId: `${trainee._id}`, courseId: '64a768ec8c0b52e60969e1c7'}}>See Profile</Link>
+                  {/* <Link to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link> */}
                 </td>
               </tr>
             ))}

@@ -42,9 +42,29 @@ const getQuizById = async (req, res) => {
   }
 };
 
+const getQuizByCourseId = async (req, res) => {
+  try {
+    
+    const { courseId } = req.params;
+    console.log(courseId)
+    // Find the quiz by its ID
+    const quiz = await Quiz.findOne({ course_id: courseId });
+    console.log(quiz)
+    if (!quiz) {
+      return res.status(404).json({ error: 'Quiz not found' });
+    }
+
+    res.json(quiz);
+  } catch (error) {
+    console.error('Error fetching quiz by ID:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
 
 
 module.exports = {
   createQuiz,
-  getQuizById
+  getQuizById,
+  getQuizByCourseId
 };
