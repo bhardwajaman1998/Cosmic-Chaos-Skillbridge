@@ -485,6 +485,20 @@ table {
     height: 155px;
     width: 350px;
 }
+.progress-blocks-bar-graph{
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  padding: .5rem;
+  width: 75%;
+  margin: auto;
+  margin-top: 1rem;
+}
 .progress-title{
   color: var(--secondary, #1F2D36);
   font-family: Inter;
