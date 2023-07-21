@@ -143,8 +143,16 @@ const TraineeDataVisual = ({ traineeData }) => {
       },
     },
     scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
       y: {
         beginAtZero: true,
+        grid: {
+          display: false, 
+        },
         ticks: {
           precision: 0,
           callback: (value) => `${value}%`,
@@ -152,6 +160,7 @@ const TraineeDataVisual = ({ traineeData }) => {
       },
     },
   };
+  
 
   return (
     <div className="single-trainee-container">
