@@ -12,6 +12,8 @@ const TraineeDataVisual = ({ traineeData }) => {
   const [coursesInProgress, setCoursesInProgress] = useState([]);
   const [completedCourses, setCompletedCourses] = useState([]);
   const [progressData, setProgressData] = useState([]);
+  const [totalCourses, setTotalCourses] = useState(0);
+  const [averageTotalScore, setAverageTotalScore] = useState(0);
 
   const chartRef = useRef(null);
   useEffect(() => {
@@ -30,14 +32,28 @@ const TraineeDataVisual = ({ traineeData }) => {
   };
     // Calculate the progress for each assigned training program
     const calculateProgressData = () => {
+      // const progressData = traineeData.assigned_training_programs.map((program) => {
+      //   const completedLessons = program.lessons.completed || 0;
+      //   const totalLessons = program.lessons.total || 1; // Avoid division by zero
+      //   return Math.floor((completedLessons / totalLessons) * 100);
+      // });
       const progressData = traineeData.assigned_training_programs.map((program) => {
-        const completedLessons = program.lessons.completed || 0;
-        const totalLessons = program.lessons.total || 1; // Avoid division by zero
-        return Math.floor((completedLessons / totalLessons) * 100);
+        return program.score || 0; // Use the "score" field or set to 0 if not available
       });
       setProgressData(progressData);
     };
 
+
+    setTotalCourses(traineeData.assigned_training_programs.length);
+
+    const totalScore = traineeData.assigned_training_programs.reduce(
+      (acc, program) => acc + (program.score || 0),
+      0
+    );
+    const completedScores = completedCourses.map((program) => program.score || 0);
+    const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
+    const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
+    setAverageTotalScore(averageScore);
 
   
     calculateCoursesInProgress();
@@ -75,48 +91,16 @@ const TraineeDataVisual = ({ traineeData }) => {
     calculateAverageCompletionRate();
   }, [completedCourses, coursesInProgress]);
 
-  // const data = {
-  //   labels: ['In Progress', 'Completed'],
-  //   datasets: [
-  //     {
-  //       data: [coursesInProgress.length, completedCourses.length],
-  //       backgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-  //       hoverBackgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-  //     },
-  //   ],
-  // };
-
-  // const options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   plugins: {
-  //     legend: {
-  //       display: false,
-  //     },
-  //     tooltip: {
-  //       enabled: true,
-  //       callbacks: {
-  //         label: (context) => {
-  //           const label = context.label || '';
-  //           if (label) {
-  //             const value = context.raw || 0;
-  //             return `${label}: ${value}`;
-  //           }
-  //           return null;
-  //         },
-  //       },
-  //     },
-  //   },
-  // };
   const data = {
     labels: traineeData.assigned_training_programs.map((program) => program.course_name),
     datasets: [
       {
-        label: 'Progress',
+        label: 'Score',
         data: progressData,
         backgroundColor: 'rgba(106, 211, 139, 1)',
         borderColor: 'rgba(106, 211, 139, 1)',
         borderWidth: 1,
+        borderRadius: 15,
       },
     ],
   };
@@ -135,7 +119,7 @@ const TraineeDataVisual = ({ traineeData }) => {
             const label = context.label || '';
             if (label) {
               const value = context.parsed.y || 0;
-              return `Progress: ${value}%`;
+              return `Score: ${value}%`;
             }
             return null;
           },
@@ -151,7 +135,7 @@ const TraineeDataVisual = ({ traineeData }) => {
       y: {
         beginAtZero: true,
         grid: {
-          display: false, 
+          display: true, 
         },
         ticks: {
           precision: 0,
@@ -167,6 +151,8 @@ const TraineeDataVisual = ({ traineeData }) => {
       <div className="progress-section">
         <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
         <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
+        <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
+        <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
       </div>
       <div className="progress-blocks-bar-graph">
         <Bar data={data} options={options} />
