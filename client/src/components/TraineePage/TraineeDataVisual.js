@@ -30,12 +30,17 @@ const TraineeDataVisual = ({ traineeData }) => {
     );
     setCompletedCourses(completedCourses);
   };
-    const calculateProgressData = () => {
-      const progressData = traineeData.assigned_training_programs.map((program) => {
-        return program.score || 0;
-      });
-      setProgressData(progressData);
-    };
+
+  const calculateProgressData = () => {
+    const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
+      (program) => program.status === 'Completed' && program.evaluation === 1
+    );
+
+    const progressData = completedAndEvaluatedCourses.map((program) => {
+      return program.score || 0; // Use the "score" field or set to 0 if not available
+    });
+    setProgressData(progressData);
+  };
 
 
     setTotalCourses(traineeData.assigned_training_programs.length);
@@ -45,9 +50,9 @@ const TraineeDataVisual = ({ traineeData }) => {
       0
     );
     const completedScores = completedCourses.map((program) => program.score || 0);
-    const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
-    const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
-    setAverageTotalScore(averageScore);
+  const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
+  const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
+  setAverageTotalScore(averageScore);
 
   
     calculateCoursesInProgress();
@@ -86,7 +91,7 @@ const TraineeDataVisual = ({ traineeData }) => {
   }, [completedCourses, coursesInProgress]);
 
   const data = {
-    labels: traineeData.assigned_training_programs.map((program) => program.course_name),
+    labels: completedCourses.map((program) => program.course_name),
     datasets: [
       {
         label: 'Score',
@@ -94,11 +99,11 @@ const TraineeDataVisual = ({ traineeData }) => {
         backgroundColor: 'rgba(106, 211, 139, 1)',
         borderColor: 'rgba(106, 211, 139, 1)',
         borderWidth: 1,
-        borderRadius: 15,
+        borderRadius: 5,
+        maxBarThickness: 80,
       },
     ],
   };
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,

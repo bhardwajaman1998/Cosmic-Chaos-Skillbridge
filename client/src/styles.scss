@@ -454,6 +454,7 @@ table {
     border-radius: 1rem;
     margin-top: 1rem;
     padding-bottom: 1rem;
+    border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .chart-title{
     padding-top: 2rem;
@@ -484,6 +485,7 @@ table {
     align-items: center;
     height: 155px;
     width: 350px;
+    border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .progress-blocks-bar-graph{
   background-color: white;
@@ -495,9 +497,10 @@ table {
   align-items: center;
   height: 350px;
   padding: .5rem;
-  width: 75%;
+  width: fit-content;
   margin: auto;
   margin-top: 1rem;
+  border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .progress-title{
   color: var(--secondary, #1F2D36);
