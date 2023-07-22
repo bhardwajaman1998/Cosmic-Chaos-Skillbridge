@@ -30,15 +30,9 @@ const TraineeDataVisual = ({ traineeData }) => {
     );
     setCompletedCourses(completedCourses);
   };
-    // Calculate the progress for each assigned training program
     const calculateProgressData = () => {
-      // const progressData = traineeData.assigned_training_programs.map((program) => {
-      //   const completedLessons = program.lessons.completed || 0;
-      //   const totalLessons = program.lessons.total || 1; // Avoid division by zero
-      //   return Math.floor((completedLessons / totalLessons) * 100);
-      // });
       const progressData = traineeData.assigned_training_programs.map((program) => {
-        return program.score || 0; // Use the "score" field or set to 0 if not available
+        return program.score || 0;
       });
       setProgressData(progressData);
     };
