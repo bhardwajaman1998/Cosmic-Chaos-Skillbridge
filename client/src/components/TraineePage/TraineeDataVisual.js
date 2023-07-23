@@ -4,6 +4,7 @@ import ProgressSection from '../DataVisualize/ProgressSection';
 import ChartLabel from '../DataVisualize/ChartLabel';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import { Bar } from 'react-chartjs-2';
+import { fetchTraineeByID } from '../../services/DashboardService';
 
 
 const TraineeDataVisual = ({ traineeData }) => {
@@ -15,32 +16,53 @@ const TraineeDataVisual = ({ traineeData }) => {
   const [totalCourses, setTotalCourses] = useState(0);
   const [averageTotalScore, setAverageTotalScore] = useState(0);
 
+
+  const [selectedTrainee, setSelectedTrainee] = useState(null);
+  const [assignedPrograms, setAssignedPrograms] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (traineeData._id) {
+          const traineeDataById = await fetchTraineeByID(traineeData._id);
+          setSelectedTrainee(traineeDataById);
+          setAssignedPrograms(traineeDataById.assigned_training_programs);
+        }
+      } catch (error) {
+        console.error('Error fetching trainee:', error);
+      }
+    };
+
+    fetchData();
+  }, [traineeData]);
+
+
   const chartRef = useRef(null);
   useEffect(() => {
-  const calculateCoursesInProgress = () => {
-    const inProgressCourses = traineeData.assigned_training_programs.filter(
-      (program) => program.status === 'In progress'
-  );
-    setCoursesInProgress(inProgressCourses);
-  };
+    const calculateCoursesInProgress = () => {
+      const inProgressCourses = traineeData.assigned_training_programs.filter(
+        (program) => program.status === 'In progress'
+      );
+      setCoursesInProgress(inProgressCourses);
+    };
 
-  const calculateCompletedCourses = () => {
-    const completedCourses = traineeData.assigned_training_programs.filter(
-      (program) => program.status === 'Completed' && program.evaluation === 1
-    );
-    setCompletedCourses(completedCourses);
-  };
+    const calculateCompletedCourses = () => {
+      const completedCourses = traineeData.assigned_training_programs.filter(
+        (program) => program.status === 'Completed' && program.evaluation === 1
+      );
+      setCompletedCourses(completedCourses);
+    };
 
-  const calculateProgressData = () => {
-    const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
-      (program) => program.status === 'Completed' && program.evaluation === 1
-    );
+    const calculateProgressData = () => {
+      const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
+        (program) => program.status === 'Completed' && program.evaluation === 1
+      );
 
-    const progressData = completedAndEvaluatedCourses.map((program) => {
-      return program.score || 0; // Use the "score" field or set to 0 if not available
-    });
-    setProgressData(progressData);
-  };
+      const progressData = completedAndEvaluatedCourses.map((program) => {
+        return program.score || 0; // Use the "score" field or set to 0 if not available
+      });
+      setProgressData(progressData);
+    };
 
 
     setTotalCourses(traineeData.assigned_training_programs.length);
@@ -50,11 +72,11 @@ const TraineeDataVisual = ({ traineeData }) => {
       0
     );
     const completedScores = completedCourses.map((program) => program.score || 0);
-  const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
-  const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
-  setAverageTotalScore(averageScore);
+    const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
+    const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
+    setAverageTotalScore(averageScore);
 
-  
+
     calculateCoursesInProgress();
     calculateCompletedCourses();
     calculateProgressData();
@@ -134,7 +156,7 @@ const TraineeDataVisual = ({ traineeData }) => {
       y: {
         beginAtZero: true,
         grid: {
-          display: true, 
+          display: true,
         },
         ticks: {
           precision: 0,
@@ -143,20 +165,33 @@ const TraineeDataVisual = ({ traineeData }) => {
       },
     },
   };
-  
+
 
   return (
     <div className="single-trainee-container">
+
+      <div className="progress-blocks-bar-graph">
+        <h3 className="chart-title">Scores per category</h3>
+        <Bar data={data} options={options} />
+      </div>
+      {assignedPrograms.length > 0 ? (
+        <div className="single-chart-container">
+          <h3 className="chart-title">Progress</h3>
+          <div className="chart-section">
+            <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
+          </div>
+        </div>
+      ) : (
+        <div>Loading Employee Progress Chart...</div>
+      )}
       <div className="progress-section">
         <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
         <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
         <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
         <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
       </div>
-      <div className="progress-blocks-bar-graph">
-        <Bar data={data} options={options} />
-      </div>
     </div>
+
   );
 };
 

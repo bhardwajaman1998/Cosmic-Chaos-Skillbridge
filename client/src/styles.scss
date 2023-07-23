@@ -55,6 +55,7 @@ body{
 .layout-right{
     grid-area: layout-right;
     background-color: transparent;
+    margin-top: 3rem;
 }
 .layout-sidebar{
     grid-area: layout-sidebar;
@@ -442,6 +443,14 @@ table {
 // =========================DASHBOARD TRAINEE LIST ENDS====================
 
 // =========================CHART STYLING START====================
+
+.single-trainee-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+  width: 95%;
+  margin: auto;
+}
 .analytics-right{
     background-color: transparent;
     border-radius: 1rem;
@@ -455,6 +464,15 @@ table {
     margin-top: 1rem;
     padding-bottom: 1rem;
     border: 1.6px solid var(--accent-emerald, #6AD38B);
+}
+
+.single-chart-container{
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  // height: fit-content;
+  border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .chart-title{
     padding-top: 2rem;
@@ -474,6 +492,25 @@ table {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
+    grid-column: span 2;
+}
+.progress-section > * {
+  flex-basis: 20%;
+}
+
+
+.progress-section-dashboard{
+ display: grid;
+  // width: 100%;
+  grid-template-columns: repeat(2,1fr);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  // grid-column: span 2;
+}
+
+.progress-section-dashboard > * {
+  flex-basis: 50%;
 }
 .progress-blocks{
     background-color: white;
@@ -484,7 +521,7 @@ table {
     justify-content: center;
     align-items: center;
     height: 155px;
-    width: 350px;
+    // width: 350px;
     border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .progress-blocks-bar-graph{
@@ -496,9 +533,9 @@ table {
   justify-content: center;
   align-items: center;
   height: 350px;
-  padding: .5rem;
-  width: fit-content;
-  margin: auto;
+  padding: 2rem;
+  // width: fit-content;
+  // margin: auto;
   margin-top: 1rem;
   border: 1.6px solid var(--accent-emerald, #6AD38B);
 }

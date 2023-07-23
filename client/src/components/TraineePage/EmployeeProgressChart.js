@@ -67,8 +67,8 @@ const EmployeeProgressChart = ({ assignedCourses, traineeId }) => {
 
   return (
     <div>
-      <h2>Employee Progress Chart - Trainee ID: {traineeId}</h2>
-      <div style={{ width: '300px' }}>
+      {/* <h2>Employee Progress Chart - Trainee ID: {traineeId}</h2> */}
+      <div style={{ width: '500px' }}>
         <Doughnut data={data} options={options} />
       </div>
     </div>

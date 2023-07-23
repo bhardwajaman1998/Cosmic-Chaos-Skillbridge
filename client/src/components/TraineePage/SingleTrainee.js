@@ -58,19 +58,8 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     </tbody>
                 </table>
             </div>
-            <div>
-                <div className="chart-container">
-                    <h3 className="chart-title">Learning Progress</h3>
-                    <div className="chart-section">
-                        {selectedTrainee ? (
-                            <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
-                        ) : (
-                            <></>
-                        )}
-                    </div>
-                </div>
-            </div>
-            <TraineeDataVisual traineeData={selectedTrainee} />
+            <TraineeDataVisual traineeData={selectedTrainee} assignedCourses={assignedPrograms}
+                traineeId={traineeId} />
             <div>
                 {selectedTrainee ? (
                     <CourseInformation assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
