@@ -32,7 +32,6 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
 
     return (
         <div>
-            <h1>Trainee Page</h1>
             <div className="table-wrapper">
                 <table>
                     <thead>
@@ -58,8 +57,6 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     </tbody>
                 </table>
             </div>
-            <TraineeDataVisual traineeData={selectedTrainee} assignedCourses={assignedPrograms}
-                traineeId={traineeId} />
             <div>
                 {selectedTrainee ? (
                     <CourseInformation assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
@@ -67,6 +64,9 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     <></>
                 )}
             </div>
+            <TraineeDataVisual traineeData={selectedTrainee} assignedCourses={assignedPrograms}
+                traineeId={traineeId} />
+
 
 
         </div>

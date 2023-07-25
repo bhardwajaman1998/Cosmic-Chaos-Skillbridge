@@ -168,27 +168,29 @@ const TraineeDataVisual = ({ traineeData }) => {
 
 
   return (
-    <div className="single-trainee-container">
-
-      <div className="progress-blocks-bar-graph">
-        <h3 className="chart-title">Scores per category</h3>
-        <Bar data={data} options={options} />
-      </div>
-      {assignedPrograms.length > 0 ? (
-        <div className="single-chart-container">
-          <h3 className="chart-title">Progress</h3>
-          <div className="chart-section">
-            <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
-          </div>
+    <div>
+          <h2 className='learning-analytics-heading'>Learning Analytics</h2>
+      <div className="single-trainee-container">
+        <div className="progress-blocks-bar-graph">
+          <h3 className="chart-title">Scores per category</h3>
+          <Bar data={data} options={options} />
         </div>
-      ) : (
-        <div>Loading Employee Progress Chart...</div>
-      )}
-      <div className="progress-section">
-        <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
-        <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
-        <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
-        <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
+        {assignedPrograms.length > 0 ? (
+          <div className="single-chart-container">
+            <h3 className="chart-title">Progress</h3>
+            <div className="chart-section">
+              <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
+            </div>
+          </div>
+        ) : (
+          <div>Loading Employee Progress Chart...</div>
+        )}
+        <div className="progress-section">
+          <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
+          <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
+          <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
+          <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
+        </div>
       </div>
     </div>
 

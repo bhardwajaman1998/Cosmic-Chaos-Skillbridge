@@ -450,6 +450,7 @@ table {
   gap: 1rem;
   width: 95%;
   margin: auto;
+  margin-bottom: 3rem;
 }
 .analytics-right{
     background-color: transparent;
@@ -498,6 +499,9 @@ table {
   flex-basis: 20%;
 }
 
+.employee-doughnut{
+  width: 100px;
+}
 
 .progress-section-dashboard{
  display: grid;
@@ -559,6 +563,10 @@ table {
 
 .arrow-back-icon{
   cursor: pointer;
+}
+
+.learning-analytics-heading{
+ margin-left: 2.5rem;
 }
 
 // =========================CHART STYLING ENDS====================
@@ -801,3 +809,73 @@ tr th {
   gap: 2rem;
 }
 }
+
+//=====================Course Info========================
+
+.course-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  width: 95%;
+  margin: auto;
+}
+.course-info h2{
+  align-self: flex-start;
+  margin-left: .5rem;
+  margin-bottom: 1rem;
+}
+
+.course-info th{
+  background-color: unset;
+  text-align: left;
+  padding: unset;
+}
+
+.course-info td{
+  text-align: left;
+}
+
+.course-info-insights{
+  background-color: white;
+
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.course-info-insights td{
+//  margin: 1rem;
+ padding: 1rem;
+}
+
+.course-info td:first-child {
+  // border-top-left-radius: unset;
+  // border-bottom-left-radius: unset;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+}
+
+.course-info td:last-child {
+  // border-top-right-radius: unset;
+  // border-bottom-right-radius: unset;
+  // text-align: -webkit-center;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: block;
+  width: 180px;
+}
+.course-info-table{
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  width: 100%;
+  
+}
+.course-info-eval{
+  text-align: center !important;
+}
+
+thead tr:hover{
+background-color: unset;
+}
+
+
+
