@@ -16,6 +16,9 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
     return minutes;
   };
 
+
+
+
   return (
     <div className='course-info'>
       <h2>Courses</h2>
@@ -38,7 +41,16 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
               const learningTime = calculateLearningTime(course.start_date, course.deadline);
 
               // Determine background color based on evaluation status
-              const backgroundColor = course.evaluation === 1 ? 'green' : 'black';
+              const backgroundColor = course.evaluation === 1 ? ' #6AD38B' : 'black';
+              const colorColor = course.evaluation === 1 ? ' black' : 'white';
+              let evaluationStatus;
+              if (course.evaluation === 1) {
+                evaluationStatus = 'Completed';
+              } else if (course.evaluation === 0 && course.status === 'Completed') {
+                evaluationStatus = 'Pending';
+              } else {
+                evaluationStatus = 'Not Started';
+              }
 
               return (
                 <tr key={index} className='course-info-insights'>
@@ -51,8 +63,9 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
                     {course.score !== undefined ? course.score : '-'}
                   </td>
                   <td>
-                    <td className='course-info-eval' style={{ color: 'white', padding: '10px', background: backgroundColor}} >
-                      {course.evaluation === 1 ? 'Completed' : 'Pending'}
+                    <td className='course-info-eval' style={{ color: colorColor , padding: '10px', background: backgroundColor}} >
+                      {/* {course.evaluation === 1 ? 'Completed' : 'Pending'} */}
+                      {evaluationStatus}
                     </td>
                   </td>
                 </tr>
