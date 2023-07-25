@@ -566,7 +566,7 @@ table {
 }
 
 .learning-analytics-heading{
- margin-left: 2.5rem;
+ margin-left: .5rem;
 }
 
 // =========================CHART STYLING ENDS====================
@@ -891,11 +891,13 @@ background-color: unset;
 .employee-card{
   display: grid;
   grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
 }
 
 .employee-name-pic-wrapper h2{
   
    margin: unset;
+   margin-bottom: 2rem;
 }
 
 .learning-activity{
@@ -910,6 +912,7 @@ background-color: unset;
   justify-content: space-evenly;
   padding: .5rem;
   text-align: left;
+  align-self: flex-end;
 }
 
 .learning-activity p{
@@ -922,6 +925,11 @@ background-color: unset;
 
 .learning-activity p:last-child{
   border-bottom: unset;
+}
+.employee-info-layout{
+ 
+   display: flex;
+   justify-content: space-between;
 }
 
 .learning-activity h3{
@@ -937,4 +945,32 @@ border: unset;
   width: 90%;
   margin: auto;
   margin-top: 5rem;
+}
+
+.employee-input-label-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-input-label-wrapper input{
+  font-weight: bold;
+}
+
+.employee-info{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  justify-self: flex-start;
+  align-content: space-between;
+  gap: 1rem;
+  padding-bottom: .5rem;
+}
+
+.employee-name-pic-wrapper{
+  width: fit-content;
+  justify-self: flex-end;
+  
+}
+
+.label-margin{
+  margin-top: 4.7rem;
 }

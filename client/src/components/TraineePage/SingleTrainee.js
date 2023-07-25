@@ -37,37 +37,37 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
 
     return (
         <div className='single-trainee'>
-            <div className='employee-card'>
-
-                <div className='employee-name-pic-wrapper'>
-                    <h2>{selectedTrainee.name}</h2>
-                    <img src={ProfilePic} alt="Trainee" />
-                </div>
-
-                <div className='employee info'>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-name'>Full Name</label>
-                        <input id='employee-name' readOnly value={selectedTrainee.name}></input>
+            <div className='employee-info-layout'>
+                <div className='employee-card'>
+                    <div className='employee-name-pic-wrapper'>
+                        <h2>{selectedTrainee.name}</h2>
+                        <img src={ProfilePic} alt="Trainee" />
                     </div>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-role'>Role</label>
-                        <input id='employee-role' readOnly value={selectedTrainee.department.name}></input>
-                    </div>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-id'>Employee ID</label>
-                        <input id='employee-id' readOnly value={selectedTrainee._id}></input>
-                    </div>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-email'>Email</label>
-                        <input id='employee-email' readOnly value={selectedTrainee.email}></input>
-                    </div>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-onboard'>Onboarding</label>
-                        <input id='employee-onboard' readOnly value={'18 March 2023'}></input>
-                    </div>
-                    <div className='employee-input-label-wrapper'>
-                        <label for='employee-ph'>Telephone</label>
-                        <input id='employee-ph' readOnly value={'(778) 976 814 994'}></input>
+                    <div className='employee-info'>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-name' className='label-margin'>Full Name</label>
+                            <input id='employee-name' readOnly value={selectedTrainee.name}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-role' className='label-margin'>Role</label>
+                            <input id='employee-role' readOnly value={selectedTrainee.department.name}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-id'>Employee ID</label>
+                            <input id='employee-id' readOnly value={selectedTrainee._id}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-email'>Email</label>
+                            <input id='employee-email' readOnly value={selectedTrainee.email}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-onboard'>Onboarding</label>
+                            <input id='employee-onboard' readOnly value={'18 March 2023'}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-ph'>Telephone</label>
+                            <input id='employee-ph' readOnly value={'(778) 976 814 994'}></input>
+                        </div>
                     </div>
                 </div>
                 <div className='learning-activity'>
