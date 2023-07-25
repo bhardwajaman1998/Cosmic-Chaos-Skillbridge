@@ -41,7 +41,7 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
               const learningTime = calculateLearningTime(course.start_date, course.deadline);
 
               // Determine background color based on evaluation status
-              const backgroundColor = course.evaluation === 1 ? ' #6AD38B' : 'black';
+              const backgroundColor = course.evaluation === 1 ? ' #6AD38B' : '#1F2D37';
               const colorColor = course.evaluation === 1 ? ' black' : 'white';
               let evaluationStatus;
               if (course.evaluation === 1) {
