@@ -12,7 +12,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isReqCollapsed, setReqIsCollapsed] = useState(true);
   const [isInstCollapsed, setInstIsCollapsed] = useState(true);
-  const [isEvaluationComplete, setEvaluation] = useState(true);
+  const [isEvaluationComplete, setEvaluation] = useState(false);
   const [isEvaluationCollapsed, setEvaluationCollapsed] = useState(true);
   const [evalutaionAI, setevalutaionAI] = useState('');
   const [selectedQuiz, setSelectedQuiz] = useState(null);

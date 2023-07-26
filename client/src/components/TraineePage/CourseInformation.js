@@ -1,5 +1,6 @@
 import { ClassNames } from '@emotion/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CourseInformation = ({ assignedCourses, traineeId }) => {
   // Calculate learning time for each course
@@ -16,7 +17,12 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
     return minutes;
   };
 
-
+  const handleRedirection = (courseId, evaluationStatus) => {
+    console.log(evaluationStatus)
+    if (evaluationStatus === 'Pending') {
+      <Link to='/trainees/traineePage/feedback' state={{ traineeId: traineeId, courseId: courseId}}></Link>
+    }
+  };
 
 
   return (
@@ -65,7 +71,9 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
                   <td>
                     <td className='course-info-eval' style={{ color: colorColor , padding: '10px', background: backgroundColor}} >
                       {/* {course.evaluation === 1 ? 'Completed' : 'Pending'} */}
-                      {evaluationStatus}
+                      {evaluationStatus === 'Pending' ? 
+                      (<Link to='/trainees/traineePage/feedback' state={{ traineeId: traineeId, courseId: course.course_id}}>{evaluationStatus}</Link>) :
+                      (<span>{evaluationStatus}</span>)}
                     </td>
                   </td>
                 </tr>
