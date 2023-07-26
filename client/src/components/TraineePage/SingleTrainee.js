@@ -27,7 +27,7 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     setAssignedPrograms(traineeData.assigned_training_programs);
 
                     const storageRef = firebase.storage().ref();
-                    const fileRef = storageRef.child(`trainees/${traineeId}.png`);
+                    const fileRef = storageRef.child(`trainees/${traineeId}.jpg`);
                     const downloadURL = await fileRef.getDownloadURL();
                     setImageUrl(downloadURL);
                     clearTimeout(timeout);
@@ -61,7 +61,7 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                             <LoadingSpinner />
                         ) : (
 
-                            <img src={imageUrl} alt="Trainee" />
+                            <img className="profile-pic" src={imageUrl} alt="Trainee" />
                         )}
                     </div>
                     <div className='employee-info'>
