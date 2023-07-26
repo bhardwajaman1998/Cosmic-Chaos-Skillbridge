@@ -691,6 +691,40 @@ table {
   margin-bottom: 0.5rem;
 }
 
+textarea {
+  resize: none;
+  border: none;
+  background-color: white; /* Optional: Set a background color */
+  font-size: 16px; /* Optional: Set the font size */
+  line-height: 1.5; /* Optional: Set the line height */
+  padding: 10px; /* Optional: Add some padding for better readability */
+  padding-right: 0px;
+  scroll-padding-right: 0px;
+}
+
+.generate-container{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.generate-button{
+  border-radius: 8px;
+  border: 1px solid var(--secondary-gunmetal, #1F2D37);
+  background: var(--accent-emerald, #6AD38B);
+  box-shadow: 4px 4px 0px 0px #1F2D37;
+  color: var(--secondary-gunmetal, #1F2D37);
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 2.5rem;
+  width: 20rem;
+  cursor: pointer;
+}
 
 //==========================TRAINEE FEEDBACK ENDS====================
 

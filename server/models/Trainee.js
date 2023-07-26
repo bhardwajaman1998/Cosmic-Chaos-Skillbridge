@@ -35,6 +35,10 @@
       min: 0,
       max: 100
     },
+    quiz_answer: {
+      type: String,
+      required: false
+    },
     lessons: {
       total: {
         type: Number,

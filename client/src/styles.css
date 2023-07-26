@@ -15,6 +15,12 @@ body {
   background-color: #6AD38B;
 }
 
+/* Normalize */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 /* All headers */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Space Grotesk", sans-serif;
@@ -142,6 +148,124 @@ body {
   margin-right: 3rem;
 }
 
+.auth-buttons {
+  border-radius: 8px;
+  border: 1px solid var(--secondary-gunmetal, #1F2D37);
+  background: var(--accent-emerald, #6AD38B);
+  box-shadow: 4px 4px 0px 0px #1F2D37;
+  width: 10rem;
+  height: 30px;
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  padding: 16px;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-input {
+  display: flex;
+  width: 552px;
+  height: 91px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.auth-nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 415px;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.auth-nav-item {
+  padding: 10px 76px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.auth-nav-item.active {
+  border-bottom: 2px solid #1F2D37; /* Adjust this value as needed */
+}
+
+.underline {
+  height: 1px; /* Adjust this value as needed */
+  background-color: #1F2D37;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  transition: height 0.3s;
+}
+
+.authentication-form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 415px;
+  margin: auto;
+  gap: 0.5rem;
+}
+
+.custom-input-label-wrapper {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+  gap: 0.5rem;
+}
+
+.custom-input-label-wrapper input {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.custom-input-label-wrapper label {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.custom-input-label-wrapper label::after {
+  content: "*";
+  color: #ED2763;
+}
+
+.icon-auth {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 125px;
+}
+
+.welcome-message {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: auto;
+}
+
+.welcome-message h2, .welcome-message p {
+  text-align: center !important;
+}
+
+.welcome-message button {
+  width: 415px;
+}
+
 .trainee-information {
   grid-column: span 2;
 }
@@ -155,6 +279,40 @@ tr {
   gap: 1rem;
 }
 
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ebf2e7;
+}
+
+.loading-spinner__inner {
+  border: 8px solid #1f2d37;
+  border-top: 8px solid #6ad38b;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner__text {
+  margin-top: 16px;
+  color: #1f2d37;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .dashboard-buttons {
   margin-top: 2.5rem;
   padding-left: 3rem;
@@ -315,6 +473,21 @@ td:last-child {
   width: 350px;
 }
 
+.progress-blocks-bar-graph {
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  padding: 0.5rem;
+  width: 75%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
 .progress-title {
   color: var(--secondary, #1F2D36);
   font-family: Inter;
@@ -332,6 +505,10 @@ td:last-child {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.arrow-back-icon {
+  cursor: pointer;
 }
 
 .dot-container {
@@ -513,6 +690,42 @@ td:last-child {
   padding-left: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+textarea {
+  resize: none;
+  border: none;
+  background-color: white; /* Optional: Set a background color */
+  font-size: 16px; /* Optional: Set the font size */
+  line-height: 1.5; /* Optional: Set the line height */
+  padding: 10px; /* Optional: Add some padding for better readability */
+  padding-right: 0px;
+  scroll-padding-right: 0px;
+}
+
+.generate-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.generate-button {
+  border-radius: 8px;
+  border: 1px solid var(--secondary-gunmetal, #1F2D37);
+  background: var(--accent-emerald, #6AD38B);
+  box-shadow: 4px 4px 0px 0px #1F2D37;
+  color: var(--secondary-gunmetal, #1F2D37);
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 2.5rem;
+  width: 20rem;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
