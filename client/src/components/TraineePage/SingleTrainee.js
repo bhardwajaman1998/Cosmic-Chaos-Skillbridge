@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTraineeByID } from '../../services/DashboardService';
 import CourseInformation from './CourseInformation';
-import ProfilePic from '../../assets/profile-pic-male-01.png'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import TraineeDataVisual from './TraineeDataVisual';
 import ChartLabel from '../DataVisualize/ChartLabel';
 import ArrowRight from '../../assets/arrow-right-circle.svg'
+import LoadingSpinner from '../Loading/LoadingSpinner';
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
     const [selectedTrainee, setSelectedTrainee] = useState(null);
     const [assignedPrograms, setAssignedPrograms] = useState([]);
+    const [imageUrl, setImageUrl] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 if (traineeId) {
+                    const timeout = setTimeout(() => {
+                        setLoading(false);
+                      }, 2000);
                     const traineeData = await fetchTraineeByID(traineeId);
                     setSelectedTrainee(traineeData);
                     setAssignedPrograms(traineeData.assigned_training_programs);
+
+                    const storageRef = firebase.storage().ref();
+                    const fileRef = storageRef.child(`trainees/${traineeId}.png`);
+                    const downloadURL = await fileRef.getDownloadURL();
+                    setImageUrl(downloadURL);
+                    clearTimeout(timeout);
+                    setLoading(false);
                 }
             } catch (error) {
                 console.error('Error fetching trainee:', error);
@@ -41,7 +55,14 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                 <div className='employee-card'>
                     <div className='employee-name-pic-wrapper'>
                         <h2>{selectedTrainee.name}</h2>
-                        <img src={ProfilePic} alt="Trainee" />
+                        {/* <img src={imageUrl} alt="Trainee" /> */}
+                        {loading ? (
+
+                            <LoadingSpinner />
+                        ) : (
+
+                            <img src={imageUrl} alt="Trainee" />
+                        )}
                     </div>
                     <div className='employee-info'>
                         <div className='employee-input-label-wrapper'>
