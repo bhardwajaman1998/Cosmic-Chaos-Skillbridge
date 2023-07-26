@@ -23,7 +23,6 @@ const TraineeInformation = () => {
   return (
     
     <div >
-      <h1>Trainee Page</h1>
       <div className="table-wrapper">
         <table>
           <thead>

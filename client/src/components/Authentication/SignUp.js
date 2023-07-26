@@ -15,10 +15,8 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      // Make an API call to sign up the user
     //   const response = await axios.post('http://localhost:3000/signup', { email, password, username });
       const response = await axios.post('http://localhost:3000/admin/signup', { email, password, username, name });
-      // Handle the response as needed
       console.log(response.data);
       setIsSignUpSuccessful(true); // Set the sign-up success state to true
     } catch (error) {
@@ -26,7 +24,6 @@ const SignUp = () => {
     }
   };
 
-  // Redirect to sign-in component after 5 seconds
   useEffect(() => {
     if (isSignUpSuccessful) {
       const timeout = setTimeout(() => {

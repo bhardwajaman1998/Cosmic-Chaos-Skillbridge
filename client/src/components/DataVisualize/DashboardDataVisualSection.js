@@ -147,7 +147,7 @@ const DashboardDataVisualSection = ({ selectedCourse, traineesData }) => {
             <ChartLabel />
           </div>
         </div>
-        <div className='progress-section'>
+        <div className='progress-section-dashboard'>
           <ProgressSection index={0} title='Avg. completion rate' dataString={`${averageCompletionRate}%`} />
           <ProgressSection index={1} title='Avg. learning time' dataString={`${averageLearningTime} min`} />
           <ProgressSection index={2} title='Employees enrolled' dataString={`${employeesEnrolled}`} />

@@ -55,6 +55,7 @@ body{
 .layout-right{
     grid-area: layout-right;
     background-color: transparent;
+    margin-top: 3rem;
 }
 .layout-sidebar{
     grid-area: layout-sidebar;
@@ -420,13 +421,13 @@ table {
     text-align: center;
   }
   td:first-child {
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
+    // border-top-left-radius: 2rem;
+    // border-bottom-left-radius: 2rem;
   }
 
   td:last-child {
-    border-top-right-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    // border-top-right-radius: 2rem;
+    // border-bottom-right-radius: 2rem;
     text-align: -webkit-center;
   }
   .status-cell{
@@ -442,6 +443,15 @@ table {
 // =========================DASHBOARD TRAINEE LIST ENDS====================
 
 // =========================CHART STYLING START====================
+
+.single-trainee-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+  // width: 95%;
+  // margin: auto;
+  margin-bottom: 3rem;
+}
 .analytics-right{
     background-color: transparent;
     border-radius: 1rem;
@@ -454,6 +464,16 @@ table {
     border-radius: 1rem;
     margin-top: 1rem;
     padding-bottom: 1rem;
+    border: 1.6px solid var(--accent-emerald, #6AD38B);
+}
+
+.single-chart-container{
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  // height: fit-content;
+  border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .chart-title{
     padding-top: 2rem;
@@ -473,6 +493,28 @@ table {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
+    grid-column: span 2;
+}
+.progress-section > * {
+  flex-basis: 20%;
+}
+
+.employee-doughnut{
+  width: 100px;
+}
+
+.progress-section-dashboard{
+ display: grid;
+  // width: 100%;
+  grid-template-columns: repeat(2,1fr);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  // grid-column: span 2;
+}
+
+.progress-section-dashboard > * {
+  flex-basis: 50%;
 }
 .progress-blocks{
     background-color: white;
@@ -483,7 +525,8 @@ table {
     justify-content: center;
     align-items: center;
     height: 155px;
-    width: 350px;
+    // width: 350px;
+    border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .progress-blocks-bar-graph{
   background-color: white;
@@ -494,10 +537,11 @@ table {
   justify-content: center;
   align-items: center;
   height: 350px;
-  padding: .5rem;
-  width: 75%;
-  margin: auto;
+  padding: 2rem;
+  // width: fit-content;
+  // margin: auto;
   margin-top: 1rem;
+  border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .progress-title{
   color: var(--secondary, #1F2D36);
@@ -519,6 +563,10 @@ table {
 
 .arrow-back-icon{
   cursor: pointer;
+}
+
+.learning-analytics-heading{
+ margin-left: .5rem;
 }
 
 // =========================CHART STYLING ENDS====================
@@ -929,4 +977,168 @@ tr th {
   justify-content: space-evenly;
   gap: 2rem;
 }
+}
+
+//=====================Course Info========================
+
+.course-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  // width: 95%;
+  // margin: auto;
+}
+.course-info h2{
+  align-self: flex-start;
+  margin-left: .5rem;
+  margin-bottom: 1rem;
+}
+
+.course-info th{
+  background-color: unset;
+  text-align: left;
+  padding: unset;
+}
+
+.course-info td{
+  text-align: left;
+}
+
+.course-info-insights{
+  background-color: white;
+
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.course-info-insights td{
+//  margin: 1rem;
+ padding: 1rem;
+}
+
+.course-info td:first-child {
+  // border-top-left-radius: unset;
+  // border-bottom-left-radius: unset;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+}
+
+.course-info td:last-child {
+  // border-top-right-radius: unset;
+  // border-bottom-right-radius: unset;
+  // text-align: -webkit-center;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: block;
+  width: 180px;
+}
+.course-info-insights td:last-child {
+  // border-top-right-radius: unset;
+  // border-bottom-right-radius: unset;
+  // text-align: -webkit-center;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: block;
+  width: 180px;
+}
+.course-info-table{
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  width: 100%;
+  
+}
+.course-info-eval{
+  text-align: center !important;
+}
+
+thead tr:hover{
+background-color: unset;
+}
+
+// ==================== Single Trainee ======================
+
+.employee-card{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+}
+
+.employee-name-pic-wrapper h2{
+  
+   margin: unset;
+   margin-bottom: 2rem;
+}
+
+.learning-activity{
+  background-color: white;
+  border: 1.6px solid var(--accent-emerald, #6AD38B);
+  width: 311px;
+  height: 260px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: .5rem;
+  text-align: left;
+  align-self: flex-end;
+}
+
+.learning-activity p{
+  border-bottom: 1.6px solid var(--accent-emerald, #6AD38B);
+  width: 200px;
+  padding-bottom: 1rem;
+  padding-right: 10px;
+}
+
+.learning-activity p:last-child{
+  border-bottom: unset;
+}
+.employee-info-layout{
+ 
+   display: flex;
+   justify-content: space-between;
+}
+
+.learning-activity h3{
+ width: 200px;
+}
+
+.employee-input-label-wrapper input{
+background-color: unset;
+border: unset;
+}
+
+.single-trainee{
+  width: 90%;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.employee-input-label-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-input-label-wrapper input{
+  font-weight: bold;
+}
+
+.employee-info{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  justify-self: flex-start;
+  align-content: space-between;
+  gap: 1rem;
+  padding-bottom: .5rem;
+}
+
+.employee-name-pic-wrapper{
+  width: fit-content;
+  justify-self: flex-end;
+  
+}
+
+.label-margin{
+  margin-top: 4.7rem;
 }

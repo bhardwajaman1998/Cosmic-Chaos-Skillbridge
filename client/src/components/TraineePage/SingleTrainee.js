@@ -5,6 +5,7 @@ import ProfilePic from '../../assets/profile-pic-male-01.png'
 import EmployeeProgressChart from './EmployeeProgressChart';
 import TraineeDataVisual from './TraineeDataVisual';
 import ChartLabel from '../DataVisualize/ChartLabel';
+import ArrowRight from '../../assets/arrow-right-circle.svg'
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
     const [selectedTrainee, setSelectedTrainee] = useState(null);
@@ -26,51 +27,56 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
         fetchData();
     }, [traineeId]);
 
+    const completedCourses = assignedPrograms.filter(course => course.evaluation === 1).length;
+    const evaluatedCourses = assignedPrograms.filter(course => course.evaluation === 1 || course.evaluation === 0).length;
+    const pendingCourses = assignedPrograms.filter(course => course.evaluation === 0).length;
+
     if (!selectedTrainee) {
         return <div>Loading trainee information...</div>;
     }
 
     return (
-        <div>
-            <h1>Trainee Page</h1>
-            <div className="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Employee ID</th>
-                            <th>Role</th>
-                            <th>Photo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key={selectedTrainee._id}>
-                            <td>{selectedTrainee.name}</td>
-                            <td>{selectedTrainee.email}</td>
-                            <td>{selectedTrainee._id}</td>
-                            <td>{selectedTrainee.department.name}</td>
-                            <td>
-                                <img src={ProfilePic} alt="Trainee" />
-                                {/* <img src={selectedTrainee.photo} alt="Trainee" /> */}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div>
-                <div className="chart-container">
-                    <h3 className="chart-title">Learning Progress</h3>
-                    <div className="chart-section">
-                        {selectedTrainee ? (
-                            <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
-                        ) : (
-                            <></>
-                        )}
+        <div className='single-trainee'>
+            <div className='employee-info-layout'>
+                <div className='employee-card'>
+                    <div className='employee-name-pic-wrapper'>
+                        <h2>{selectedTrainee.name}</h2>
+                        <img src={ProfilePic} alt="Trainee" />
+                    </div>
+                    <div className='employee-info'>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-name' className='label-margin'>Full Name</label>
+                            <input id='employee-name' readOnly value={selectedTrainee.name}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-role' className='label-margin'>Role</label>
+                            <input id='employee-role' readOnly value={selectedTrainee.department.name}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-id'>Employee ID</label>
+                            <input id='employee-id' readOnly value={selectedTrainee._id}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-email'>Email</label>
+                            <input id='employee-email' readOnly value={selectedTrainee.email}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-onboard'>Onboarding</label>
+                            <input id='employee-onboard' readOnly value={'18 March 2023'}></input>
+                        </div>
+                        <div className='employee-input-label-wrapper'>
+                            <label for='employee-ph'>Telephone</label>
+                            <input id='employee-ph' readOnly value={'(778) 976 814 994'}></input>
+                        </div>
                     </div>
                 </div>
+                <div className='learning-activity'>
+                    <h3>Learning Activity</h3>
+                    <p>{completedCourses} Course(s) finished</p>
+                    <p>{evaluatedCourses} solution(s) evaluated</p>
+                    <p><b>{pendingCourses} evaluation(s) pending</b></p>
+                </div>
             </div>
-            <TraineeDataVisual traineeData={selectedTrainee} />
             <div>
                 {selectedTrainee ? (
                     <CourseInformation assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
@@ -78,6 +84,9 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     <></>
                 )}
             </div>
+            <TraineeDataVisual traineeData={selectedTrainee} assignedCourses={assignedPrograms}
+                traineeId={traineeId} />
+
 
 
         </div>

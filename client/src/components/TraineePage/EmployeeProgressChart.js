@@ -37,12 +37,13 @@ const EmployeeProgressChart = ({ assignedCourses, traineeId }) => {
         data: [completedCount, inProgressCount, notStartedCount],
         backgroundColor: ['rgba(106, 211, 139, 1)', 'black', 'rgba(188, 188, 188, 1)'],
         hoverBackgroundColor: ['rgba(106, 211, 139, 1)', 'black', 'rgba(188, 188, 188, 1)'],
+        
       },
     ],
   };
 
   const options = {
-    responsive: true,
+    responsive: false,
     maintainAspectRatio: false,
     plugins: {
       legend: {
@@ -67,9 +68,9 @@ const EmployeeProgressChart = ({ assignedCourses, traineeId }) => {
 
   return (
     <div>
-      <h2>Employee Progress Chart - Trainee ID: {traineeId}</h2>
-      <div style={{ width: '300px' }}>
-        <Doughnut data={data} options={options} />
+      {/* <h2>Employee Progress Chart - Trainee ID: {traineeId}</h2> */}
+      <div>
+        <Doughnut data={data} options={options} className='employee-doughnut' />
       </div>
     </div>
   );

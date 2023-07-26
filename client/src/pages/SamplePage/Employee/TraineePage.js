@@ -25,7 +25,6 @@ const TraineePage= () => {
               <Header title={pageTitle} showBackButton={true} />
             </div>
             <div className='trainee-information'>
-              <h1>Trainee Information</h1>
               <SingleTrainee traineeId={traineeId}/>
             </div>
           </div>
