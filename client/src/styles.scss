@@ -109,23 +109,29 @@ body{
     border-radius: 5px;
     box-shadow: 2px 2px black;
 }
-// .header-title{
-//     margin-left: 3rem;
-//     font-size: 1.8rem;
-//     font-weight: bold;
-// }
 
 .header-title {
-  margin-left: 3rem;
-  font-size: 1.8rem;
+  margin-left: 5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
+.header-title-with-back{
+  margin-left: 3rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
 
 .header{
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -332,8 +338,8 @@ tr{
 
 .dashboard-buttons{
     margin-top: 2.5rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -341,32 +347,41 @@ tr{
 .create-buttons{
     display: flex;
     align-items: center;
-    gap: 3rem;
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    gap: 1.5rem;
+    padding: 0.6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     background-color: $color-accent;
     text-align:center;
     border-radius: 1rem;
     font-size: large;
     box-shadow: 4px 4px black;
 }
-
-
-
+.create-icon{
+  height: 80%;
+}
 // =========================DASHBOARD BUTTONS ENDS====================
 
 
 
 // =========================DASHBOARD TRAINEE LIST START====================
 .analytics-left{
-    padding-left: 8rem;
-    padding-top: 1.5rem;
+    padding-left: 5rem;
+}
+.analytics-heading{
+  color: var(--secondary-gunmetal, #1F2D37);
+  font-family: Space Grotesk;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 38.4px */
 }
 .filter-section {
   display: flex;
   justify-content: flex-start;
   gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .filter-select {
@@ -376,15 +391,19 @@ tr{
 .trainee-section{
     background-color: white;
     border-radius: 1rem;
-    margin-right: 2rem;
+    margin-right: 0.5rem;
+    border: 1.6px solid var(--accent-emerald, #6AD38B);
+    padding-bottom: 1.5rem;
 }
 .trainee-section-title{
     padding-left: 2rem;
-    padding-top: 2rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
 }
 .trainee-list{
     margin-right: 1rem;
-    padding-bottom: 1.5rem;
+    margin-left: -1rem;
+    padding-bottom: 0.5rem;
     text-align: center;
 }
 table {
@@ -399,16 +418,16 @@ table {
     height: 80px;
   }
 
-  tr:hover{
-    background-color: rgba(106, 211, 139, 0.2);
-  }
+  // tr:hover{
+  //   background-color: rgba(106, 211, 139, 0.2);
+  // }
 
   tr th {
-    font-size: 18px;
-    padding: 12px;
+    font-size: 14px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     border: 1px solid transparent;
     text-align: center;
-    background-color: rgba(217, 221, 146, 0.2);
     border-radius: 1rem;
   }
   
@@ -420,10 +439,10 @@ table {
     border: 1px solid transparent;
     text-align: center;
   }
-  td:first-child {
-    // border-top-left-radius: 2rem;
-    // border-bottom-left-radius: 2rem;
-  }
+  // td:first-child {
+  //   // border-top-left-radius: 2rem;
+  //   // border-bottom-left-radius: 2rem;
+  // }
 
   td:last-child {
     // border-top-right-radius: 2rem;
@@ -440,6 +459,25 @@ table {
     align-items: center;
     justify-content: center;
   }
+  .see-all-container{
+    display: flex;
+    gap: 1rem;
+    float: right;
+    margin-bottom: 0.5rem;
+    margin-right: 2rem;
+    align-items: center;
+  }
+  .see-all{
+    background-color: transparent;
+    border: none;
+    color: var(--accent-emerald, #6AD38B);
+    font-family: Space Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+  }
 // =========================DASHBOARD TRAINEE LIST ENDS====================
 
 // =========================CHART STYLING START====================
@@ -455,14 +493,14 @@ table {
 .analytics-right{
     background-color: transparent;
     border-radius: 1rem;
-    margin-right: 8rem;
+    margin-right: 5rem;
     padding-left: 1rem;
-    padding-top: 8rem;
+    margin-top: 9.8rem;
 }
 .chart-container{
+  flex: 1;
     background-color: white;
     border-radius: 1rem;
-    margin-top: 1rem;
     padding-bottom: 1rem;
     border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
@@ -476,14 +514,15 @@ table {
   border: 1.6px solid var(--accent-emerald, #6AD38B);
 }
 .chart-title{
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-left: 2rem;
 }
 
 .chart-section{
-    margin-top: 1rem;
+    margin-top: 2.3rem;
+    margin-bottom: 0.5rem;
     display: flex;
-    gap: 8rem;
+    gap: 5rem;
     align-items: center;
     justify-content: center;
 }
@@ -504,13 +543,14 @@ table {
 }
 
 .progress-section-dashboard{
+  flex: 1;
  display: grid;
   // width: 100%;
   grid-template-columns: repeat(2,1fr);
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
-  // grid-column: span 2;
+   grid-column: span 2;
 }
 
 .progress-section-dashboard > * {
@@ -578,6 +618,12 @@ table {
   }
   
   .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .dots {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -871,6 +917,8 @@ textarea {
   width: 10px;
 }
 .analytics-right{
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
   border-radius: 1rem;
   margin-right:0rem;
@@ -912,21 +960,21 @@ textarea {
   width: 170px;
 }
 .progress-title{
-color: var(--secondary, #1F2D36);
-font-family: Inter;
-font-size: 12px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+  color: var(--secondary, #1F2D36);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .progress-data{
-color: var(--accent-emerald, #6AD38B);
-text-align: center;
-font-family: Space Grotesk;
-font-size: 32px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+  color: var(--accent-emerald, #6AD38B);
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 .analytics-left{
   margin-left: 1rem;
@@ -945,16 +993,17 @@ line-height: normal;
   background-color: transparent;
   height: 80px;
 }
-
 tr th {
-  font-size: 14px;
+  font-size: 10px;
   padding: 12px;
   border: 1px solid transparent;
   text-align: center;
-  background-color: rgba(217, 221, 146, 0.2);
+  background-color: white;
   border-radius: 1rem;
 }
-
+.header-text{
+  background-color: white;
+}
 .status-cell{
   background-color: lightblue;
   border-radius: 2rem;

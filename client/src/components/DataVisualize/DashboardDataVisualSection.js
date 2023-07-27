@@ -66,7 +66,16 @@ const DashboardDataVisualSection = ({ selectedCourse, traineesData }) => {
         });
   
         const averageTime = completedCount > 0 ? Math.floor(totalTime / completedCount) : 0;
-        setAverageLearningTime(averageTime);
+        const hours = Math.floor(averageTime / 60);
+        const minutes = averageTime % 60;
+        if (hours > 30) {
+          const days = Math.floor(hours / 24);
+          setAverageLearningTime(`${days} d`);
+        } else if (minutes > 120) {
+          setAverageLearningTime(`${hours} h`);
+        } else {
+          setAverageLearningTime(`${minutes} m`);
+        }
       };
   
       const calculateAverageCompletionRate = () => {
@@ -133,6 +142,21 @@ const DashboardDataVisualSection = ({ selectedCourse, traineesData }) => {
       calculateAverageScore();
     }, [selectedCourse, traineesData]);
   
+    const formattedLearningTime = () => {
+      console.log(averageLearningTime)
+      const hours = Math.floor(averageLearningTime / 60);
+      const minutes = averageLearningTime % 60;
+      if (hours > 30) {
+        const days = Math.floor(hours / 24);
+        return `${days} days`;
+      } else if (minutes > 120) {
+        return `${hours} hours`;
+      } else {
+        return `${minutes} minutes`;
+      }
+    }
+
+
     return (
       <div className='analytics-right'>
         <div className='chart-container'>
@@ -149,7 +173,7 @@ const DashboardDataVisualSection = ({ selectedCourse, traineesData }) => {
         </div>
         <div className='progress-section-dashboard'>
           <ProgressSection index={0} title='Avg. completion rate' dataString={`${averageCompletionRate}%`} />
-          <ProgressSection index={1} title='Avg. learning time' dataString={`${averageLearningTime} min`} />
+          <ProgressSection index={1} title='Avg. learning time' dataString={averageLearningTime} />
           <ProgressSection index={2} title='Employees enrolled' dataString={`${employeesEnrolled}`} />
           <ProgressSection index={3} title='Avg. score' dataString={`${averageScore}`} />
         </div>

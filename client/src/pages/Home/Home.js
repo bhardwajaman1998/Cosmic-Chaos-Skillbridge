@@ -36,11 +36,11 @@ const Home = () => {
   }, []);
 
   const handleCourseSelection = async (courseId) => {
-    setSelectedCourse(courseId);
     try {
       setLoading(true);
       // await new Promise((resolve) => setTimeout(resolve, 2000));
       const traineesData = await fetchTraineesByCourseId(courseId._id);
+      setSelectedCourse(courseId);
       setTraineesData(traineesData);
     } catch (error) {
       // Handle error
@@ -68,7 +68,7 @@ const Home = () => {
               </div>
               <div className="layout-left">
                 <DashboardTrainees
-                  key={selectedCourse}
+                  selectedCourse={selectedCourse}
                   courses={courses}
                   traineesData={traineesData}
                   onSelectCourse={handleCourseSelection}
