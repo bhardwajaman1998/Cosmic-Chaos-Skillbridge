@@ -1149,6 +1149,9 @@ border: unset;
 
 
 .profile-pic{
-  height: auto;
-  width: 200px;
+  height: 240px;
+  width: 245px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 6px 6px 0px 0px #6AD38B;
 }
