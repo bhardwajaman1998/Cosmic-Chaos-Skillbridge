@@ -50,7 +50,7 @@ const TraineeListComponent = ({traineesData}) => {
 
   return (
     <div>
-      <h1>Trainee List</h1>
+    
       <table>
   <thead>
   <th></th>
