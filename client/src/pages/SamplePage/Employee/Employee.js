@@ -18,7 +18,7 @@ const Employee = () => {
               <Header title={pageTitle} showBackButton={false} />
             </div>
             <div className='trainee-information'>
-              <h1>Trainee Information</h1>
+              
               <TraineeInformation />
             </div>
           </div>

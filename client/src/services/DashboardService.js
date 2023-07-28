@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const API_BASE_URL = 'http://localhost:3000';
 
-
 // Example API service for fetching data
 export const fetchAllCourses = async () => {
     try {
@@ -10,7 +9,7 @@ export const fetchAllCourses = async () => {
         const response = await fetch(path);
         const data = await response.json();
         console.log(path)
-        // console.log(data)
+         console.log(data)
         return data;
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -20,7 +19,9 @@ export const fetchAllCourses = async () => {
 
 export const fetchAllTrainees = async () => {
     try {
+      console.log('abc')
         const path = `${API_BASE_URL}/trainee/get_all_trainees`
+        console.log(path)
         const response = await fetch(path);
         const data = await response.json();
         console.log(path)
