@@ -209,21 +209,21 @@ const LandingPage = () => {
               imgSrc={AmanImage}
               name="Aman Bhardwaj"
               roles="Full Stack Developer Lead"
-              linkedinUrl="https://www.linkedin.com/in/amanbhardwaj-"
+              linkedinUrl="https://www.linkedin.com/in/amanbhardwaj-/"
             />
 
             <ContactCard
               imgSrc={BrianImage}
               name="Brian Ungjun Yeo"
               roles="Full Stack Developer"
-              linkedinUrl="www.linkedin.com/in/ungjun-yeo"
+              linkedinUrl="https://www.linkedin.com/in/ungjun-yeo"
             />
 
             <ContactCard
               imgSrc={MonicaImage}
               name="Monica Varma"
               roles="UX/UI Designer"
-              linkedinUrl="https://www.linkedin.com/monicavarma"
+              linkedinUrl="https://www.linkedin.com/in/monica-varma/"
             />
 
             <ContactCard
