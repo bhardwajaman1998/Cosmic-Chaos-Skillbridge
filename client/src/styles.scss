@@ -21,45 +21,80 @@ p, span, div {
 body{
     background-color: rgba(235, 242, 231, 1);
 }
-.table-layout{
-  width: 1440px;
-  height: 1024px;
-  padding-left: 80px;
-  padding-top: 60px;
-}
-
-.table-layout{
-width: 1131px;
-height: 628px;
-flex-shrink: 0;
-border-radius: 10px;
-}
-
-.row-layout{
-text-align: left;
-//display: flex;
-width: 1131px;
-height: 60px;
-padding: 5px 5px;
-align-items: left;
-gap: 60px;
-row-gap: 160px;
-column-gap: 60px;
-//flex-shrink: 0;
-border-radius: 16px;
-border: 1.6px solid #7DD899;
-background: var(--tertiary-white, #FFF);
-}
-
-.row-header-layout{
+.image-name{
+  margin-left: 1rem;
   display: flex;
-width: 1131px;
-height: 60px;
-padding: 16px 24px;
-align-items: center;
-gap: 115px;
-flex-shrink: 0;
-border-radius: 16px;
+  gap: 2rem;
+  align-items: center;
+}
+.table-layout{
+  padding-left: 5rem;
+  padding-top: 2rem;
+}
+.circle{
+  line-height: 0;		/* remove line-height */
+	display: inline-block;	/* circle wraps image */
+  border: 4px solid rgba(200,200,200,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 40px;
+  width: 40px;
+}
+.trainee-photo{
+  vertical-align: middle;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.table-layout{
+  margin-right: 5rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.trainee-table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+.row-layout{
+  text-align: center;
+  border-radius: 2rem;
+  height: 4.4rem;
+  border: 3.6px solid black;
+  background: var(--tertiary-white, #FFF);
+}
+.row-header-layout{
+  align-items: center;
+  border-radius: 16px;
+}
+.centered-heading {
+  text-align: center;
+}
+.centered-text {
+  text-align: center;
+  padding: 5px;
+}
+td:first-child,
+th:first-child {
+  border-radius: 20px 0 0 20px;
+}
+// Set border-radius on the top-right and bottom-right of the last table data on the table row
+td:last-child,
+th:last-child {
+  border-radius: 0 20px 20px 0;
+}
+.see-profile-link{
+  color: var(--secondary-gunmetal, #1F2D37);
+text-align: center;
+font-family: Space Grotesk;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 20px; /* 142.857% */
+letter-spacing: 0.1px;
+text-decoration-line: underline;
 }
 
 // =====================DASHBOARD LAYOUT STARTS=======================
