@@ -37,9 +37,9 @@ const TraineeInformation = () => {
           <thead >
             <tr class="row-header-layout">
             <th>Photo</th>
-            <th>Employee ID</th>
+            <th>Name</th> 
             <th>Email</th>
-              <th>Name</th>             
+                          
               {/* <th>Phone Number</th> */}
               <th>Role</th>
               
@@ -52,9 +52,9 @@ const TraineeInformation = () => {
                  <td>
                   <img src={trainee.photo} alt="Trainee" />
                 </td>
-                <td>{trainee._id}</td>
-                <td>{trainee.email}</td>
                 <td>{trainee.name}</td>
+                <td>{trainee.email}</td>
+                
                 {/* <td>{trainee.phone_number}</td> */}
                 <td>{trainee.department.name}</td>
                

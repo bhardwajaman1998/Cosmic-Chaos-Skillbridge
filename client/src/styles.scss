@@ -37,15 +37,15 @@ border-radius: 10px;
 
 .row-layout{
 text-align: left;
-display: flex;
+//display: flex;
 width: 1131px;
 height: 60px;
 padding: 5px 5px;
-align-items: center;
-//gap: 60px;
+align-items: left;
+gap: 60px;
 row-gap: 160px;
 column-gap: 60px;
-flex-shrink: 0;
+//flex-shrink: 0;
 border-radius: 16px;
 border: 1.6px solid #7DD899;
 background: var(--tertiary-white, #FFF);
