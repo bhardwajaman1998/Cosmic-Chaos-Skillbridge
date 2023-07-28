@@ -1195,3 +1195,16 @@ border: unset;
 .course-info-eval a{
   color: white;
 }
+
+.employee-name-pic-wrapper .loading-spinner{
+  height: unset;
+}
+
+.profile-pic{
+  height: 240px;
+  width: 245px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 6px 6px 0px 0px #6AD38B;
+  object-position: 25% 38%;
+}
