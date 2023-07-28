@@ -21,7 +21,7 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                 if (traineeId) {
                     const timeout = setTimeout(() => {
                         setLoading(false);
-                      }, 2000);
+                      }, 3000);
                     const traineeData = await fetchTraineeByID(traineeId);
                     setSelectedTrainee(traineeData);
                     setAssignedPrograms(traineeData.assigned_training_programs);
