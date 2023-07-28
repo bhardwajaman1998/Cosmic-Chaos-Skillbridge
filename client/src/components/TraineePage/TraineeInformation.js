@@ -4,7 +4,7 @@ import axios from 'axios';
 import { fetchAllTrainees } from '../../services/DashboardService';
 import { Link } from 'react-router-dom';
 import Select from "react-select";
-import 'firebase/compat/storage';
+//import 'firebase/compat/storage';
 //import { SearchBar } from ‘react-native-elements’;
 const TraineeInformation = () => {
   const [trainees, setTrainees] = useState([]);
