@@ -102,7 +102,7 @@ const DashboardTrainees = ({selectedCourse ,courses, traineesData, onSelectCours
       
         return {
           name: firstName + " " + lastNameInitial + ".",
-          imageUrl: logo,
+          imageUrl: trainee.photo,
           learningTime: selectedCourseProgram && selectedCourseProgram.start_date
             ? calculateLearningTime(selectedCourseProgram.start_date)
             : "-", // Calculate learning time only if program exists for selected course
