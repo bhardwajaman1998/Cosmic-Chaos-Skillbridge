@@ -23,7 +23,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
   let [obj, setObj] = useState({ choices: [] });
   const [payload, setPayLoad] = useState({
         prompt: "",
-        max_tokens: 700,
+        max_tokens: 200,
         temperature: 0.1,
         n: 1,
         model: "text-davinci-003"
