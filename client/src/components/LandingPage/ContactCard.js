@@ -3,11 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "./ContactCard.css";
 
+
+
 const ContactCard = ({ imgSrc, name, roles, linkedinUrl, githubUrl, twitterUrl }) => {
   return (
-    <div className="contact-card">
-      {imgSrc && <img src={imgSrc} alt={name} className="contact-card-img" />}
-      <h2>{name}</h2>
+    <div className="contact-card slide-card">
+      <div className="circle-container">
+        <img src={imgSrc} alt={name} className="contact-card-img" />
+      </div>
+      <h2 className="team-names">{name}</h2>
       {roles && <p>{roles}</p>}
       <div className="social-links">
         {linkedinUrl && (
