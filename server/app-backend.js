@@ -15,7 +15,7 @@ const routes = require('./routes/index') // index contains all the routes
 
 //use routes
 app.use(routes);
-
+console.log(process.env.BASE_URL)
 // Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
