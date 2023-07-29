@@ -1,7 +1,7 @@
 const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const secretKey = process.env.JWT_SECRET;
+const secretKey = '0yVi4BbUWBkMBC1zOjiEw4L2suqe';//process.env.JWT_SECRET;
 
 // Signup endpoint
 const signUp = async (req, res) => {
