@@ -90,3 +90,23 @@ export const fetchQuizByCourseID = async (courseId) => {
     }
   };
 
+  export const saveReportAndScore = async (traineeId, courseId, score, report) => {
+    try {
+      const path = `${API_BASE_URL}/trainee/assign_score_report`;
+      const response = await fetch(path, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ traineeId, courseId, score, report }),
+      });
+      const data = await response.json();
+      console.log(path);
+      console.log((traineeId, courseId, score, report))
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Error saving score and report:', error);
+      throw error;
+    }
+  };

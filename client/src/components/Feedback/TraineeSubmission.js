@@ -5,8 +5,14 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select from "react-select";
+import html2pdf from 'html2pdf.js';
+import ReactDOMServer from 'react-dom/server';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
+import { saveReportAndScore } from '../../services/DashboardService';
+
 
 const TraineeSubmission = ({trainee, courseId}) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -16,8 +22,8 @@ const TraineeSubmission = ({trainee, courseId}) => {
   const [isEvaluationCollapsed, setEvaluationCollapsed] = useState(true);
   const [evalutaionAI, setevalutaionAI] = useState('');
   const [selectedQuiz, setSelectedQuiz] = useState(null);
-  const [score, setScore] = React.useState('0');
-
+  const [score, setScore] = useState({value: 'Set Score', label: 'Set Score'});
+  const navigate = useNavigate();
   const dummyCourse = '64a768a28c0b52e60969e1c5'
   const [loading, setLoading] = useState(false);
   let [obj, setObj] = useState({ choices: [] });
@@ -56,7 +62,8 @@ const TraineeSubmission = ({trainee, courseId}) => {
 },  []);
 
   const handleChange = (event) => {
-    setScore(event.target.value);
+    console.log(event)
+    setScore(event.value);
   };
 
   const toggleCollapse = () => {
@@ -89,20 +96,53 @@ const TraineeSubmission = ({trainee, courseId}) => {
           : theme.typography.fontWeightMedium,
     };
   }
-  const scores = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '&',
-    '8',
-    '9',
-    '10',
-  ];
+  const scores = ['Select Score', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
-  
+  const options = scores.map((number) => ({
+    value: number,
+    label: number
+  }));
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+  const generatePDF = () => {
+
+    const content = (
+      <div id='pdf-create'>
+        <div>
+          <span>Name: {trainee.name}</span>
+        </div>
+        <div>
+          <span>Email: {trainee.email}</span>
+        </div>
+        <div>
+          <span>Problem: {selectedQuiz.problem}</span>
+        </div>
+        <div>
+          <span>Answer: {quizAnswer()}</span>
+        </div>
+        <div>
+          <span>Evaluation: {evalutaionAI}</span>
+        </div>
+        <div>
+          <span>Score: {score.value}</span>
+        </div>
+      </div>
+    );
+    const contentText = ReactDOMServer.renderToString(content);
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = contentText;
+    const opt = {
+      margin: [10, 10],
+      filename: `${trainee.name}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    };
+    html2pdf().from(tempElement).set(opt).save();
+  };
+
 const handleopenAI = () => {
     const promptTemplate = `
     You are a code reviewer tasked with evaluating the following code snippet for a quiz application. Please assess the code based on the following categories:
@@ -150,16 +190,15 @@ function callOpenAi(modifiedPayload){
           "Bearer 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"
       }
     })
-      .then((res) => {
-        console.log(res);
-        responseHandler(res);
-      })
-      .catch((e) => {
-        setLoading(false);
-        console.log(e.message, e);
-      });
+    .then((res) => {
+      console.log(res);
+      responseHandler(res);
+    })
+    .catch((e) => {
+      setLoading(false);
+      console.log(e.message, e);
+    });
   };
-
 
   const responseHandler = (res) => {
     if (res.status === 200) {
@@ -169,9 +208,33 @@ function callOpenAi(modifiedPayload){
       setLoading(false);
     }
   };
-
+  const sendReport = () => {
+    if (score !== 'Select Score') {
+      const parsedInt = parseInt(score);
+      if (parsedInt) {
+        saveReportAndScore(trainee._id, dummyCourse, parsedInt, evalutaionAI)
+        .then((data) => {
+          console.log("Score and report saved successfully:", data);
+          handleGoBack();
+        })
+        .catch((error) => {
+          console.error("Error saving score and report:", error);
+      });
+    } else {
+        console.error("Error saving score and report:");
+    }}else {
+      console.error("Please select a score before generating the report.");
+    }
+  }
+  const customStyle = {
+    dropdownIndicator: (base, state) => ({
+      ...base,
+      transition: "all .6s ease",
+      transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : null
+    })
+  };
   return (
-    <div>
+    <div id='trainee-container'>
         <div className='trainee-submission-container'>
             <div className='expander-container' onClick={toggleCollapse}>
                 <span>Employee Submission</span>
@@ -235,29 +298,30 @@ function callOpenAi(modifiedPayload){
                             />
                         </div>
                     )}
-                    <div className='score-container'>
-                        <FormControl sx={{ m: 1, width: 300 }}>
-                            <InputLabel id="name-label">Score</InputLabel>
-                            <Select
-                                labelId="name-label"
-                                id="demo-multiple-name"
-                                value={score}
-                                onChange={handleChange}
-                                input={<OutlinedInput label="Score" />}
-                                MenuProps={MenuProps}
-                            >
-                                {scores.map((score) => (
-                                    <MenuItem value={score}>{score}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
+                    <div className='score-section'>
+                      <InputLabel id="name-label">Score</InputLabel>
+                        <Select
+                            className='filter-select'
+                            defaultValue={score ? { value: score.value, label: score.label } : null}
+                            options={options}
+                            openMenuOnFocus
+                            onChange={handleChange}
+                            styles={customStyle}
+                        />
                 </div>
                 </div>
             )}
             </>
         )}
         <div className='generate-container'>
-            <button className='generate-button' onClick={handleopenAI}>Generate report and send</button>
+          {isEvaluationComplete ? 
+            (
+              <button className='generate-button' onClick={sendReport}>Generate report and send</button>
+            ) :
+            (
+              <button className='generate-button' onClick={handleopenAI}>Evaluate Code</button>
+            )  
+          }
         </div>
     </div>
   )

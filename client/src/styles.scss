@@ -897,7 +897,16 @@ textarea {
   width: 20rem;
   cursor: pointer;
 }
-
+.score-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  margin-left: 13rem;
+  margin-right: 13rem;
+  width: 150px;
+}
 //==========================TRAINEE FEEDBACK ENDS====================
 
 

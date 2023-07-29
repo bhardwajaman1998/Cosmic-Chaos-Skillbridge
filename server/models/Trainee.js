@@ -39,6 +39,10 @@
       type: String,
       required: false
     },
+    report: {
+      type: String,
+      required: false
+    },
     lessons: {
       total: {
         type: Number,

@@ -907,6 +907,17 @@ textarea {
   cursor: pointer;
 }
 
+.score-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  margin-left: 13rem;
+  margin-right: 13rem;
+  width: 150px;
+}
+
 @media only screen and (min-width: 768px) {
   .layout {
     width: 100%;
