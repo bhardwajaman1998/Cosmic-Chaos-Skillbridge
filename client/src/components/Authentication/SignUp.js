@@ -12,11 +12,11 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-
+  const API_BASE_URL = 'https://skill-bridge-backend.onrender.com';
   const handleSignUp = async () => {
     try {
     //   const response = await axios.post('http://localhost:3000/signup', { email, password, username });
-      const response = await axios.post('http://localhost:3000/admin/signup', { email, password, username, name });
+      const response = await axios.post(`${API_BASE_URL}/admin/signup`, { email, password, username, name });
       console.log(response.data);
       setIsSignUpSuccessful(true); // Set the sign-up success state to true
     } catch (error) {

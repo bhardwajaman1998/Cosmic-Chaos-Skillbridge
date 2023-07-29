@@ -7,11 +7,11 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const API_BASE_URL = 'https://skill-bridge-backend.onrender.com';
   const handleSignIn = async () => {
     try {
       // Make an API call to log in the user
-      const response = await axios.post('http://localhost:3000/admin/login', { email, password });
+      const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
 
       // Handle the response and redirect if needed
       console.log(response.data);
