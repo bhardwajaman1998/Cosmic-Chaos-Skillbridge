@@ -20,6 +20,9 @@ router.post('/assign_mentor', traineeController.assignMentor);
 //Assign training
 router.post('/assign_training', traineeController.assignTraining);
 
+//Assign score and report
+router.post('/assign_score_report', traineeController.assignScoreReport);
+
 // get Assigned Courses by traineeId
 router.get('/trainees/:traineeId/courses', traineeController.getAssignedCourses);
 

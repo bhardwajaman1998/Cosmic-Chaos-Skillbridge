@@ -40,7 +40,7 @@ const Header = ({ title='Dashboard', showBackButton }) => {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-      navigate('/trainees');
+      navigate(-1);
     };
 
     return (
@@ -52,9 +52,9 @@ const Header = ({ title='Dashboard', showBackButton }) => {
         ) : (
           <>
             {showBackButton && (
-              <div className="header-title">
+              <div className="header-title-with-back">
                 <ArrowBackIcon className="arrow-back-icon"  onClick={handleGoBack}/>
-                <span>{title}</span>
+                <span className="header-title-text">{title}</span>
               </div>
             )}
             {!showBackButton && <span className="header-title">{title}</span>}

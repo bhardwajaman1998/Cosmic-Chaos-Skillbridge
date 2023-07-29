@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const images = [
-        { title: 'Dashboard', imageUrl: dashboard, link: '/' },
+        { title: 'Dashboard', imageUrl: dashboard, link: '/dashboard' },
         { title: 'Courses', imageUrl: courses, link: '/courses' },
         { title: 'Trainee', imageUrl: trainees, link: '/trainees' },
       ];
