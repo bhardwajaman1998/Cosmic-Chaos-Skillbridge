@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SampleComponent from '../components/SampleComponent';
+// import SampleComponent from '../components/SampleComponent';
 import { fetchData } from '../services/SampleService';
 
 const SamplePage = () => {

@@ -165,6 +165,38 @@ const getAssignedCourses = async (req, res) => {
   }
 };
 
+// API endpoint to add score and report text to the data model
+const assignScoreReport = async (req, res) => {
+  const { traineeId, courseId, score, report } = req.body;
+  console.log(req.body)
+  try {
+    // Find the trainee by ID
+    const currentTrainee = await trainee.findById(traineeId);
+    if (!currentTrainee) {
+      return res.status(404).json({ message: 'Trainee not found.' });
+    }
+    console.log(currentTrainee)
+    // Find the assigned training program by course ID
+    const assignedTrainingProgram = currentTrainee.assigned_training_programs.find(
+      (program) => program.course_id.toString() === courseId
+    );
+    console.log(assignedTrainingProgram)
+    if (!assignedTrainingProgram) {
+      return res.status(404).json({ message: 'Assigned training program not found.' });
+    }
+
+    // Update the score and report text
+    assignedTrainingProgram.score = score;
+    assignedTrainingProgram.report = report;
+    assignedTrainingProgram.evaluation = 1;
+    // Save the changes to the database
+    await currentTrainee.save();
+    console.log(res)
+    return res.status(200).json({ message: 'Score and report added successfully.' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Error occurred while adding score and report.', error });
+  }
+};
 
 module.exports = {
     getAll,
@@ -173,5 +205,6 @@ module.exports = {
     getTraineesByCourseId,
     assignMentor,
     assignTraining,
-    getAssignedCourses
+    getAssignedCourses,
+    assignScoreReport
 };

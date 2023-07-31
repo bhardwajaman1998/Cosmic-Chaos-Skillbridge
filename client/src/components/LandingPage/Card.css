@@ -10,12 +10,11 @@
 
 .card-container .card {
   flex: 1 1 300px;
-  max-width: 360px;
-  height: 180px;
+  height: 200px;
   margin: 10px;
   padding: 20px;
- background-color: #EBF2E7;
-border: 1px solid #6AD38B;
+  background-color: #EBF2E7;
+  border: 1px solid #6AD38B;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -23,7 +22,14 @@ border: 1px solid #6AD38B;
 
 .details {
   text-align: center; /* Align the text to the center */
+  margin-top: 5px;
 }
+
+.image {
+  width: 80px; /* Set the width to the desired size, such as 200px */
+  height: 40px;
+}
+
 .card-container2 {
   display: flex;
   flex-wrap: wrap;
@@ -75,6 +81,7 @@ border: 1px solid #6AD38B;
   display: flex;
   flex-basis: calc(33.33% - 20px); /* Adjust the value as needed */
   margin: 10px;
+  align-items: flex-start;
 }
 
 .card {
@@ -90,7 +97,10 @@ border: 1px solid #6AD38B;
 }
 
 .top {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
 .name {
@@ -107,6 +117,7 @@ border: 1px solid #6AD38B;
 .details {
   font-size: 0.9rem;
   color: #777;
+  margin-bottom: 5px;
 }
 
 .bottom {
