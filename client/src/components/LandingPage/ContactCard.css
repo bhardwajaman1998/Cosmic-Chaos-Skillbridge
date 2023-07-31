@@ -1,24 +1,33 @@
 .contact-card {
-  width: 300px;
+  width: 240px;
   background-color: #1F2D37;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
   margin: 10px;
-  display: grid;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 10px;
+}
+.circle-container{
+  line-height: 0;		/* remove line-height */
+	display: inline-block;	/* circle wraps image */
+  border: 4px solid rgba(200,200,200,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  height: 110px;
+  width: 110px;
 }
 
-
 .contact-card img {
-  width: 100px;
-  height: 100px;
+  vertical-align: middle;
+  object-fit: cover;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  margin-bottom: 10px;
-  text-align: center;
 }
 
 .contact-card h2 {
@@ -32,7 +41,15 @@
   color: #777;
   text-align: center;
 }
-
+.team-names{
+  color: var(--accent-emerald, #6AD38B);
+  text-align: center;
+  font-family: Space Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 125% */
+}
 .social-links {
   margin-top: 20px;
 }
@@ -46,21 +63,4 @@
 
 .social-links a:hover {
   color: #000;
-}
-
-@media (max-width: 576px) {
-  .member-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card-row {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card-row > * {
-    margin-bottom: 20px;
-  }
 }

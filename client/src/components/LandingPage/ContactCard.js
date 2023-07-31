@@ -8,8 +8,10 @@ import "./ContactCard.css";
 const ContactCard = ({ imgSrc, name, roles, linkedinUrl, githubUrl, twitterUrl }) => {
   return (
     <div className="contact-card slide-card">
-      <img src={imgSrc} alt={name} className="contact-card-img" />
-      <h2>{name}</h2>
+      <div className="circle-container">
+        <img src={imgSrc} alt={name} className="contact-card-img" />
+      </div>
+      <h2 className="team-names">{name}</h2>
       {roles && <p>{roles}</p>}
       <div className="social-links">
         {linkedinUrl && (

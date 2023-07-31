@@ -11,7 +11,7 @@ import profile from '../LandingPage/image/Profile.png';
 import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
-
+import Footer from './Footer';
 // Import the JPG images
 import AmanImage from "../LandingPage/profile/Aman.jpg";
 import BrianImage from "../LandingPage/profile/Brian.jpg";
@@ -20,6 +20,7 @@ import NatasjaImage from "../LandingPage/profile/Natasja.jpg";
 import SanmeetImage from "../LandingPage/profile/Sanmeet.jpg";
 import VaibhavImage from "../LandingPage/profile/Vaibhav.jpg";
 import VaneetImage from "../LandingPage/profile/Vaneet.jpg";
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -58,54 +59,40 @@ const LandingPage = () => {
 
   return (
     <div className='container'>
-       <header>
+       <header className='landing-header'>
+          <div className={`site-title ${isMobileMenuOpen ? 'hidden' : ''}`}>
+            <img src={Logo} alt="SkillBridge" /> 
+            <span className="site-title-text">SkillBridge</span>
+          </div>
         <nav className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
           <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
           </div>
-          <div className={`site-title ${isMobileMenuOpen ? 'hidden' : ''}`}>
-            <a href="/">
-              <img src={Logo} alt="SkillBridge" /> 
-              <span className="site-title-text">SkillBridge</span>
-            </a>
-          </div>
-          <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-            <li><h4><a href="/HowItWorks">How it works</a></h4></li>
-            <li><h4><a href="/Testimonials">Testimonials</a></h4></li>
-            <li><h4><a href="/team">Team</a></h4></li>
-            <li><h4><a href="/SignIn">Signin</a></h4></li>
-          </ul>
-          <button className="btnRes-signup">
-            <a href="#Create your account">
-              <b>Sign Up</b>
-            </a>
-          </button>
+          {/* <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}> */}
+            <a className='landing-title' href="/HowItWorks">How it works</a>
+            <a className='landing-title' href="/Testimonials">Testimonials</a>
+            <a className='landing-title' href="/team">Team</a>
+            <Link className='landing-title' to='/SignIn'>Sign In</Link>
+            {/* <a className='landing-title' href="/SignIn">Signin</a> */}
+          {/* </ul> */}
+          <button className="btnRes-signup">Sign Up</button>
         </nav>
       </header>
       <div className="section-container">
         <div className="first">
           <div className="image-container">
-        <h1>Empower your<br /> employees to grow</h1>
-    <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
-        
-  
-</div>
-<img src={image} alt="SkillBridge" className="small-image" />         
-        </div>
-       
-      </div>
-      <div className="button-container">
-            <button className="btnRes-first">
-              <a href="#Get started now!">
-                <b>Get started now!</b>
-              </a>
-            </button>
+            <h1>Empower your<br /> employees to grow</h1>
+            <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
+            <button className="btnRes-first">Get started now!</button>
           </div>
-      <div className="second">
+          <img src={image} alt="SkillBridge" className="small-image" />         
+        </div>
+      </div>
+      <div className="how-it-works">
         <h2>How it works?</h2>
         <p>The web app operates on a user-friendly platform that makes it easy for employees to navigate and access its features. Upon logging in, employees are greeted with a personalized dashboard that provides them with an overview of their learning progress, recommended courses, and upcoming training activities.</p>
-
         <Slider {...sliderSettings}>
+          
           <div className="card-container">
             <Card
               imgSrc={cardImages[0]}
@@ -136,14 +123,14 @@ const LandingPage = () => {
 
         </Slider>
         <div className="slider-dots">
-        {cardImages.map((_, index) => (
-          <div
-            key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(index)}
-          />
-        ))}
-      </div>
+          {cardImages.map((_, index) => (
+            <div
+              key={index}
+              className={`dot ${currentSlide === index ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))}
+        </div>
       </div>
 
       <button className="btnRes">
@@ -199,8 +186,8 @@ const LandingPage = () => {
       </div>
 
       <div className="teams">
-        <h2>Meet the team</h2>
-        <p>At Cosmic Chaos, we take pride in our exceptional team of professionals who bring passion, creativity, and expertise to every project. Our diverse team members possess a wide range of skills and experience, allowing us to tackle various challenges and deliver outstanding results.</p>
+        <h2 className='team-text'>Meet the team</h2>
+        <p className='team-text'>At Cosmic Chaos, we take pride in our exceptional team of professionals who bring passion, creativity, and expertise to every project. Our diverse team members possess a wide range of skills and experience, allowing us to tackle various challenges and deliver outstanding results.</p>
         
         <div className="member-card">          
           <div className="card-row">
@@ -264,14 +251,11 @@ const LandingPage = () => {
 
       <div className="final">
         <h2>Have Questions? Get in touch with our experts!</h2>
-        <p>If you have any questions or need further information about <strong>SkillBridge</strong> and how it can revolutionize your HR training management, we're here to help.</p>
-        <p>Reach out now and discover the power of <strong>SkillBridge</strong> for seamless training program management!</p>
+        <p>If you have any questions or need further information about <strong>SkillBridge</strong> and how it can revolutionize your HR training management, we're here to help.<br></br>Reach out now and discover the power of <strong>SkillBridge</strong> for seamless training program management!</p>
+        <button className="btnRes-touch">Get in touch</button>
       </div>
-      <button className="btnRes-touch">
-        <b href="#Get in touch">
-          Get in touch
-        </b>
-      </button>
+      
+      <Footer />
     </div>
   );
 };
