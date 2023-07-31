@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+require('dotenv').config();
 // import firebase from './components/TraineePage/Firebase';
 // import { StyledEngineProvider } from '@mui/material/styles';
 const root = ReactDOM.createRoot(document.getElementById('root'));

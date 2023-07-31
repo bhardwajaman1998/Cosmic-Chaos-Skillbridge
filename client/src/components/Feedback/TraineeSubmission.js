@@ -155,6 +155,7 @@ const handleopenAI = () => {
  
 
 function callOpenAi(modifiedPayload){
+  const openAiSecret = process.env.REACT_APP_OPEN_AI_SECRET
     setLoading(true);
     console.log(modifiedPayload)
     axios({
@@ -164,7 +165,7 @@ function callOpenAi(modifiedPayload){
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer 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"
+          `Bearer ${openAiSecret}`
       }
     })
     .then((res) => {

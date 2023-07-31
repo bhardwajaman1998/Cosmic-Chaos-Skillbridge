@@ -12,7 +12,7 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-  const API_BASE_URL = 'https://skill-bridge-backend.onrender.com';
+  const API_BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL;
   const handleSignUp = async () => {
     try {
     //   const response = await axios.post('http://localhost:3000/signup', { email, password, username });
