@@ -142,19 +142,19 @@ const DashboardDataVisualSection = ({ selectedCourse, traineesData }) => {
       calculateAverageScore();
     }, [selectedCourse, traineesData]);
   
-    const formattedLearningTime = () => {
-      console.log(averageLearningTime)
-      const hours = Math.floor(averageLearningTime / 60);
-      const minutes = averageLearningTime % 60;
-      if (hours > 30) {
-        const days = Math.floor(hours / 24);
-        return `${days} days`;
-      } else if (minutes > 120) {
-        return `${hours} hours`;
-      } else {
-        return `${minutes} minutes`;
-      }
-    }
+    // const formattedLearningTime = () => {
+    //   console.log(averageLearningTime)
+    //   const hours = Math.floor(averageLearningTime / 60);
+    //   const minutes = averageLearningTime % 60;
+    //   if (hours > 30) {
+    //     const days = Math.floor(hours / 24);
+    //     return `${days} days`;
+    //   } else if (minutes > 120) {
+    //     return `${hours} hours`;
+    //   } else {
+    //     return `${minutes} minutes`;
+    //   }
+    // }
 
 
     return (

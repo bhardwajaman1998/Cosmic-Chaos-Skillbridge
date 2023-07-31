@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import DoughnutChart from '../DataVisualize/DoughnutChart';
+import React, { useEffect, useState } from 'react';
+// import DoughnutChart from '../DataVisualize/DoughnutChart';
 import ProgressSection from '../DataVisualize/ProgressSection';
-import ChartLabel from '../DataVisualize/ChartLabel';
+
+// import ChartLabel from '../DataVisualize/ChartLabel';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import { Bar } from 'react-chartjs-2';
 import { fetchTraineeByID } from '../../services/DashboardService';
-
 
 const TraineeDataVisual = ({ traineeData }) => {
   const [averageCompletionRate, setAverageCompletionRate] = useState(0);
@@ -37,53 +37,32 @@ const TraineeDataVisual = ({ traineeData }) => {
   }, [traineeData]);
 
 
-  const chartRef = useRef(null);
-  useEffect(() => {
-    const calculateCoursesInProgress = () => {
-      const inProgressCourses = traineeData.assigned_training_programs.filter(
-        (program) => program.status === 'In progress'
-      );
-      setCoursesInProgress(inProgressCourses);
-    };
-
-    const calculateCompletedCourses = () => {
-      const completedCourses = traineeData.assigned_training_programs.filter(
-        (program) => program.status === 'Completed' && program.evaluation === 1
-      );
-      setCompletedCourses(completedCourses);
-    };
-
-    const calculateProgressData = () => {
-      const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
-        (program) => program.status === 'Completed' && program.evaluation === 1
-      );
-
-      const progressData = completedAndEvaluatedCourses.map((program) => {
-        return program.score || 0; // Use the "score" field or set to 0 if not available
-      });
-      setProgressData(progressData);
-    };
-
-
-    setTotalCourses(traineeData.assigned_training_programs.length);
-
-    const totalScore = traineeData.assigned_training_programs.reduce(
-      (acc, program) => acc + (program.score || 0),
-      0
+  const calculateCoursesInProgress = () => {
+    const inProgressCourses = traineeData.assigned_training_programs.filter(
+      (program) => program.status === 'In progress'
     );
-    const completedScores = completedCourses.map((program) => program.score || 0);
-    const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
-    const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
-    setAverageTotalScore(averageScore);
-
-
-    calculateCoursesInProgress();
-    calculateCompletedCourses();
-    calculateProgressData();
-  }, [traineeData]);
-
-  useEffect(() => {
-    const calculateAverageLearningTime = () => {
+    setCoursesInProgress(inProgressCourses);
+  };
+  
+  const calculateCompletedCourses = () => {
+    const completedCourses = traineeData.assigned_training_programs.filter(
+      (program) => program.status === 'Completed' && program.evaluation === 1
+    );
+    setCompletedCourses(completedCourses);
+  };
+  
+  const calculateProgressData = () => {
+    const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
+      (program) => program.status === 'Completed' && program.evaluation === 1
+    );
+  
+    const progressData = completedAndEvaluatedCourses.map((program) => {
+      return program.score || 0; // Use the "score" field or set to 0 if not available
+    });
+    setProgressData(progressData);
+  };
+  
+  const calculateAverageLearningTime = () => {
       let totalTime = 0;
       let completedCount = 0;
 
@@ -108,8 +87,29 @@ const TraineeDataVisual = ({ traineeData }) => {
       setAverageCompletionRate(averageRate);
     };
 
+
+  // const chartRef = useRef(null);
+  useEffect(() => {
+    if (traineeData) {
+      setTotalCourses(traineeData.assigned_training_programs.length);
+  
+      const completedScores = completedCourses.map((program) => program.score || 0);
+      const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
+      const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
+      setAverageTotalScore(averageScore);
+  
+      calculateCoursesInProgress();
+      calculateCompletedCourses();
+      calculateProgressData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [traineeData]); // Include traineeData in the dependency array
+  
+  // Second useEffect
+  useEffect(() => {
     calculateAverageLearningTime();
     calculateAverageCompletionRate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedCourses, coursesInProgress]);
 
   const data = {
@@ -165,7 +165,6 @@ const TraineeDataVisual = ({ traineeData }) => {
       },
     },
   };
-
 
   return (
     <div>

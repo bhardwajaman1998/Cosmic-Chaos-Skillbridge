@@ -6,14 +6,13 @@ import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrain
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection';
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 
-import { fetchAllCourses, fetchAllTrainees, fetchTraineesByCourseId } from '../../services/DashboardService';
+import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [traineesData, setTraineesData] = useState([]);
-
   useEffect(() => {
     const getCourses = async () => {
       try {

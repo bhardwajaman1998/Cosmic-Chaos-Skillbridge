@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { fetchQuizByCourseID } from '../../services/DashboardService';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from "react-select";
-import html2pdf from 'html2pdf.js';
-import ReactDOMServer from 'react-dom/server';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import html2pdf from 'html2pdf.js';
+// import ReactDOMServer from 'react-dom/server';
+import { useNavigate } from 'react-router-dom';
 
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 import { saveReportAndScore } from '../../services/DashboardService';
@@ -26,7 +23,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
   const navigate = useNavigate();
   const dummyCourse = '64a768a28c0b52e60969e1c5'
   const [loading, setLoading] = useState(false);
-  let [obj, setObj] = useState({ choices: [] });
+  // let [obj, setObj] = useState({ choices: [] });
   const [payload, setPayLoad] = useState({
         prompt: "",
         max_tokens: 200,
@@ -34,17 +31,6 @@ const TraineeSubmission = ({trainee, courseId}) => {
         n: 1,
         model: "text-davinci-003"
     });
-
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: "20ch", // Adjust the width as needed
-      },
-    },
-  };
   
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +45,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
         }
     };
     fetchData();
-},  []);
+},  [courseId]);
 
   const handleChange = (event) => {
     console.log(event)
@@ -87,15 +73,6 @@ const TraineeSubmission = ({trainee, courseId}) => {
     console.log(dummyCourse)
     return course.quiz_answer || null;
   }
-
-  function getStyles(name, personName, theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
   const scores = ['Select Score', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   const options = scores.map((number) => ({
@@ -106,42 +83,42 @@ const TraineeSubmission = ({trainee, courseId}) => {
   const handleGoBack = () => {
     navigate(-1);
   };
-  const generatePDF = () => {
+  // const generatePDF = () => {
 
-    const content = (
-      <div id='pdf-create'>
-        <div>
-          <span>Name: {trainee.name}</span>
-        </div>
-        <div>
-          <span>Email: {trainee.email}</span>
-        </div>
-        <div>
-          <span>Problem: {selectedQuiz.problem}</span>
-        </div>
-        <div>
-          <span>Answer: {quizAnswer()}</span>
-        </div>
-        <div>
-          <span>Evaluation: {evalutaionAI}</span>
-        </div>
-        <div>
-          <span>Score: {score.value}</span>
-        </div>
-      </div>
-    );
-    const contentText = ReactDOMServer.renderToString(content);
-    const tempElement = document.createElement('div');
-    tempElement.innerHTML = contentText;
-    const opt = {
-      margin: [10, 10],
-      filename: `${trainee.name}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    };
-    html2pdf().from(tempElement).set(opt).save();
-  };
+  //   const content = (
+  //     <div id='pdf-create'>
+  //       <div>
+  //         <span>Name: {trainee.name}</span>
+  //       </div>
+  //       <div>
+  //         <span>Email: {trainee.email}</span>
+  //       </div>
+  //       <div>
+  //         <span>Problem: {selectedQuiz.problem}</span>
+  //       </div>
+  //       <div>
+  //         <span>Answer: {quizAnswer()}</span>
+  //       </div>
+  //       <div>
+  //         <span>Evaluation: {evalutaionAI}</span>
+  //       </div>
+  //       <div>
+  //         <span>Score: {score.value}</span>
+  //       </div>
+  //     </div>
+  //   );
+  //   const contentText = ReactDOMServer.renderToString(content);
+  //   const tempElement = document.createElement('div');
+  //   tempElement.innerHTML = contentText;
+  //   const opt = {
+  //     margin: [10, 10],
+  //     filename: `${trainee.name}.pdf`,
+  //     image: { type: 'jpeg', quality: 0.98 },
+  //     html2canvas: { scale: 2 },
+  //     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+  //   };
+  //   html2pdf().from(tempElement).set(opt).save();
+  // };
 
 const handleopenAI = () => {
     const promptTemplate = `
@@ -178,6 +155,7 @@ const handleopenAI = () => {
  
 
 function callOpenAi(modifiedPayload){
+  const openAiSecret = process.env.REACT_APP_OPEN_AI_SECRET
     setLoading(true);
     console.log(modifiedPayload)
     axios({
@@ -187,7 +165,7 @@ function callOpenAi(modifiedPayload){
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer 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"
+          `Bearer ${openAiSecret}`
       }
     })
     .then((res) => {
@@ -202,7 +180,7 @@ function callOpenAi(modifiedPayload){
 
   const responseHandler = (res) => {
     if (res.status === 200) {
-      setObj(res.data);
+      // setObj(res.data);
       setevalutaionAI(res.data.choices[0].text)
       setEvaluation(true)
       setLoading(false);

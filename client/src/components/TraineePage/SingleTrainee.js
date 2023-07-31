@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTraineeByID } from '../../services/DashboardService';
 import CourseInformation from './CourseInformation';
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
-import EmployeeProgressChart from './EmployeeProgressChart';
+// import EmployeeProgressChart from './EmployeeProgressChart';
 import TraineeDataVisual from './TraineeDataVisual';
-import ChartLabel from '../DataVisualize/ChartLabel';
-import ArrowRight from '../../assets/arrow-right-circle.svg'
+
+// import ChartLabel from '../DataVisualize/ChartLabel';
+// import ArrowRight from '../../assets/arrow-right-circle.svg'
 import LoadingSpinner from '../Loading/LoadingSpinner';
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
     const [selectedTrainee, setSelectedTrainee] = useState(null);
     const [assignedPrograms, setAssignedPrograms] = useState([]);
-    const [imageUrl, setImageUrl] = useState(null);
+    // const [imageUrl, setImageUrl] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -26,10 +27,10 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     setSelectedTrainee(traineeData);
                     setAssignedPrograms(traineeData.assigned_training_programs);
 
-                    const storageRef = firebase.storage().ref();
-                    const fileRef = storageRef.child(`trainees/${traineeId}.jpg`);
-                    const downloadURL = await fileRef.getDownloadURL();
-                    setImageUrl(downloadURL);
+                    // const storageRef = firebase.storage().ref();
+                    // const fileRef = storageRef.child(`trainees/${traineeId}.jpg`);
+                    // const downloadURL = await fileRef.getDownloadURL();
+                    // setImageUrl(downloadURL);
                     clearTimeout(timeout);
                     setLoading(false);
                 }
@@ -61,7 +62,7 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                             <LoadingSpinner />
                         ) : (
 
-                            <img className="profile-pic" src={imageUrl} alt="Trainee" />
+                            <img className="profile-pic" src={selectedTrainee.photo} alt="Trainee" />
                         )}
                     </div>
                     <div className='employee-info'>

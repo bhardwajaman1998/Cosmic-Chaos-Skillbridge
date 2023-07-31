@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Select from "react-select";
-import logo from '../../assets/avatar.png';
 import TraineeSection from './TraineeSection';
-import { match } from 'assert';
 import { Link } from 'react-router-dom';
 
 const DashboardTrainees = ({selectedCourse ,courses, traineesData, onSelectCourse}) => {
 
-  const [courseSelected, setCourseSelected] = useState(selectedCourse);
+  // const [courseSelected, setCourseSelected] = useState(selectedCourse);
   const [dateSelected, setDateSelected] = useState({value: 'All', label: 'All'});
 
-  useEffect(() => {
-    setCourseSelected(selectedCourse);
-  }, [setCourseSelected]);
+  // useEffect(() => {
+  //   setCourseSelected(selectedCourse);
+  // }, [setCourseSelected]);
 
       const options = courses.map((course) => ({
         value: course._id,
@@ -50,12 +48,12 @@ const DashboardTrainees = ({selectedCourse ,courses, traineesData, onSelectCours
         console.log(selectedCourse)
         const selectedCourseId = selectedOption.value;
         const matchingCourse = courses.find((course) => course._id === selectedCourseId);
-        setCourseSelected(matchingCourse);
+        // setCourseSelected(matchingCourse);
         onSelectCourse(matchingCourse)
       };
 
       const handleDateChange = (selectedOption) => {
-        
+        setDateSelected(selectedOption)
       };
     
 

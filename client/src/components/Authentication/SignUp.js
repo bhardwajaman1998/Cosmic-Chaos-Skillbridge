@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthNavigation from './AuthNavigation';
-import WelcomeMessage from './WelcomeMessage';
+// import WelcomeMessage from './WelcomeMessage';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -12,11 +12,11 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-
+  const API_BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL;
   const handleSignUp = async () => {
     try {
     //   const response = await axios.post('http://localhost:3000/signup', { email, password, username });
-      const response = await axios.post('http://localhost:3000/admin/signup', { email, password, username, name });
+      const response = await axios.post(`${API_BASE_URL}/admin/signup`, { email, password, username, name });
       console.log(response.data);
       setIsSignUpSuccessful(true); // Set the sign-up success state to true
     } catch (error) {

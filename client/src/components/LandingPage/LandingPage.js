@@ -20,6 +20,7 @@ import NatasjaImage from "../LandingPage/profile/Natasja.jpg";
 import SanmeetImage from "../LandingPage/profile/Sanmeet.jpg";
 import VaibhavImage from "../LandingPage/profile/Vaibhav.jpg";
 import VaneetImage from "../LandingPage/profile/Vaneet.jpg";
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -64,14 +65,15 @@ const LandingPage = () => {
             <span className="site-title-text">SkillBridge</span>
           </div>
         <nav className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          {/* <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
+          <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
-          </div> */}
+          </div>
           {/* <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}> */}
             <a className='landing-title' href="/HowItWorks">How it works</a>
             <a className='landing-title' href="/Testimonials">Testimonials</a>
             <a className='landing-title' href="/team">Team</a>
-            <a className='landing-title' href="/SignIn">Signin</a>
+            <Link className='landing-title' to='/SignIn'>Sign In</Link>
+            {/* <a className='landing-title' href="/SignIn">Signin</a> */}
           {/* </ul> */}
           <button className="btnRes-signup">Sign Up</button>
         </nav>

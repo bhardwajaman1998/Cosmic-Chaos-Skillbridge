@@ -1,7 +1,7 @@
 import React from 'react';
 import DashboardButtons from '../DashboardButtons/DashboardButtons';
 import ActivityOverview from '../ActivityOverview/ActivityOverview';
-import { Typography, Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 
 const Dashboard = () => {
   return (

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto'
-import { Doughnut } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 const DoughnutChart = ({ inProgressCount, completedCount, notStartedCount }) => {
   

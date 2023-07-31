@@ -1,4 +1,4 @@
-import { ClassNames } from '@emotion/react';
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,12 +17,12 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
     return minutes;
   };
 
-  const handleRedirection = (courseId, evaluationStatus) => {
-    console.log(evaluationStatus)
-    if (evaluationStatus === 'Pending') {
-      <Link to='/trainees/traineePage/feedback' state={{ traineeId: traineeId, courseId: courseId}}></Link>
-    }
-  };
+  // const handleRedirection = (courseId, evaluationStatus) => {
+  //   console.log(evaluationStatus)
+  //   if (evaluationStatus === 'Pending') {
+  //     <Link to='/trainees/traineePage/feedback' state={{ traineeId: traineeId, courseId: courseId}}></Link>
+  //   }
+  // };
 
 
   return (
