@@ -1295,3 +1295,56 @@ border: unset;
   box-shadow: 6px 6px 0px 0px #6AD38B;
   object-position: 25% 38%;
 }
+
+//=========================Employee File Responsiveness ==============================
+
+@media only screen and (max-width: 740px){
+
+  .employee-card {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .employee-name-pic-wrapper{
+    justify-self: center;
+  }
+
+  .employee-info {
+    justify-self: center;
+  }
+
+  .employee-info-layout{
+   flex-direction: column;
+  }
+
+  .learning-activity{
+    align-self: center;
+  }
+  
+  .course-info-insights{
+    display: grid;
+    width: 353px;
+    padding: 24px 38px 24px 24px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 16px;
+border: 1px solid var(--accent-emerald, #6AD38B);
+background: var(--tertiary-white, #FFF);
+margin: auto;
+  }
+
+  thead{
+    display: none;
+  }
+
+  .single-trainee-container{
+    grid-template-columns: repeat(1,1fr);
+  }
+  .progress-section{
+    grid-column: unset;
+  }
+  .progress-blocks-bar-graph{
+    width: auto;
+  }
+
+  
+}
