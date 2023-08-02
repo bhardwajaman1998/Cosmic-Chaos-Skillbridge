@@ -61,12 +61,12 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
               return (
                 <tr key={index} className='course-info-insights'>
                   <td>
-                    <td style={{ padding: '10px',}}>{course.course_name}</td>
+                    <td style={{ padding: '10px',}}><span class="bold-span">{course.course_name}</span></td>
                   </td>
-                  <td style={{ padding: '10px',}}>{learningTime} mins</td>
-                  <td style={{ padding: '10px',}}>{progress.toFixed(2)}%</td>
-                  <td style={{ padding: '10px',}}>
-                    {course.score !== undefined ? course.score : '-'}
+                  <td className="learn-time" style={{ padding: '10px',}}><span class="bold-span">{learningTime} mins</span></td>
+                  <td className="course-progress"style={{ padding: '10px',}}><span class="bold-span">{progress.toFixed(2)}%</span></td>
+                  <td className="course-score" style={{ padding: '10px',}}>
+                    <span class="bold-span">{course.score !== undefined ? course.score : '-'}</span>
                   </td>
                   <td>
                     <td className='course-info-eval' style={{ color: colorColor , padding: '10px', background: backgroundColor}} >
