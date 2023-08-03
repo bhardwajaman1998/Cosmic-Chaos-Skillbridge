@@ -10,6 +10,7 @@ import SanmeetImage from "../LandingPage/profile/Sanmeet.jpg";
 import VaibhavImage from "../LandingPage/profile/Vaibhav.jpg";
 import VaneetImage from "../LandingPage/profile/Vaneet.jpg";
 
+
 const ContactCard = ({ imgSrc, name, roles, linkedinUrl }) => {
   return (
     <div className="contact-card">

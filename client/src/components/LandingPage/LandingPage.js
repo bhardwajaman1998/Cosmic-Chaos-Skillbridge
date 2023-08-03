@@ -52,23 +52,24 @@ const LandingPage = () => {
 
   return (
     <div className='container'>
-       <header className='landing-header'>
-          <div className={`site-title ${isMobileMenuOpen ? 'hidden' : ''}`}>
-            <img src={Logo} alt="SkillBridge" /> 
-            <span className="site-title-text">SkillBridge</span>
-          </div>
-        <nav className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          {/* <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
+      <header className='landing-header'>
+        <div className={`site-title ${isMobileMenuOpen ? 'hidden' : ''}`}>
+          <img src={Logo} alt="SkillBridge" /> 
+          <span className="site-title-text">SkillBridge</span>
+        </div>
+        <div className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+          <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
-          </div> */}
-          {/* <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}> */}
-            <a className='landing-title' href="/HowItWorks">How it works</a>
-            <a className='landing-title' href="/Testimonials">Testimonials</a>
-            <a className='landing-title' href="/team">Team</a>
-            <a className='landing-title' href="/SignIn">Signin</a>
-          {/* </ul> */}
+          </div>
+          <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+            <li><a className='landing-title' href="/HowItWorks">How it works</a></li>
+            <li><a className='landing-title' href="/Testimonials">Testimonials</a></li>
+            <li><a className='landing-title' href="/team">Team</a></li>
+            {/* Render the Signin link only for desktop view */}
+      {!isMobileMenuOpen && <li><a className='landing-title' href="/SignIn">Signin</a></li>}
+          </ul>
           <button className="btnRes-signup">Sign Up</button>
-        </nav>
+        </div>
       </header>
       <div className="section-container">
         <div className="first">
@@ -77,8 +78,8 @@ const LandingPage = () => {
             <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
             <button className="btnRes-first">Get started now!</button>
           </div>
-          <img src={image} alt="SkillBridge" className="small-image" />         
-        </div>
+          <img src={image} alt="SkillBridge" className="small-image" />                   
+        </div>        
       </div>
       <div className="how-it-works">
         <h2>How it works?</h2>
