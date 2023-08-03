@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import ContactCard from './ContactCard';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,16 +10,8 @@ import profile from '../LandingPage/image/Profile.png';
 import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
-import Footer from './Footer';
-// Import the JPG images
-import AmanImage from "../LandingPage/profile/Aman.jpg";
-import BrianImage from "../LandingPage/profile/Brian.jpg";
-import MonicaImage from "../LandingPage/profile/Monica.jpg";
-import NatasjaImage from "../LandingPage/profile/Natasja.jpg";
-import SanmeetImage from "../LandingPage/profile/Sanmeet.jpg";
-import VaibhavImage from "../LandingPage/profile/Vaibhav.jpg";
-import VaneetImage from "../LandingPage/profile/Vaneet.jpg";
-import { Link } from 'react-router-dom';
+import ContactCard from './ContactCard';
+
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -57,6 +48,8 @@ const LandingPage = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  
+
   return (
     <div className='container'>
        <header className='landing-header'>
@@ -65,15 +58,14 @@ const LandingPage = () => {
             <span className="site-title-text">SkillBridge</span>
           </div>
         <nav className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
+          {/* <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
-          </div>
+          </div> */}
           {/* <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}> */}
             <a className='landing-title' href="/HowItWorks">How it works</a>
             <a className='landing-title' href="/Testimonials">Testimonials</a>
             <a className='landing-title' href="/team">Team</a>
-            <Link className='landing-title' to='/SignIn'>Sign In</Link>
-            {/* <a className='landing-title' href="/SignIn">Signin</a> */}
+            <a className='landing-title' href="/SignIn">Signin</a>
           {/* </ul> */}
           <button className="btnRes-signup">Sign Up</button>
         </nav>
@@ -184,78 +176,14 @@ const LandingPage = () => {
         ))}
       </div>
       </div>
-
-      <div className="teams">
-        <h2 className='team-text'>Meet the team</h2>
-        <p className='team-text'>At Cosmic Chaos, we take pride in our exceptional team of professionals who bring passion, creativity, and expertise to every project. Our diverse team members possess a wide range of skills and experience, allowing us to tackle various challenges and deliver outstanding results.</p>
-        
-        <div className="member-card">          
-          <div className="card-row">
-            
-            <ContactCard
-              imgSrc={AmanImage}
-              name="Aman Bhardwaj"
-              roles="Full Stack Developer Lead"
-              linkedinUrl="https://www.linkedin.com/in/amanbhardwaj-/"
-            />
-
-            <ContactCard
-              imgSrc={BrianImage}
-              name="Brian Ungjun Yeo"
-              roles="Full Stack Developer"
-              linkedinUrl="https://www.linkedin.com/in/ungjun-yeo"
-            />
-
-            <ContactCard
-              imgSrc={MonicaImage}
-              name="Monica Varma"
-              roles="UX/UI Designer"
-              linkedinUrl="https://www.linkedin.com/in/monica-varma/"
-            />
-
-            <ContactCard
-              imgSrc={NatasjaImage}
-              name="Natasja Berzoini"
-              roles="UX/UI Designer Lead"
-              linkedinUrl="https://www.linkedin.com/in/natasjabrz/"
-            />
-          </div>
-
-          <div className="card-row">
-            <ContactCard
-              imgSrc={SanmeetImage}
-              name="Sanmeet Singh Malli"
-              roles="Full Stack Developer"
-              linkedinUrl="https://www.linkedin.com/in/sanmeet-malli/"
-            />
-
-            <ContactCard
-              imgSrc={VaibhavImage}
-              name="Vaibhav Malhotra"
-              roles="UX/UI Designer"
-              linkedinUrl="https://www.linkedin.com/in/vaibm/"
-            />
-
-            <ContactCard
-              imgSrc={VaneetImage}
-              name="Vaneet Kaur"
-              roles="Front End"
-              linkedinUrl="http://linkedin.com/in/vaneetk"
-            />    
-          </div>
-          
-        </div>
-        
-      </div>
       
+<ContactCard/>
 
       <div className="final">
         <h2>Have Questions? Get in touch with our experts!</h2>
         <p>If you have any questions or need further information about <strong>SkillBridge</strong> and how it can revolutionize your HR training management, we're here to help.<br></br>Reach out now and discover the power of <strong>SkillBridge</strong> for seamless training program management!</p>
         <button className="btnRes-touch">Get in touch</button>
-      </div>
-      
-      <Footer />
+      </div>       
     </div>
   );
 };
