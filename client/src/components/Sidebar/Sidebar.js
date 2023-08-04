@@ -9,7 +9,7 @@ import trainees from '../../assets/trainees-icon.svg';
 import { Link } from 'react-router-dom';
 
 
-const Sidebar = () => {
+const Sidebar = ({closeSidebar}) => {
     const images = [
         { title: 'Dashboard', imageUrl: dashboard, link: '/dashboard' },
         { title: 'Courses', imageUrl: courses, link: '/courses' },
@@ -27,6 +27,7 @@ const Sidebar = () => {
                 index={index}
                 title={item.title}
                 icon={item.imageUrl}
+                onClick={closeSidebar}
             />
             </Link>
         ))}

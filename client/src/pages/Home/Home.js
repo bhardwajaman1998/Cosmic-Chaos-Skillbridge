@@ -13,6 +13,8 @@ const Home = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [traineesData, setTraineesData] = useState([]);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   useEffect(() => {
     const getCourses = async () => {
       try {
@@ -48,6 +50,43 @@ const Home = () => {
     }
   };
 
+
+// mobile view sidebar functions
+
+const handleHamburgerIconClick = () => {
+  setSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
+
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  console.log('Hamburger icon clicked!');
+};
+
+useEffect(() => {
+  const handleClickOutsideSidebar = (event) => {
+    console.log('abc')
+    const sidebarContainer = document.querySelector(".sidebar-container");
+    const dashboardLayout = document.querySelector(".dashboard-layout");
+    dashboardLayout.classList.toggle("sidebar-show");
+    if (!sidebarContainer.contains(event.target)) {
+      // Clicked outside the sidebar, close it
+      setSidebarOpen(false);
+    }
+  };
+
+  document.addEventListener("click", handleClickOutsideSidebar);
+
+  return () => {
+    document.removeEventListener("click", handleClickOutsideSidebar);
+  };
+}, [isSidebarOpen]);
+
+
+const closeBar = () => {
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  setSidebarOpen(false);
+}
+
   return (
     <React.Fragment>
       <div className="dashboard-layout">
@@ -57,10 +96,12 @@ const Home = () => {
           ) : (
             <div className="layout text-2xl text-white">
               <div className="layout-sidebar">
-                <Sidebar />
+                <div className={`sidebar-container ${isSidebarOpen ? 'sidebar-show' : ''}`}>
+                  <Sidebar closeSidebar={closeBar}/>
+                </div>
               </div>
               <div className="layout-header">
-                <Header />
+                <Header onHamburgerIconClick={handleHamburgerIconClick}/>
               </div>
               <div className="layout-main">
                 <DashboardButtons />

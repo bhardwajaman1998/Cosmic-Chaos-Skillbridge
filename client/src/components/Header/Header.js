@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 
-const Header = ({ title='Dashboard', showBackButton }) => {
+const Header = ({ title='Dashboard', showBackButton, onHamburgerIconClick }) => {
    
   useEffect(() => {
     document.title = title;
@@ -43,10 +43,19 @@ const Header = ({ title='Dashboard', showBackButton }) => {
       navigate(-1);
     };
 
+    const handleHamburgerIconClick = () => {
+      // Call the callback function passed from the Home component
+      if (onHamburgerIconClick) {
+        onHamburgerIconClick();
+      }
+      // You can also toggle the sidebar state here if needed:
+      // setSidebarOpen(!isSidebarOpen);
+    };
+
     return (
       <div className="header">
         {isSmallScreen ? (
-          <div className="hamburger-icon">
+          <div className="hamburger-icon" onClick={handleHamburgerIconClick}>
             <MenuIcon />
           </div>
         ) : (

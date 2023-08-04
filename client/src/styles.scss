@@ -152,7 +152,6 @@ text-decoration-line: underline;
     padding-left: 5px;
     padding-right: 5px;
     color: white;
-
 }
 .divider-line {
     border-top: 1.5px solid white; /* Or use any other border properties */
@@ -1103,12 +1102,33 @@ border: unset;
   grid-template-areas: "layout-header" "layout-main"  "layout-left" "layout-right" ;
 }
 
-.layout-sidebar {
-  display: none; /* Hide the sidebar */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%; /* You can adjust the width as needed */
+  height: 100vh;
+  background-color: white; /* Set the background color for the sidebar */
+  z-index: 999; /* Set a higher z-index to make it overlay other elements */
+  transition: transform 0.3s ease; /* Add a transition for the transform property */
+  transform: translateX(-100%); /* Move the sidebar off the screen to the left */
+  background-color: $color-secondary;
 }
-.sidebar-show {
-  display: block;
+
+.sidebar-icons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
 }
+
+.sidebar-show .sidebar-container {
+  transform: translateX(0); /* Move the sidebar into the view */
+}
+
 .header{
   height: 2.9rem;
   width: 100vw;
