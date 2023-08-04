@@ -2,7 +2,7 @@ import React from 'react'
 import arrowIcon from '../../assets/arrow-icon.svg';
 
 const CreateButton = ({index, title, mobileTitle, icon}) => {
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 1000;
   return (
     <div  key={index} className='create-buttons'>
         <img className='create-icon' src={icon} alt="Icon" />
