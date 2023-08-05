@@ -7,6 +7,7 @@ import dashboard from '../../assets/dashboard-icon.svg';
 import courses from '../../assets/courses-icon.svg';
 import trainees from '../../assets/trainees-icon.svg';
 import { Link } from 'react-router-dom';
+// import Home from '../../pages/Home/Home'
 
 
 const Sidebar = () => {
@@ -18,9 +19,11 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar'>
-        <div className='sidebar-logo'>
-            <img src={logo} alt="Icon" />
-        </div>
+        <Link to = "/dashboard">
+            <div className='sidebar-logo'>
+                <img src={logo} alt="Icon" />
+            </div>
+        </Link>
         {images.map((item, index) => (
             <Link to={item.link} key={index} className='link-color'>
             <SidebarIcons 
