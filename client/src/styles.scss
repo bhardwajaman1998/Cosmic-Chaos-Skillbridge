@@ -593,7 +593,10 @@ table {
 }
 .chart-title{
     padding-top: 1rem;
+    padding-top: 1rem;
     padding-left: 2rem;
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
 }
 
 .chart-section{
