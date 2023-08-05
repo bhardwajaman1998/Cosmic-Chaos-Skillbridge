@@ -75,7 +75,8 @@ const LandingPage = () => {
             <Link className='landing-title' to='/SignIn'>Sign In</Link>
             {/* <a className='landing-title' href="/SignIn">Signin</a> */}
           {/* </ul> */}
-          <button className="btnRes-signup">Sign Up</button>
+          <Link className='btnRes-signup' to='/SignUp'>Sign Up</Link>
+          {/* <button className="btnRes-signup">Sign Up</button> */}
         </nav>
       </header>
       <div className="section-container">
