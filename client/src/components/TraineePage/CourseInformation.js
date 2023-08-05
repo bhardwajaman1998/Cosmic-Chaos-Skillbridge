@@ -13,7 +13,7 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
     }
 
     const differenceInTime = deadlineObj.getTime() - startDateObj.getTime();
-    const minutes = Math.ceil(differenceInTime / (1000 * 60));
+    const minutes = Math.ceil(differenceInTime / (1000 * 60 ) / 60 / 24);
     return minutes;
   };
 
@@ -63,7 +63,7 @@ const CourseInformation = ({ assignedCourses, traineeId }) => {
                   <td>
                     <td style={{ padding: '10px',}}><span class="bold-span">{course.course_name}</span></td>
                   </td>
-                  <td className="learn-time" style={{ padding: '10px',}}><span class="bold-span">{learningTime} mins</span></td>
+                  <td className="learn-time" style={{ padding: '10px',}}><span class="bold-span">{learningTime} days</span></td>
                   <td className="course-progress"style={{ padding: '10px',}}><span class="bold-span">{progress.toFixed(2)}%</span></td>
                   <td className="course-score" style={{ padding: '10px',}}>
                     <span class="bold-span">{course.score !== undefined ? course.score : '-'}</span>
