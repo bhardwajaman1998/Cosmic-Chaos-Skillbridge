@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-import arrowIcon from '../../assets/arrow-icon.svg';
-import { Link, useNavigate } from 'react-router-dom';
+// import React, { useEffect } from 'react'
+// import arrowIcon from '../../assets/arrow-icon.svg';
+import { Link } from 'react-router-dom';
 
 const WelcomeMessage = () => {
-    const navigate = useNavigate();
-  const naviGate =() => {
-    navigate('/signin');
-  }
+  // const navigate = useNavigate();
+  // const naviGate =() => {
+  //   navigate('/signin');
+  // }
 
   return (
     <div className='welcome-message'>

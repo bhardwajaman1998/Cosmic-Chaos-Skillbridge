@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import DoughnutChart from '../DataVisualize/DoughnutChart';
+import React, { useEffect, useState } from 'react';
+// import DoughnutChart from '../DataVisualize/DoughnutChart';
 import ProgressSection from '../DataVisualize/ProgressSection';
-import ChartLabel from '../DataVisualize/ChartLabel';
+
+// import ChartLabel from '../DataVisualize/ChartLabel';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import { Bar } from 'react-chartjs-2';
-
+import { fetchTraineeByID } from '../../services/DashboardService';
 
 const TraineeDataVisual = ({ traineeData }) => {
   const [averageCompletionRate, setAverageCompletionRate] = useState(0);
@@ -12,41 +13,56 @@ const TraineeDataVisual = ({ traineeData }) => {
   const [coursesInProgress, setCoursesInProgress] = useState([]);
   const [completedCourses, setCompletedCourses] = useState([]);
   const [progressData, setProgressData] = useState([]);
+  const [totalCourses, setTotalCourses] = useState(0);
+  const [averageTotalScore, setAverageTotalScore] = useState(0);
 
-  const chartRef = useRef(null);
+
+  const [selectedTrainee, setSelectedTrainee] = useState(null);
+  const [assignedPrograms, setAssignedPrograms] = useState([]);
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (traineeData._id) {
+          const traineeDataById = await fetchTraineeByID(traineeData._id);
+          setSelectedTrainee(traineeDataById);
+          setAssignedPrograms(traineeDataById.assigned_training_programs);
+        }
+      } catch (error) {
+        console.error('Error fetching trainee:', error);
+      }
+    };
+
+    fetchData();
+  }, [traineeData]);
+
+
   const calculateCoursesInProgress = () => {
     const inProgressCourses = traineeData.assigned_training_programs.filter(
       (program) => program.status === 'In progress'
-  );
+    );
     setCoursesInProgress(inProgressCourses);
   };
-
+  
   const calculateCompletedCourses = () => {
     const completedCourses = traineeData.assigned_training_programs.filter(
       (program) => program.status === 'Completed' && program.evaluation === 1
     );
     setCompletedCourses(completedCourses);
   };
-    // Calculate the progress for each assigned training program
-    const calculateProgressData = () => {
-      const progressData = traineeData.assigned_training_programs.map((program) => {
-        const completedLessons = program.lessons.completed || 0;
-        const totalLessons = program.lessons.total || 1; // Avoid division by zero
-        return Math.floor((completedLessons / totalLessons) * 100);
-      });
-      setProgressData(progressData);
-    };
-
-
   
-    calculateCoursesInProgress();
-    calculateCompletedCourses();
-    calculateProgressData();
-  }, [traineeData]);
-
-  useEffect(() => {
-    const calculateAverageLearningTime = () => {
+  const calculateProgressData = () => {
+    const completedAndEvaluatedCourses = traineeData.assigned_training_programs.filter(
+      (program) => program.status === 'Completed' && program.evaluation === 1
+    );
+  
+    const progressData = completedAndEvaluatedCourses.map((program) => {
+      return program.score || 0; // Use the "score" field or set to 0 if not available
+    });
+    setProgressData(progressData);
+  };
+  
+  const calculateAverageLearningTime = () => {
       let totalTime = 0;
       let completedCount = 0;
 
@@ -71,56 +87,45 @@ const TraineeDataVisual = ({ traineeData }) => {
       setAverageCompletionRate(averageRate);
     };
 
+
+  // const chartRef = useRef(null);
+  useEffect(() => {
+    if (traineeData) {
+      setTotalCourses(traineeData.assigned_training_programs.length);
+  
+      const completedScores = completedCourses.map((program) => program.score || 0);
+      const totalCompletedScores = completedScores.reduce((acc, score) => acc + score, 0);
+      const averageScore = completedScores.length > 0 ? totalCompletedScores / completedScores.length : 0;
+      setAverageTotalScore(averageScore);
+  
+      calculateCoursesInProgress();
+      calculateCompletedCourses();
+      calculateProgressData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [traineeData]); // Include traineeData in the dependency array
+  
+  // Second useEffect
+  useEffect(() => {
     calculateAverageLearningTime();
     calculateAverageCompletionRate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedCourses, coursesInProgress]);
 
-  // const data = {
-  //   labels: ['In Progress', 'Completed'],
-  //   datasets: [
-  //     {
-  //       data: [coursesInProgress.length, completedCourses.length],
-  //       backgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-  //       hoverBackgroundColor: ['black', 'rgba(106, 211, 139, 1)'],
-  //     },
-  //   ],
-  // };
-
-  // const options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   plugins: {
-  //     legend: {
-  //       display: false,
-  //     },
-  //     tooltip: {
-  //       enabled: true,
-  //       callbacks: {
-  //         label: (context) => {
-  //           const label = context.label || '';
-  //           if (label) {
-  //             const value = context.raw || 0;
-  //             return `${label}: ${value}`;
-  //           }
-  //           return null;
-  //         },
-  //       },
-  //     },
-  //   },
-  // };
   const data = {
-    labels: traineeData.assigned_training_programs.map((program) => program.course_name),
+    labels: completedCourses.map((program) => program.course_name),
     datasets: [
       {
-        label: 'Progress',
+        label: 'Score',
         data: progressData,
         backgroundColor: 'rgba(106, 211, 139, 1)',
         borderColor: 'rgba(106, 211, 139, 1)',
         borderWidth: 1,
+        borderRadius: 5,
+        maxBarThickness: 80,
       },
     ],
   };
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -135,7 +140,7 @@ const TraineeDataVisual = ({ traineeData }) => {
             const label = context.label || '';
             if (label) {
               const value = context.parsed.y || 0;
-              return `Progress: ${value}%`;
+              return `Score: ${value}%`;
             }
             return null;
           },
@@ -151,7 +156,7 @@ const TraineeDataVisual = ({ traineeData }) => {
       y: {
         beginAtZero: true,
         grid: {
-          display: false, 
+          display: true,
         },
         ticks: {
           precision: 0,
@@ -160,18 +165,34 @@ const TraineeDataVisual = ({ traineeData }) => {
       },
     },
   };
-  
 
   return (
-    <div className="single-trainee-container">
-      <div className="progress-section">
-        <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
-        <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
-      </div>
-      <div className="progress-blocks-bar-graph">
-        <Bar data={data} options={options} />
+    <div>
+          <h2 className='learning-analytics-heading'>Learning Analytics</h2>
+      <div className="single-trainee-container">
+        <div className="progress-blocks-bar-graph">
+          <h3 className="chart-title">Scores per category</h3>
+          <Bar data={data} options={options} />
+        </div>
+        {assignedPrograms.length > 0 ? (
+          <div className="single-chart-container">
+            <h3 className="chart-title">Progress</h3>
+            <div className="chart-section">
+              <EmployeeProgressChart assignedCourses={assignedPrograms} traineeId={selectedTrainee._id} />
+            </div>
+          </div>
+        ) : (
+          <div>Loading Employee Progress Chart...</div>
+        )}
+        <div className="progress-section">
+          <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
+          <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
+          <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
+          <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
+        </div>
       </div>
     </div>
+
   );
 };
 

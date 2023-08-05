@@ -6,14 +6,13 @@ import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrain
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection';
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 
-import { fetchAllCourses, fetchAllTrainees, fetchTraineesByCourseId } from '../../services/DashboardService';
+import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [traineesData, setTraineesData] = useState([]);
-
   useEffect(() => {
     const getCourses = async () => {
       try {
@@ -36,11 +35,11 @@ const Home = () => {
   }, []);
 
   const handleCourseSelection = async (courseId) => {
-    setSelectedCourse(courseId);
     try {
       setLoading(true);
       // await new Promise((resolve) => setTimeout(resolve, 2000));
       const traineesData = await fetchTraineesByCourseId(courseId._id);
+      setSelectedCourse(courseId);
       setTraineesData(traineesData);
     } catch (error) {
       // Handle error
@@ -68,7 +67,7 @@ const Home = () => {
               </div>
               <div className="layout-left">
                 <DashboardTrainees
-                  key={selectedCourse}
+                  selectedCourse={selectedCourse}
                   courses={courses}
                   traineesData={traineesData}
                   onSelectCourse={handleCourseSelection}
