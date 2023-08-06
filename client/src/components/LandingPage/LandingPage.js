@@ -11,6 +11,7 @@ import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
 import ContactCard from './ContactCard';
+import { Link } from 'react-router-dom';
 
 
 const LandingPage = () => {
