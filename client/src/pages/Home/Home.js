@@ -13,6 +13,8 @@ const Home = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [traineesData, setTraineesData] = useState([]);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   useEffect(() => {
     const getCourses = async () => {
       try {
@@ -48,6 +50,21 @@ const Home = () => {
     }
   };
 
+
+// mobile view sidebar functions
+const handleHamburgerIconClick = () => {
+  setSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  console.log('Hamburger icon clicked!');
+};
+
+const closeBar = () => {
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  setSidebarOpen(false);
+}
+
   return (
     <React.Fragment>
       <div className="dashboard-layout">
@@ -57,10 +74,12 @@ const Home = () => {
           ) : (
             <div className="layout text-2xl text-white">
               <div className="layout-sidebar">
-                <Sidebar />
+                <div className={`sidebar-container ${isSidebarOpen ? 'sidebar-show' : ''}`}>
+                  <Sidebar closeSidebar={closeBar}/>
+                </div>
               </div>
               <div className="layout-header">
-                <Header />
+                <Header onHamburgerIconClick={handleHamburgerIconClick}/>
               </div>
               <div className="layout-main">
                 <DashboardButtons />

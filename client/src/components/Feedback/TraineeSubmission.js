@@ -155,6 +155,7 @@ const handleopenAI = () => {
  
 
 function callOpenAi(modifiedPayload){
+  const openAiSecret = process.env.REACT_APP_OPEN_AI_SECRET
     setLoading(true);
     console.log(modifiedPayload)
     const apiKey = process.env.REACT_APP_OPEN_AI_SECRET
