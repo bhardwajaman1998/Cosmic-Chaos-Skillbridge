@@ -24,7 +24,9 @@ const TraineeSection = ({index, name, imageUrl, learningTime, finalScore, course
       {isMobile ? (
         <tr className='tarinee-row' key={index}>
         <td>
-            <img src={imageUrl} alt="Icon" /> 
+            <div className='circle'>
+                <img className='trainee-photo' src={imageUrl} alt="Trainee" />
+              </div>
         </td>
         <td>
             <span className='table-name'>{name}</span>
