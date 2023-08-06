@@ -157,6 +157,7 @@ const handleopenAI = () => {
 function callOpenAi(modifiedPayload){
     setLoading(true);
     console.log(modifiedPayload)
+    const apiKey = process.env.REACT_APP_OPEN_AI_SECRET
     axios({
       method: "POST",
       url: "https://api.openai.com/v1/completions",
@@ -164,7 +165,7 @@ function callOpenAi(modifiedPayload){
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer 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"
+          `Bearer ${apiKey}` 
       }
     })
     .then((res) => {

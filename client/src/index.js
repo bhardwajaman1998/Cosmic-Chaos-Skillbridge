@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { config } from 'dotenv'; // Import dotenv
 import './styles.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+config();
+
 // import firebase from './components/TraineePage/Firebase';
 // import { StyledEngineProvider } from '@mui/material/styles';
 const root = ReactDOM.createRoot(document.getElementById('root'));
