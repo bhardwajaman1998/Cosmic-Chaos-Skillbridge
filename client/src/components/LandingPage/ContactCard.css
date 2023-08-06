@@ -64,3 +64,27 @@
 .social-links a:hover {
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .member-card {
+    /* Set a fixed width for the cards to be visible one at a time */
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .card-row {
+    /* Adjust the display to show cards in a horizontal layout */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column
+  }
+  
+  .contact-card {
+    /* Adjust the width of each card in mobile view */
+    width: 100%;
+  }
+
+  .slick-dots {
+    display: block;
+  }
+}
