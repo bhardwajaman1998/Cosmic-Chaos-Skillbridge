@@ -35,23 +35,23 @@ const ContactCard = ({ imgSrc, name, roles, linkedinUrl }) => {
   );
 };
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 7, // Display 7 cards in desktop view
-  slidesToScroll: 1,
-  adaptiveHeight: true,
-  responsive: [
-    {
-      breakpoint: 768, // Breakpoint for mobile devices
-      settings: {
-        slidesToShow: 1, // Display 1 cards in mobile view
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+// const settings = {
+//   dots: true,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 7, // Display 7 cards in desktop view
+//   slidesToScroll: 1,
+//   adaptiveHeight: true,
+//   responsive: [
+//     {
+//       breakpoint: 768, // Breakpoint for mobile devices
+//       settings: {
+//         slidesToShow: 1, // Display 1 cards in mobile view
+//         slidesToScroll: 1,
+//       },
+//     },
+//   ],
+// };
 
 // Render the "Meet the team" section directly after the ContactCard component
 const ContactCardWithMeetTheTeam = () => {
