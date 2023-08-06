@@ -12,14 +12,12 @@ const SignIn = () => {
   const handleSignIn = async () => {
     try {
       // Make an API call to log in the user
-      const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
-
-      // Handle the response and redirect if needed
+       const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
+      //const response = await axios.post('http://localhost:3000/admin/login', { email, password});
       console.log(response.data);
       const token = response.data.token;
-      // Save the token to localStorage or secure cookie
       localStorage.setItem('token', token);
-      // Redirect the user to the home page (dashboard)
+  
       navigate('/dashboard');
     } catch (error) {
       console.error('Error during login:', error);

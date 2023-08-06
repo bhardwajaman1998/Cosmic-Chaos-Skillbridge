@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+
 const Sidebar = ({closeSidebar}) => {
     const images = [
         { title: 'Dashboard', imageUrl: dashboard, link: '/dashboard' },

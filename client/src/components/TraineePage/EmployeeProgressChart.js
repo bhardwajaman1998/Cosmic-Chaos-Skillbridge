@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import DoughnutChart from '../DataVisualize/DoughnutChart'; // Update the import path with the correct path to your custom component
+import ChartLabel from '../DataVisualize/ChartLabel';
 
 const EmployeeProgressChart = ({ assignedCourses, traineeId }) => {
   const [completedCount, setCompletedCount] = useState(0);
@@ -30,49 +31,16 @@ const EmployeeProgressChart = ({ assignedCourses, traineeId }) => {
     calculateCourseCounts();
   }, [assignedCourses]);
 
-  const data = {
-    labels: ['Completed', 'In Progress', 'Not Started'],
-    datasets: [
-      {
-        data: [completedCount, inProgressCount, notStartedCount],
-        backgroundColor: ['rgba(106, 211, 139, 1)', 'black', 'rgba(188, 188, 188, 1)'],
-        hoverBackgroundColor: ['rgba(106, 211, 139, 1)', 'black', 'rgba(188, 188, 188, 1)'],
-        
-      },
-    ],
-  };
-
-  const options = {
-    responsive: false,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'right',
-      },
-      tooltip: {
-        enabled: true,
-        callbacks: {
-          label: (context) => {
-            const label = context.label || '';
-            if (label) {
-              const value = context.raw || 0;
-              return `${label}: ${value}`;
-            }
-            return null;
-          },
-        },
-      },
-    },
-  };
-
   return (
-    <div>
-      {/* <h2>Employee Progress Chart - Trainee ID: {traineeId}</h2> */}
-      <div>
-        <Doughnut data={data} options={options} className='employee-doughnut' />
-      </div>
-    </div>
+   
+        <div className='single-doughnut-container'>
+          <DoughnutChart
+            inProgressCount={inProgressCount}
+            completedCount={completedCount}
+            notStartedCount={notStartedCount}
+          />
+          <ChartLabel />
+        </div>
   );
 };
 

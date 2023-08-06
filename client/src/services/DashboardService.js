@@ -1,9 +1,10 @@
 // import axios from 'axios'
 const dotenv = require("dotenv");
 dotenv.config();
-const API_BASE_URL = process.env.REACT_APP_TEST_API_BASE_URL
+const API_BASE_URL = 'http://localhost:3000'
 
-// Example API service for fetching data
+// process.env.REACT_APP_TEST_API_BASE_URL
+
 export const fetchAllCourses = async () => {
     try {
       console.log(API_BASE_URL)

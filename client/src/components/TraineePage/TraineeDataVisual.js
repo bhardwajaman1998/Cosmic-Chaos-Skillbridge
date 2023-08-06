@@ -70,7 +70,7 @@ const TraineeDataVisual = ({ traineeData }) => {
         const startDate = new Date(course.start_date);
         const endDate = new Date(course.end_date);
         const differenceInMilliseconds = endDate - startDate;
-        const minutes = Math.floor(differenceInMilliseconds / 60000);
+        const minutes = Math.floor(differenceInMilliseconds / 60000) / 60 / 24;
         totalTime += minutes;
         completedCount++;
       });
@@ -186,7 +186,7 @@ const TraineeDataVisual = ({ traineeData }) => {
         )}
         <div className="progress-section">
           <ProgressSection index={0} title="Avg. completion rate" dataString={`${averageCompletionRate}%`} />
-          <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} min`} />
+          <ProgressSection index={1} title="Avg. learning time" dataString={`${averageLearningTime} days`} />
           <ProgressSection index={2} title="Total Courses" dataString={`${totalCourses}`} />
           <ProgressSection index={3} title="Avg. Total Score" dataString={`${averageTotalScore}%`} />
         </div>
