@@ -52,34 +52,12 @@ const Home = () => {
 
 
 // mobile view sidebar functions
-
 const handleHamburgerIconClick = () => {
   setSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
-
   const dashboardLayout = document.querySelector(".dashboard-layout");
   dashboardLayout.classList.toggle("sidebar-show");
   console.log('Hamburger icon clicked!');
 };
-
-useEffect(() => {
-  const handleClickOutsideSidebar = (event) => {
-    console.log('abc')
-    const sidebarContainer = document.querySelector(".sidebar-container");
-    const dashboardLayout = document.querySelector(".dashboard-layout");
-    dashboardLayout.classList.toggle("sidebar-show");
-    if (!sidebarContainer.contains(event.target)) {
-      // Clicked outside the sidebar, close it
-      setSidebarOpen(false);
-    }
-  };
-
-  document.addEventListener("click", handleClickOutsideSidebar);
-
-  return () => {
-    document.removeEventListener("click", handleClickOutsideSidebar);
-  };
-}, [isSidebarOpen]);
-
 
 const closeBar = () => {
   const dashboardLayout = document.querySelector(".dashboard-layout");

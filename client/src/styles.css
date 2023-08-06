@@ -173,11 +173,13 @@ th:last-child {
 }
 
 .divider-line {
-  border-top: 1.5px solid white; /* Or use any other border properties */
+  border-top: 1px solid white; /* Or use any other border properties */
   margin-bottom: 1rem;
 }
 
 .sidebar-icons {
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,6 +190,7 @@ th:last-child {
 .link-color {
   color: white;
   text-decoration: none;
+  font-size: small;
 }
 
 .sidebar-logo {
@@ -1093,17 +1096,28 @@ thead tr:hover {
     grid-template-columns: 100%;
     grid-template-areas: "layout-header" "layout-main" "layout-left" "layout-right";
   }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .sidebar-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%; /* You can adjust the width as needed */
+    width: 100%; /* You can adjust the width as needed */
     height: 100vh;
     background-color: white; /* Set the background color for the sidebar */
     z-index: 999; /* Set a higher z-index to make it overlay other elements */
     transition: transform 0.3s ease; /* Add a transition for the transform property */
     transform: translateX(-100%); /* Move the sidebar off the screen to the left */
     background-color: #1F2D37;
+  }
+  .sidebar-cross {
+    cursor: pointer;
+    float: right;
+    padding-right: 2rem;
+    align-self: end;
   }
   .sidebar-icons {
     display: flex;
