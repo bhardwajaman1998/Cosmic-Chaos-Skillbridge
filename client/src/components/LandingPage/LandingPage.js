@@ -78,9 +78,9 @@ const LandingPage = () => {
             <li><a className='landing-title' href="/Testimonials">Testimonials</a></li>
             <li><a className='landing-title' href="/team">Team</a></li>
             {/* Render the Signin link only for desktop view */}
-      {!isMobileMenuOpen && <li><a className='landing-title' href="/SignIn">Signin</a></li>}
+      {!isMobileMenuOpen && <li><Link className='landing-title' to='/SignIn'>Sign In</Link></li>}
           </ul>
-          <button className="btnRes-signup">Sign Up</button>
+          <Link className='landing-title' to='/SignIn'>Sign Up</Link>
         </div>
 {/* >>>>>>> dev-brian */}
       </header>
