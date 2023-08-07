@@ -158,7 +158,7 @@ li {
   text-decoration: none;
 }
 
-.button-container {
+.btn-container {
   width: 100%;
   text-align: left;
   margin-bottom: 10px;
@@ -485,12 +485,57 @@ text-align: center; /* Align text to the center */
   padding-right: 5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .container {
     padding: 1em;
     background-color: #EBF2E7;
     overflow: hidden;
     
+  }
+
+  .landing-header{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .how-it-works {
+    padding-left: 0; /* Remove left padding */
+    padding-right: 0; /* Remove right padding */
+    text-align: center;
+  }
+
+  .how-it-works h2 {
+    text-align: center;
+  }
+
+  .btn-container {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .slide-container{
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .slide-container h2 {
+    text-align: center;
+  }
+
+  .slick-next {
+    display: none !important;
+  }
+
+  .slick-prev {
+    display: none !important;
+  }
+
+  .slick-dots li button:before {
+    content: none;
   }
 
   .site-title {
@@ -499,6 +544,9 @@ text-align: center; /* Align text to the center */
 
   .site-title-text {
     display: none;
+  }
+  .slick-slide {
+    margin: 0; /* Adjust the margin value as needed */
   }
   
   .nav {
@@ -567,6 +615,8 @@ text-align: center; /* Align text to the center */
     justify-content: space-between;
     align-items: flex-start;
     padding: 0 5rem;
+    padding-left: 0;
+    padding-right: 1;
   }
   
   .first {
@@ -588,7 +638,8 @@ text-align: center; /* Align text to the center */
   }
   
   .small-image {
-    width: 622px;
+    width: 250px;
+    display: block;
   }
   
   .first .button-container {
@@ -597,14 +648,28 @@ text-align: center; /* Align text to the center */
   
 
   .card-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
+    width: 80%; /* Set a custom width for the card container */
+    margin: 0 auto; /* Center the card container horizontally */
+    display: flex; /* Optional: Use flexbox to align content */
+    flex-direction: column; /* Optional: Adjust the content layout as needed */
+    align-items: center; /* Optional: Center the content horizontally */
+    text-align: center; /* Opti
+  }
+
+  .slider-dots {
+    bottom: 20px; /* You can change this value to adjust the dots' vertical position */
   }
   
   .slide-container {
     margin-top: 3em;
     text-align: center;
+  }
+
+  .slide {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    font-size: 14px;
   }
   
   .slide h3,
@@ -632,6 +697,8 @@ text-align: center; /* Align text to the center */
     margin: 0 5px;
     cursor: pointer;
   }
+
+  
   
   .dot.active {
     background-color: #6AD38B;
@@ -665,11 +732,15 @@ text-align: center; /* Align text to the center */
     align-items: flex-start;
   }
   
-  .final {
-    margin-top: 3em;
-    margin-bottom: 3em;
-    text-align: center;
-  }
+  .final{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: flex-start;
+}
   
   .final h2 {
     font-size: 2em;
@@ -694,7 +765,7 @@ text-align: center; /* Align text to the center */
   }
   
  
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -814,7 +885,7 @@ text-align: center; /* Align text to the center */
     }
   
     .first {
-      flex-direction: row;
+      flex-direction: column-reverse;
       justify-content: space-between;
       align-items: center;
     }
