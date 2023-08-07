@@ -65,7 +65,9 @@
   color: #000;
 }
 
-@media screen and (max-width: 768px) {
+
+
+@media screen and (max-width: 400px) {
   .member-card {
     /* Set a fixed width for the cards to be visible one at a time */
     width: 100%;
@@ -77,6 +79,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column
+  }
+
+  .member-card .card-row {
+    display: flex;
+    flex-direction: column;
   }
   
   .contact-card {
