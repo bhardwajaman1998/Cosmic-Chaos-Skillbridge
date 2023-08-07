@@ -485,7 +485,7 @@ text-align: center; /* Align text to the center */
   padding-right: 5rem;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1000px) {
   .container {
     padding: 1em;
     background-color: #EBF2E7;
@@ -772,7 +772,7 @@ text-align: center; /* Align text to the center */
   }
   
  
-  @media (min-width: 400px) {
+  @media (min-width: 1000px) {
     .container {
       max-width: 800px;
       margin: 0 auto;
