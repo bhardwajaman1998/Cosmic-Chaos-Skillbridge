@@ -57,7 +57,7 @@ const LandingPage = () => {
     ],
     customPaging: (index) => (
       <div
-        className={`dot ${currentSlide === index ? 'active' : ''}`}
+        className={`dot ${currentSlide === index ? '' : ''}`}
         onClick={() => setCurrentSlide(index)}
       />
     ),
@@ -79,7 +79,7 @@ const LandingPage = () => {
           <span className="site-title-text">SkillBridge</span>
         </div>
         <div className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
+          <div className="nav-mobile" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
           </div>
           <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>

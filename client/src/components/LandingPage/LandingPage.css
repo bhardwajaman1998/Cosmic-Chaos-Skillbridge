@@ -510,7 +510,7 @@ text-align: center; /* Align text to the center */
 
   .btn-container {
     width: 100%;
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
     padding-left: 0;
     padding-right: 0;
@@ -611,23 +611,23 @@ text-align: center; /* Align text to the center */
   }
   
    .section-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 0 5rem;
     padding-left: 0;
-    padding-right: 1;
+    padding-right: 0;
   }
   
   .first {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
 
   .first h1,
   .first p {
-    text-align: left;
+    text-align: center;
   }
   
  
@@ -635,6 +635,10 @@ text-align: center; /* Align text to the center */
   .first .image-container {
     justify-content: flex-start;
     margin-top: 0;
+  }
+  .image-container {
+    justify-content: flex-start;
+    margin-top: 2rem;
   }
   
   .small-image {
@@ -712,10 +716,12 @@ text-align: center; /* Align text to the center */
   
   .teams h2 {
     font-size: 2em;
+    text-align: center;
   }
   
   .teams p {
     margin-top: 1em;
+    text-align: center;
   }
   
   .member-card {
@@ -730,6 +736,7 @@ text-align: center; /* Align text to the center */
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
+    align-content: center;
   }
   
   .final{
