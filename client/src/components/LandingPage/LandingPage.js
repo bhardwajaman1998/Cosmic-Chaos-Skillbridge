@@ -11,7 +11,6 @@ import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
 import ContactCard from './ContactCard';
-import { Link } from 'react-router-dom';
 
 
 const LandingPage = () => {
@@ -25,7 +24,6 @@ const LandingPage = () => {
 
   const sliderSettings = {
     dots: true,
-    dotsClass: 'slider-dots',
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -36,14 +34,36 @@ const LandingPage = () => {
     },
     responsive: [
       {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
     ],
+    customPaging: (index) => (
+      <div
+        className={`dot ${currentSlide === index ? 'active' : ''}`}
+        onClick={() => setCurrentSlide(index)}
+      />
+    ),
   };
+  
+  
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -62,39 +82,30 @@ const LandingPage = () => {
           <div className="nav-mobile-toggle" onClick={toggleMobileMenu}>
             <span className={`nav-mobile-icon ${isMobileMenuOpen ? 'open' : ''}`}></span>
           </div>
-{/* <<<<<<< HEAD */}
-          {/* <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}> */}
-            {/* // <a className='landing-title' href="/HowItWorks">How it works</a> */}
-            {/* // <a className='landing-title' href="/Testimonials">Testimonials</a> */}
-            {/* // <a className='landing-title' href="/team">Team</a> */}
-            {/* // <Link className='landing-title' to='/SignIn'>Sign In</Link> */}
-            {/* <a className='landing-title' href="/SignIn">Signin</a> */}
-          {/* </ul> */}
-          {/* <Link className='btnRes-signup' to='/SignUp'>Sign Up</Link> */}
-          {/* <button className="btnRes-signup">Sign Up</button> */}
-        {/* </nav> */}
-{/* ======= */}
           <ul className={`nav-list ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
             <li><a className='landing-title' href="/HowItWorks">How it works</a></li>
             <li><a className='landing-title' href="/Testimonials">Testimonials</a></li>
             <li><a className='landing-title' href="/team">Team</a></li>
             {/* Render the Signin link only for desktop view */}
-      {!isMobileMenuOpen && <li><Link className='landing-title' to='/SignIn'>Sign In</Link></li>}
+      {!isMobileMenuOpen && <li><a className='landing-title' href="/SignIn">Signin</a></li>}
           </ul>
-          <Link className='landing-title' to='/SignIn'>Sign Up</Link>
+          <button className="btnRes-signup">Sign Up</button>
         </div>
-{/* >>>>>>> dev-brian */}
       </header>
       <div className="section-container">
-        <div className="first">
-          <div className="image-container">
-            <h1>Empower your<br /> employees to grow</h1>
-            <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
-            <button className="btnRes-first">Get started now!</button>
-          </div>
-          <img src={image} alt="SkillBridge" className="small-image" />                   
-        </div>        
+  <div className="first">
+    <div className="image-container">
+      <h1>Empower your<br /> employees to grow</h1>
+      <p>Our web app is designed to empower employees by providing them with a comprehensive platform to enhance their skills, knowledge, and overall professional development. This innovative tool harnesses the power of technology to deliver a personalized and accessible learning experience for individuals within an organization.</p>
+      <div className="btn-container">
+        <button className="btnRes-first">Get started now!</button>
       </div>
+    </div>
+    <div className="image-container">
+      <img src={image} alt="SkillBridge" className="small-image" />
+    </div>
+  </div>
+</div>
       <div className="how-it-works">
         <h2>How it works?</h2>
         <p>The web app operates on a user-friendly platform that makes it easy for employees to navigate and access its features. Upon logging in, employees are greeted with a personalized dashboard that provides them with an overview of their learning progress, recommended courses, and upcoming training activities.</p>
@@ -130,14 +141,14 @@ const LandingPage = () => {
 
         </Slider>
         <div className="slider-dots">
-          {cardImages.map((_, index) => (
-            <div
-              key={index}
-              className={`dot ${currentSlide === index ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(index)}
-            />
-          ))}
-        </div>
+  {cardImages.map((_, index) => (
+    <div
+      key={index}
+      className={`dot ${currentSlide === index ? 'active' : ''}`}
+      onClick={() => setCurrentSlide(index)}
+    />
+  ))}
+</div>
       </div>
 
       <button className="btnRes">
@@ -152,7 +163,7 @@ const LandingPage = () => {
 
         <Slider {...sliderSettings}>
           
-          <div className="slide1 slide">
+          <div className="slide">
             <img src={profile} alt="SkillBridge" />
             <h3>"Guille"</h3>
             <h4>Jr. Frontend Developer</h4>
@@ -161,7 +172,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="slide2 slide">
+          <div className="slide">
             <img src={profile} alt="SkillBridge" />
             <h3>"Lauren"</h3>
             <h4>Senior Developer, Innovate Labs</h4>
@@ -170,7 +181,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="slide3 slide">
+          <div className="slide">
             <img src={profile} alt="SkillBridge" />
             <h3>"Jake"</h3>
             <h4>Founder, TechVista LTD</h4>
@@ -184,12 +195,12 @@ const LandingPage = () => {
         <div className="slider-dots">
         {cardImages.map((_, index) => (
           <div
-            key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(index)}
-          />
-        ))}
-      </div>
+      key={index}
+      className={`dot ${currentSlide === index ? 'active' : ''}`}
+      onClick={() => setCurrentSlide(index)}
+    />
+  ))}
+</div>
       </div>
       
 <ContactCard/>
