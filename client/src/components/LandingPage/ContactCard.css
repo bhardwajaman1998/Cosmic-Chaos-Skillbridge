@@ -67,7 +67,7 @@
 
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 1000px) {
   .member-card {
     /* Set a fixed width for the cards to be visible one at a time */
     width: 100%;

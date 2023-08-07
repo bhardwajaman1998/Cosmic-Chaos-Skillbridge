@@ -130,7 +130,7 @@
   font-size: 0.9rem;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1000px) {
   .card-container {
     width: 100%; /* Set a wider width for the card container in responsive view */
   }
