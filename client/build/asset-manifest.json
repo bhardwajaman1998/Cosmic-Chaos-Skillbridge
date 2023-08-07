@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.586e37b5.chunk.css",
+    "main.js": "/static/js/main.f41cf0fe.chunk.js",
+    "main.js.map": "/static/js/main.f41cf0fe.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7add9d0c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7add9d0c.js.map",
+    "static/css/2.65f8c46c.chunk.css": "/static/css/2.65f8c46c.chunk.css",
+    "static/js/2.65e53dac.chunk.js": "/static/js/2.65e53dac.chunk.js",
+    "static/js/2.65e53dac.chunk.js.map": "/static/js/2.65e53dac.chunk.js.map",
+    "static/js/3.c9780d3b.chunk.js": "/static/js/3.c9780d3b.chunk.js",
+    "static/js/3.c9780d3b.chunk.js.map": "/static/js/3.c9780d3b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.65f8c46c.chunk.css.map": "/static/css/2.65f8c46c.chunk.css.map",
+    "static/css/main.586e37b5.chunk.css.map": "/static/css/main.586e37b5.chunk.css.map",
+    "static/js/2.65e53dac.chunk.js.LICENSE.txt": "/static/js/2.65e53dac.chunk.js.LICENSE.txt",
+    "static/media/Aman.67db59bb.jpg": "/static/media/Aman.67db59bb.jpg",
+    "static/media/Brian.e18fb4ed.jpg": "/static/media/Brian.e18fb4ed.jpg",
+    "static/media/Monica.12ffef2e.jpg": "/static/media/Monica.12ffef2e.jpg",
+    "static/media/Natasja.f112cb52.jpg": "/static/media/Natasja.f112cb52.jpg",
+    "static/media/Sanmeet.17d5cde1.jpg": "/static/media/Sanmeet.17d5cde1.jpg",
+    "static/media/Vaibhav.c82b7d65.jpg": "/static/media/Vaibhav.c82b7d65.jpg",
+    "static/media/Vaneet.9422a361.jpg": "/static/media/Vaneet.9422a361.jpg",
+    "static/media/arrow-icon.b9af3255.svg": "/static/media/arrow-icon.b9af3255.svg",
+    "static/media/courses-icon.f8f5708b.svg": "/static/media/courses-icon.f8f5708b.svg",
+    "static/media/dashboard-icon.e7262e60.svg": "/static/media/dashboard-icon.e7262e60.svg",
+    "static/media/employees-icon.5c7e3985.svg": "/static/media/employees-icon.5c7e3985.svg",
+    "static/media/image.fcb0f3e7.png": "/static/media/image.fcb0f3e7.png",
+    "static/media/logo.fd0ecee4.svg": "/static/media/logo.fd0ecee4.svg",
+    "static/media/newAccount-icon.bafcca2e.svg": "/static/media/newAccount-icon.bafcca2e.svg",
+    "static/media/newCourse-icon.3571c0ca.svg": "/static/media/newCourse-icon.3571c0ca.svg",
+    "static/media/notification-icon.963cc83a.svg": "/static/media/notification-icon.963cc83a.svg",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf",
+    "static/media/trainees-icon.9133dbb2.svg": "/static/media/trainees-icon.9133dbb2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7add9d0c.js",
+    "static/css/2.65f8c46c.chunk.css",
+    "static/js/2.65e53dac.chunk.js",
+    "static/css/main.586e37b5.chunk.css",
+    "static/js/main.f41cf0fe.chunk.js"
+  ]
+}
