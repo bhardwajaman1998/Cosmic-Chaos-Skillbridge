@@ -11,7 +11,7 @@ import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
 import ContactCard from './ContactCard';
-
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const [cardImages] = useState([training, Group, Growth]);
@@ -87,9 +87,9 @@ const LandingPage = () => {
             <li><a className='landing-title' href="/Testimonials">Testimonials</a></li>
             <li><a className='landing-title' href="/team">Team</a></li>
             {/* Render the Signin link only for desktop view */}
-      {!isMobileMenuOpen && <li><a className='landing-title' href="/SignIn">Signin</a></li>}
+      {!isMobileMenuOpen && <li><Link className='landing-title' to='/SignIn'>Sign In</Link></li>}
           </ul>
-          <button className="btnRes-signup">Sign Up</button>
+          <button className="btnRes-signup"><Link to='/SignIn'>Sign Up</Link></button>
         </div>
       </header>
       <div className="section-container">
