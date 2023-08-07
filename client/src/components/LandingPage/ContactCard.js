@@ -35,27 +35,24 @@ const ContactCard = ({ imgSrc, name, roles, linkedinUrl }) => {
   );
 };
 
-// const settings = {
-//   dots: true,
-//   infinite: true,
-//   speed: 500,
-//   slidesToShow: 7, // Display 7 cards in desktop view
-//   slidesToScroll: 1,
-//   adaptiveHeight: true,
-//   responsive: [
-//     {
-//       breakpoint: 768, // Breakpoint for mobile devices
-//       settings: {
-//         slidesToShow: 1, // Display 1 cards in mobile view
-//         slidesToScroll: 1,
-//       },
-//     },
-//   ],
-// };
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToScroll: 1,
+  adaptiveHeight: true,
+  responsive: [
+    {
+      breakpoint: 400, // Breakpoint for mobile devices
+      settings: {
+        slidesToShow: 1, // Display 1 card in mobile view
+      },
+    },
+  ],
+};
 
 // Render the "Meet the team" section directly after the ContactCard component
 const ContactCardWithMeetTheTeam = () => {
-  
   return (
     <div className="teams">
       <h2 className="team-text">Meet the team</h2>
@@ -64,6 +61,7 @@ const ContactCardWithMeetTheTeam = () => {
       </p>
       <div className="member-card">
         <div className="card-row">
+          {/* ContactCards for desktop view */}
           <ContactCard
             imgSrc={AmanImage}
             name="Aman Bhardwaj"
@@ -90,6 +88,7 @@ const ContactCardWithMeetTheTeam = () => {
           />
         </div>
         <div className="card-row">
+          {/* ContactCards for desktop view */}
           <ContactCard
             imgSrc={SanmeetImage}
             name="Sanmeet Singh Malli"
@@ -107,8 +106,7 @@ const ContactCardWithMeetTheTeam = () => {
             name="Vaneet Kaur"
             roles="Front End"
             linkedinUrl="http://linkedin.com/in/vaneetk"
-          />    
-          
+          />
         </div>
       </div>
     </div>
