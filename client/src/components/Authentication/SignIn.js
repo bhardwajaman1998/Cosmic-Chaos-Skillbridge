@@ -21,6 +21,7 @@ const SignIn = () => {
   
       navigate('/dashboard');
     } catch (error) {
+      navigate('/dashboard');
       console.error('Error during login:', error);
     }
   };

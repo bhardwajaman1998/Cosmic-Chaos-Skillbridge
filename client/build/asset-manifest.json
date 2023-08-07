@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d71a8f9.chunk.css",
-    "main.js": "/static/js/main.af056500.chunk.js",
-    "main.js.map": "/static/js/main.af056500.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7922b9ea.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7922b9ea.js.map",
+    "main.css": "/static/css/main.061506ad.chunk.css",
+    "main.js": "/static/js/main.9e4c8c3b.chunk.js",
+    "main.js.map": "/static/js/main.9e4c8c3b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7add9d0c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7add9d0c.js.map",
     "static/css/2.65f8c46c.chunk.css": "/static/css/2.65f8c46c.chunk.css",
-    "static/js/2.2d56de46.chunk.js": "/static/js/2.2d56de46.chunk.js",
-    "static/js/2.2d56de46.chunk.js.map": "/static/js/2.2d56de46.chunk.js.map",
-    "static/js/3.da558462.chunk.js": "/static/js/3.da558462.chunk.js",
-    "static/js/3.da558462.chunk.js.map": "/static/js/3.da558462.chunk.js.map",
+    "static/js/2.65e53dac.chunk.js": "/static/js/2.65e53dac.chunk.js",
+    "static/js/2.65e53dac.chunk.js.map": "/static/js/2.65e53dac.chunk.js.map",
+    "static/js/3.c9780d3b.chunk.js": "/static/js/3.c9780d3b.chunk.js",
+    "static/js/3.c9780d3b.chunk.js.map": "/static/js/3.c9780d3b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.65f8c46c.chunk.css.map": "/static/css/2.65f8c46c.chunk.css.map",
-    "static/css/main.3d71a8f9.chunk.css.map": "/static/css/main.3d71a8f9.chunk.css.map",
-    "static/js/2.2d56de46.chunk.js.LICENSE.txt": "/static/js/2.2d56de46.chunk.js.LICENSE.txt",
+    "static/css/main.061506ad.chunk.css.map": "/static/css/main.061506ad.chunk.css.map",
+    "static/js/2.65e53dac.chunk.js.LICENSE.txt": "/static/js/2.65e53dac.chunk.js.LICENSE.txt",
     "static/media/Aman.67db59bb.jpg": "/static/media/Aman.67db59bb.jpg",
     "static/media/Brian.e18fb4ed.jpg": "/static/media/Brian.e18fb4ed.jpg",
-    "static/media/Layer_1.ab2e92bb.svg": "/static/media/Layer_1.ab2e92bb.svg",
     "static/media/Monica.12ffef2e.jpg": "/static/media/Monica.12ffef2e.jpg",
     "static/media/Natasja.f112cb52.jpg": "/static/media/Natasja.f112cb52.jpg",
     "static/media/Sanmeet.17d5cde1.jpg": "/static/media/Sanmeet.17d5cde1.jpg",
@@ -35,10 +34,10 @@
     "static/media/trainees-icon.9133dbb2.svg": "/static/media/trainees-icon.9133dbb2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7922b9ea.js",
+    "static/js/runtime-main.7add9d0c.js",
     "static/css/2.65f8c46c.chunk.css",
-    "static/js/2.2d56de46.chunk.js",
-    "static/css/main.3d71a8f9.chunk.css",
-    "static/js/main.af056500.chunk.js"
+    "static/js/2.65e53dac.chunk.js",
+    "static/css/main.061506ad.chunk.css",
+    "static/js/main.9e4c8c3b.chunk.js"
   ]
 }
