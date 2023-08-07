@@ -11,6 +11,7 @@ import training from '../LandingPage/image/training.png';
 import Group from '../LandingPage/image/Group.png'
 import Growth from '../LandingPage/image/Growth.png';
 import ContactCard from './ContactCard';
+import Footer from './Footer';
 
 
 const LandingPage = () => {
@@ -213,6 +214,8 @@ const LandingPage = () => {
     </div>
   );
 };
+
+<Footer/>
 
 
 export default LandingPage;
