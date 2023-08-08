@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 
 // import { Routes, Route } from 'react-router-dom';
 
-const pageTitle='Employee File'
+// const pageTitle='Employee File'
 const TraineePage= () => {
   const location = useLocation()
   const [isSidebarOpen, setSidebarOpen] = useState(false);
