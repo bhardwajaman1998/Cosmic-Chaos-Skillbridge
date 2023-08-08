@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchAllTrainees } from '../../services/DashboardService';
 import { Link } from 'react-router-dom';
 import Select from "react-select";
-import 'firebase/compat/storage';
+//import 'firebase/compat/storage';
 //import { SearchBar } from ‘react-native-elements’;
 const TraineeInformation = () => {
   const [trainees, setTrainees] = useState([]);
@@ -87,8 +87,8 @@ const TraineeInformation = () => {
       </div>
       <div>
       </div>
-      <div className="table-container">
-        <table class="trainee-table">
+      <div className="table-container table-containerss">
+        <table class="trainee-table trainee-tabless table-container table-containerss">
             <tr class="row-header-layout">
               <th className="centered-heading" colSpan={2}>Employee</th>
               <th className="centered-heading">Learning Time</th>
@@ -99,24 +99,24 @@ const TraineeInformation = () => {
             </tr>
             {trainees.map((trainee) => (
               <tr class="row-layout" key={trainee._id}>
-                <td className='centered-text' colSpan={2}>
-                  <div className='image-name'>
-                    <div className='circle'>
-                      <img className='trainee-photo' src={trainee.photo} alt="Trainee" />
+                <td className='centered-text centered-textss' colSpan={2}>
+                  <div className='image-name image-namess'>
+                    <div className='circle circlss'>
+                      <img className='trainee-photo trainee-photoss' src={trainee.photo} alt="Trainee" />
                     </div>
                     <span>{trainee.name}</span>
                   </div>
                 </td>
-                <td className='centered-text'>
+                <td className='centered-text centered-textss'>
                   {trainee.assigned_training_programs.length > 0
                     ? totalLearningTime(trainee) // Call totalLearningTime with the current trainee
                     : "-"}
                 </td>
-                <td className='centered-text'>{trainee.assigned_training_programs.length}</td>
-                <td className='centered-text'>{completionPercentage(trainee)}%</td>
-                <td className='centered-text'>{averageScore(trainee)}</td>
-                <td className='centered-text'>
-                  <Link className='see-profile-link' to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
+                <td className='centered-text centered-textss'>{trainee.assigned_training_programs.length}</td>
+                <td className='centered-text centered-textss'>{completionPercentage(trainee)}%</td>
+                <td className='centered-text centered-textss'>{averageScore(trainee)}</td>
+                <td className='centered-text centered-textss'>
+                  <Link className='see-profile-link see-profile-linkss' to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
                 </td>
               </tr>
             ))}
