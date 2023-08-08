@@ -21,6 +21,105 @@ p, span, div {
 body{
     background-color: rgba(235, 242, 231, 1);
 }
+//==========================Trainee List Starts=====================
+
+/* TABLE responsiveness */
+/* Add this CSS to your existing styles.css file or in a <style> tag within the HTML */
+
+/* Mobile responsive styles */
+// @media (max-width: 768px) {
+//   .trainee-tabless {
+//       display: block;
+//       overflow-x: auto;
+//   }
+
+//   .trainee-tabless th,
+//   .trainee-tabless td {
+//       display: block;
+//       text-align: center;
+//   }
+
+//   .image-namess {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//   }
+
+//   .circless {
+//       display: inline-block;
+//       width: 40px;
+//       height: 40px;
+//       border-radius: 50%;
+//       overflow: hidden;
+//       margin-right: 10px;
+//   }
+
+//   .trainee-photoss {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//   }
+
+//   .centered-textss {
+//       padding: 8px;
+//   }
+
+//   .see-profile-linkss {
+//       display: block;
+//       margin-top: 10px;
+//   }
+// }
+
+
+/* Add this CSS to your existing styles.css file or in a <style> tag within the HTML */
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .table-containerss {
+      overflow-x: auto;
+  }
+
+  .trainee-tabless {
+      width: 100%;
+  }
+
+  .trainee-tabless th,
+  .trainee-tabless td {
+      padding: 8px;
+  }
+
+  .image-namess {
+      display: flex;
+      align-items: center;
+  }
+
+  .circless {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+  }
+
+  .trainee-photoss {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .centered-textss {
+      text-align: center;
+  }
+
+  .see-profile-linkss {
+      display: block;
+      text-align: center;
+      margin-top: 5px;
+  }
+}
+
+
+
 
 //==========================Trainee List Starts=====================
 
