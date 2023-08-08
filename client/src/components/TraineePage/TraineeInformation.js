@@ -4,9 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { fetchAllTrainees } from '../../services/DashboardService';
 import { Link } from 'react-router-dom';
 import Select from "react-select";
+import EmployeesMobileView from './EmployeesMobileView';
 //import 'firebase/compat/storage';
 //import { SearchBar } from ‘react-native-elements’;
 const TraineeInformation = () => {
+  const isMobile = window.innerWidth <= 1000;
+
   const [trainees, setTrainees] = useState([]);
   //const [selectedCourse, setSelectedCourse] = useState(courses.length > 0 ? courses[0] : null);
   useEffect(() => {
@@ -87,41 +90,61 @@ const TraineeInformation = () => {
       </div>
       <div>
       </div>
-      <div className="table-container table-containerss">
-        <table class="trainee-table trainee-tabless table-container table-containerss">
-            <tr class="row-header-layout">
-              <th className="centered-heading" colSpan={2}>Employee</th>
-              <th className="centered-heading">Learning Time</th>
-              <th className="centered-heading">Courses</th>
-              <th className="centered-heading">Completion</th>
-              <th className="centered-heading">Score</th>
-              <th className="centered-heading"></th>
-            </tr>
+      {
+        isMobile ? (
+          <div className='employees-mobile-view'>
             {trainees.map((trainee) => (
-              <tr class="row-layout" key={trainee._id}>
-                <td className='centered-text centered-textss' colSpan={2}>
-                  <div className='image-name image-namess'>
-                    <div className='circle circlss'>
-                      <img className='trainee-photo trainee-photoss' src={trainee.photo} alt="Trainee" />
-                    </div>
-                    <span>{trainee.name}</span>
-                  </div>
-                </td>
-                <td className='centered-text centered-textss'>
-                  {trainee.assigned_training_programs.length > 0
-                    ? totalLearningTime(trainee) // Call totalLearningTime with the current trainee
-                    : "-"}
-                </td>
-                <td className='centered-text centered-textss'>{trainee.assigned_training_programs.length}</td>
-                <td className='centered-text centered-textss'>{completionPercentage(trainee)}%</td>
-                <td className='centered-text centered-textss'>{averageScore(trainee)}</td>
-                <td className='centered-text centered-textss'>
-                  <Link className='see-profile-link see-profile-linkss' to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
-                </td>
+              <EmployeesMobileView 
+                key={trainee._id}
+                name={trainee.name}
+                photo={trainee.photo}
+                learningTime={trainee.assigned_training_programs.length > 0
+                         ? totalLearningTime(trainee) // Call totalLearningTime with the current trainee
+                         : "-"}
+                totalPrograms={trainee.assigned_training_programs.length}
+                completionPercentage={completionPercentage(trainee)}
+                averageScore={averageScore(trainee)}
+                />
+              ))}
+          </div>
+        ) : (
+        <div className="table-container table-containerss">
+          <table class="trainee-table trainee-tabless table-container table-containerss">
+              <tr class="row-header-layout">
+                <th className="centered-heading" colSpan={2}>Employee</th>
+                <th className="centered-heading">Learning Time</th>
+                <th className="centered-heading">Courses</th>
+                <th className="centered-heading">Completion</th>
+                <th className="centered-heading">Score</th>
+                <th className="centered-heading"></th>
               </tr>
-            ))}
-        </table>
-      </div>
+              {trainees.map((trainee) => (
+                <tr class="row-layout" key={trainee._id}>
+                  <td className='centered-text centered-textss' colSpan={2}>
+                    <div className='image-name image-namess'>
+                      <div className='circle circlss'>
+                        <img className='trainee-photo trainee-photoss' src={trainee.photo} alt="Trainee" />
+                      </div>
+                      <span>{trainee.name}</span>
+                    </div>
+                  </td>
+                  <td className='centered-text centered-textss'>
+                    {trainee.assigned_training_programs.length > 0
+                      ? totalLearningTime(trainee) // Call totalLearningTime with the current trainee
+                      : "-"}
+                  </td>
+                  <td className='centered-text centered-textss'>{trainee.assigned_training_programs.length}</td>
+                  <td className='centered-text centered-textss'>{completionPercentage(trainee)}%</td>
+                  <td className='centered-text centered-textss'>{averageScore(trainee)}</td>
+                  <td className='centered-text centered-textss'>
+                    <Link className='see-profile-link see-profile-linkss' to='/trainees/traineePage' state={{ traineeId: `${trainee._id}` }}>See Profile</Link>
+                  </td>
+                </tr>
+              ))}
+          </table>
+        </div>
+        )
+      }
     </div>
   );
 };

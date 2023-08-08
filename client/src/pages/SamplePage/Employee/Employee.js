@@ -36,8 +36,10 @@ const closeBar = () => {
             <div className='layout-header'>
               <Header title={pageTitle} showBackButton={false} onHamburgerIconClick={handleHamburgerIconClick} />
             </div>
-            <div className='trainee-information'>
-              <TraineeInformation />
+            <div className='layout-main'>
+              <div className='trainee-information'>
+                <TraineeInformation />
+              </div>
             </div>
           </div>
         </section>
