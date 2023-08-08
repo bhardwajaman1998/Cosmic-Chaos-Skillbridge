@@ -96,6 +96,7 @@ const TraineeInformation = () => {
             {trainees.map((trainee) => (
               <EmployeesMobileView 
                 key={trainee._id}
+                id={trainee._id}
                 name={trainee.name}
                 photo={trainee.photo}
                 learningTime={trainee.assigned_training_programs.length > 0

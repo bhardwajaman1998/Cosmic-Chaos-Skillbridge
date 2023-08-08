@@ -1,9 +1,14 @@
 import React from 'react'
 import arrow from '../../assets/see-profile.png'
 import dots from '../../assets/dots.png'
+import { Link } from 'react-router-dom';
 
-const EmployeesMobileView = ({key, name, photo, learningTime, totalPrograms, completionPercentage, averageScore}) => {
-  return (
+const EmployeesMobileView = ({key, id, name, photo, learningTime, totalPrograms, completionPercentage, averageScore}) => {
+    const handleRedirection = () =>{
+        <Link to='/trainees/traineePage' state={{ traineeId: `${key}` }}></Link>
+    }
+  
+    return (
     <div className='single-employee-mobile-view'>
         <div className='image-name image-namess'>
             <div className='circle circlss'>
@@ -30,8 +35,9 @@ const EmployeesMobileView = ({key, name, photo, learningTime, totalPrograms, com
                 <span className='mobile-description'>{completionPercentage}%</span>
             </div>
         </div>
-        <div className='mobole-view-see-profile'>
-            <span className='link-profile-text'>See Profile</span>
+        <div className='mobole-view-see-profile' onClick={handleRedirection}>
+        <Link className='link-profile-text' to='/trainees/traineePage' state={{ traineeId: `${id}` }}>See Profile</Link>
+            {/* <span className='link-profile-text'>See Profile</span> */}
             <img className='arrow-profile' src={arrow} alt="arrow" />
         </div>
     </div>
