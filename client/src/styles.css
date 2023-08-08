@@ -1309,7 +1309,6 @@ thead tr:hover {
     justify-content: center;
     align-items: center;
     height: 120px;
-    width: 160px;
   }
   .progress-title {
     color: var(--secondary, #1F2D36);
@@ -1393,18 +1392,26 @@ thead tr:hover {
   }
   .employee-info {
     justify-self: center;
-    justify-content: center;
   }
   .learning-activity {
-    width: 354px;
     height: 295px;
   }
   .course-info h2 {
-    margin-left: -16.5rem;
+    margin-left: -12.5rem;
     align-self: center;
+  }
+  .course-info-table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    width: 100%;
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
   }
   .employee-info-layout {
     flex-direction: column;
+  }
+  .learning-analytics-heading {
+    margin-left: 1rem;
   }
   .learning-activity {
     align-self: center;
@@ -1431,6 +1438,8 @@ thead tr:hover {
   }
   .single-trainee-container {
     grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    flex-direction: column;
   }
   .progress-section {
     display: grid;
@@ -1448,7 +1457,7 @@ thead tr:hover {
   }
   .employee-info {
     width: 300px;
-    gap: 3.5rem;
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
   .profile-pic {
