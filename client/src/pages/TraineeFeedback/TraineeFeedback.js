@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom'
 const TraineeFeedback = () => {
     const [selectedTrainee, setSelectedTrainee] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState([]);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     const location = useLocation()
     const { traineeId, courseId } = location.state;
@@ -39,7 +40,19 @@ const TraineeFeedback = () => {
         return <div>Loading trainee information...</div>;
     }
 
+// mobile view sidebar functions
+const handleHamburgerIconClick = () => {
+  setSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  console.log('Hamburger icon clicked!');
+};
 
+const closeBar = () => {
+  const dashboardLayout = document.querySelector(".dashboard-layout");
+  dashboardLayout.classList.toggle("sidebar-show");
+  setSidebarOpen(false);
+}
 
   return (
 
@@ -47,11 +60,13 @@ const TraineeFeedback = () => {
     <div className='dashboard-layout'>
       <section>
         <div className='layout text-2xl text-white'>
-          <div className='layout-sidebar'>
-            <Sidebar />
+          <div className="layout-sidebar">
+            <div className={`sidebar-container ${isSidebarOpen ? 'sidebar-show' : ''}`}>
+              <Sidebar closeSidebar={closeBar}/>
+            </div>
           </div>
-          <div className='layout-header'>
-            <Header title={'Employee submission evaluation'} showBackButton={true} />
+          <div className="layout-header">
+                <Header title={'Employee submission evaluation'} showBackButton={true}  onHamburgerIconClick={handleHamburgerIconClick}/>
           </div>
           <div className='layout-main'>
             <div className='trainee-feedback-container'>
