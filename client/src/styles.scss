@@ -325,6 +325,7 @@ flex-shrink: 0;
 .custom-input-label-wrapper input{
   height: 40px;
   border-radius: 8px;
+  padding-left: 10px;
 }
 
 .custom-input-label-wrapper label{
@@ -1206,6 +1207,15 @@ font-size: small;
 box-shadow: 4px 4px black;
 }
 
+.authentication-form{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin: 1rem;
+  gap: .5rem;
+}
 
 
 .create-icon{
