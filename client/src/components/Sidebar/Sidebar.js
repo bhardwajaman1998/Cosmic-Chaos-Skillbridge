@@ -15,7 +15,7 @@ const Sidebar = ({closeSidebar}) => {
     const images = [
         { title: 'Dashboard', imageUrl: dashboard, link: '/dashboard' },
         { title: 'Courses', imageUrl: courses, link: '/courses' },
-        { title: 'Trainee', imageUrl: trainees, link: '/trainees' },
+        { title: 'Employees', imageUrl: trainees, link: '/trainees' },
       ];
       const isMobile = window.innerWidth <= 1000;
   return (

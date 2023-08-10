@@ -37,7 +37,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
         try {
             if (courseId) {
                 console.log(courseId)
-                const quizData = await fetchQuizByCourseID('64a768a28c0b52e60969e1c5');
+                const quizData = await fetchQuizByCourseID(courseId);
                 setSelectedQuiz(quizData);
             }
         } catch (error) {
@@ -67,10 +67,10 @@ const TraineeSubmission = ({trainee, courseId}) => {
   
   function quizAnswer(){
     const course = trainee.assigned_training_programs.find(
-        (course) => course.course_id === dummyCourse
+        (course) => course.course_id === courseId
     );
     console.log('abc')
-    console.log(dummyCourse)
+    console.log(courseId)
     return course.quiz_answer || null;
   }
   const scores = ['Select Score', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
@@ -191,7 +191,7 @@ function callOpenAi(modifiedPayload){
     if (score !== 'Select Score') {
       const parsedInt = parseInt(score);
       if (parsedInt) {
-        saveReportAndScore(trainee._id, dummyCourse, parsedInt, evalutaionAI)
+        saveReportAndScore(trainee._id, courseId, parsedInt, evalutaionAI)
         .then((data) => {
           console.log("Score and report saved successfully:", data);
           handleGoBack();
