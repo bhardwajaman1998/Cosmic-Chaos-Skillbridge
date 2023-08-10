@@ -73,7 +73,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
     console.log(dummyCourse)
     return course.quiz_answer || null;
   }
-  const scores = ['Select Score', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const scores = ['Select Score', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
 
   const options = scores.map((number) => ({
     value: number,
