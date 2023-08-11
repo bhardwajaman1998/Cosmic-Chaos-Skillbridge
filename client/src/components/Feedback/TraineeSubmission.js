@@ -21,7 +21,7 @@ const TraineeSubmission = ({trainee, courseId}) => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [score, setScore] = useState({value: 'Set Score', label: 'Set Score'});
   const navigate = useNavigate();
-  const dummyCourse = '64a768a28c0b52e60969e1c5'
+  // const dummyCourse = '64a768a28c0b52e60969e1c5'
   const [loading, setLoading] = useState(false);
   // let [obj, setObj] = useState({ choices: [] });
   const [payload, setPayLoad] = useState({
@@ -157,7 +157,7 @@ const handleopenAI = () => {
 function callOpenAi(modifiedPayload){
   // const openAiSecret = process.env.REACT_APP_OPEN_AI_SECRET
     setLoading(true);
-    console.log(modifiedPayload)
+    // console.log(modifiedPayload)
     const apiKey = process.env.REACT_APP_OPEN_AI_SECRET
     axios({
       method: "POST",
