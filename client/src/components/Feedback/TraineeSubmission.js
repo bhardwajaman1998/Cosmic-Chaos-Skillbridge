@@ -170,12 +170,12 @@ function callOpenAi(modifiedPayload){
       }
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       responseHandler(res);
     })
     .catch((e) => {
       setLoading(false);
-      console.log(e.message, e);
+      // console.log(e.message, e);
     });
   };
 
