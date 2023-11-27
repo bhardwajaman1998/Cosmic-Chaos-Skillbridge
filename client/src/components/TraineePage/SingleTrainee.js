@@ -5,12 +5,13 @@ import CourseInformation from './CourseInformation';
 import 'firebase/compat/storage';
 // import EmployeeProgressChart from './EmployeeProgressChart';
 import TraineeDataVisual from './TraineeDataVisual';
-
+import { useNavigate } from 'react-router-dom';
 // import ChartLabel from '../DataVisualize/ChartLabel';
 // import ArrowRight from '../../assets/arrow-right-circle.svg'
 import LoadingSpinner from '../Loading/LoadingSpinner';
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
+    const navigate = useNavigate();
     const [selectedTrainee, setSelectedTrainee] = useState(null);
     const [assignedPrograms, setAssignedPrograms] = useState([]);
     // const [imageUrl, setImageUrl] = useState(null);
@@ -35,11 +36,19 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
                     setLoading(false);
                 }
             } catch (error) {
-                console.error('Error fetching trainee:', error);
-            }
+                const parsedError = JSON.parse(error.message);
+                if (parsedError && parsedError.code === 403) {
+                    localStorage.removeItem('token');
+                    window.alert('Session timed out'); // Display the alert message
+                    navigate('/');
+                } else {
+                  console.error('Error fetching data:', error);
+                }
+              }
         };
 
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [traineeId]);
 
     const completedCourses = assignedPrograms.filter(course => course.evaluation === 1).length;

@@ -5,8 +5,10 @@ import TraineeSubmission from '../../components/Feedback/TraineeSubmission'
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const TraineeFeedback = () => {
+    const navigate = useNavigate();
     const [selectedTrainee, setSelectedTrainee] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState([]);
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -29,10 +31,18 @@ const TraineeFeedback = () => {
                     setSelectedTrainee(traineeData);
                 }
             } catch (error) {
-                console.error('Error fetching trainee:', error);
+              const parsedError = JSON.parse(error.message);
+              if (parsedError && parsedError.code === 403) {
+                localStorage.removeItem('token');
+                window.alert('Session timed out'); // Display the alert message
+                navigate('/');
+              } else {
+                console.error('Error fetching data:', error);
+              }
             }
         };
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },  [traineeId, courseId]);
 
     

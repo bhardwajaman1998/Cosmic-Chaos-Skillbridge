@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Header from '../../components/Header/Header'
 import TraineeListComponent from '../../components/TraineeList/TraineeListComponent';
-
+import { useNavigate } from 'react-router-dom';
 import { fetchAllTrainees, fetchAllCourses } from '../../services/DashboardService';
 
 
 const TraineeList = () => {
+  const navigate = useNavigate();
   const [trainees, setTrainees] = useState([]);
-
-  
-
 
   useEffect(() => {
     const fetchAllTrainee = async () => {
@@ -19,8 +17,15 @@ const TraineeList = () => {
           setTrainees(traineesData);
           console.log(traineesData)
         } catch (error) {
-          // Handle error
-      }
+          const parsedError = JSON.parse(error.message);
+          if (parsedError && parsedError.code === 403) {
+            localStorage.removeItem('token');
+            window.alert('Session timed out'); // Display the alert message
+            navigate('/');
+          } else {
+            console.error('Error fetching data:', error);
+          }
+        }
     };
     fetchAllTrainee();
   }, []);

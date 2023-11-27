@@ -5,11 +5,13 @@ import { fetchAllTrainees } from '../../services/DashboardService';
 import { Link } from 'react-router-dom';
 import Select from "react-select";
 import EmployeesMobileView from './EmployeesMobileView';
+import { useNavigate } from 'react-router-dom';
+
 //import 'firebase/compat/storage';
 //import { SearchBar } from ‘react-native-elements’;
 const TraineeInformation = () => {
   const isMobile = window.innerWidth <= 1000;
-
+  const navigate = useNavigate();
   const [trainees, setTrainees] = useState([]);
   //const [selectedCourse, setSelectedCourse] = useState(courses.length > 0 ? courses[0] : null);
   useEffect(() => {
@@ -18,10 +20,18 @@ const TraineeInformation = () => {
         const traineesData = await fetchAllTrainees();
         setTrainees(traineesData);
       } catch (error) {
-        console.error('Error fetching trainees:', error);
+        const parsedError = JSON.parse(error.message);
+        if (parsedError && parsedError.code === 403) {
+          localStorage.removeItem('token');
+          window.alert('Session timed out'); // Display the alert message
+          navigate('/');
+        } else {
+          console.error('Error fetching data:', error);
+        }
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const calculateLearningTime = (startDate, endDate) => {
     const now = new Date();

@@ -5,10 +5,11 @@ import DashboardButtons from '../../components/DashboardButtons/DashboardButtons
 import DashboardTrainees from '../../components/DashboardTrainees/DashboardTrainees';
 import DashboardDataVisualSection from '../../components/DataVisualize/DashboardDataVisualSection';
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
-
+import { useNavigate } from 'react-router-dom';
 import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -28,12 +29,20 @@ const Home = () => {
           handleCourseSelection(coursesData[0]);
         }
       } catch (error) {
-        // Handle error
+        const parsedError = JSON.parse(error.message);
+        if (parsedError && parsedError.code === 403) {
+          localStorage.removeItem('token');
+          window.alert('Session timed out'); // Display the alert message
+          navigate('/');
+        } else {
+          console.error('Error fetching data:', error);
+        }
       } finally {
         setLoading(false);
       }
     };
     getCourses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCourseSelection = async (courseId) => {
@@ -44,7 +53,17 @@ const Home = () => {
       setSelectedCourse(courseId);
       setTraineesData(traineesData);
     } catch (error) {
-      // Handle error
+      console.log('-------')
+      console.log(error)
+      console.log('-------')
+      const parsedError = JSON.parse(error.message);
+      if (parsedError && parsedError.code === 403) {
+        localStorage.removeItem('token');
+        window.alert('Session timed out'); // Display the alert message
+        navigate('/');
+      } else {
+        console.error('Error fetching data:', error);
+      }
     } finally {
       setLoading(false);
     }

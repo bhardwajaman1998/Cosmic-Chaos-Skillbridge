@@ -1,9 +1,11 @@
 import React from 'react'
 import SidebarIcons from './SidebarIcons';
 import DividerLine from './DividerLine';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 import dashboard from '../../assets/dashboard-icon.svg';
+import logout from '../../assets/logout-icon.svg';
 import courses from '../../assets/courses-icon.svg';
 import trainees from '../../assets/trainees-icon.svg';
 import { Link } from 'react-router-dom';
@@ -12,12 +14,20 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 const Sidebar = ({closeSidebar}) => {
+    const navigate = useNavigate();
+
     const images = [
         { title: 'Dashboard', imageUrl: dashboard, link: '/dashboard' },
         { title: 'Courses', imageUrl: courses, link: '/courses' },
         { title: 'Employees', imageUrl: trainees, link: '/trainees' },
       ];
       const isMobile = window.innerWidth <= 1000;
+
+      const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+      };
+    
   return (
     <div className='sidebar'>
         {
@@ -44,6 +54,12 @@ const Sidebar = ({closeSidebar}) => {
             title={"Settings"}
             icon={dashboard}
         />
+        <div onClick={handleLogout}>
+            <SidebarIcons 
+                title={"Logout"}
+                icon={logout}
+            />
+        </div>
     </div>
   )
 }

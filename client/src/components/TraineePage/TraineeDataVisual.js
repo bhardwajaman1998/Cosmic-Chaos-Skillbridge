@@ -6,8 +6,10 @@ import ProgressSection from '../DataVisualize/ProgressSection';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import { Bar } from 'react-chartjs-2';
 import { fetchTraineeByID } from '../../services/DashboardService';
+import { useNavigate } from 'react-router-dom';
 
 const TraineeDataVisual = ({ traineeData }) => {
+  const navigate = useNavigate();
   const [averageCompletionRate, setAverageCompletionRate] = useState(0);
   const [averageLearningTime, setAverageLearningTime] = useState(0);
   const [coursesInProgress, setCoursesInProgress] = useState([]);
@@ -29,11 +31,19 @@ const TraineeDataVisual = ({ traineeData }) => {
           setAssignedPrograms(traineeDataById.assigned_training_programs);
         }
       } catch (error) {
-        console.error('Error fetching trainee:', error);
+        const parsedError = JSON.parse(error.message);
+        if (parsedError && parsedError.code === 403) {
+          localStorage.removeItem('token');
+          window.alert('Session timed out'); // Display the alert message
+          navigate('/');
+        } else {
+          console.error('Error fetching data:', error);
+        }
       }
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traineeData]);
 
 

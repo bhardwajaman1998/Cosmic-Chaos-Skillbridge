@@ -8,7 +8,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 const Header = ({ title='Dashboard', showBackButton, onHamburgerIconClick }) => {
-   
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
   useEffect(() => {
     document.title = title;
     const handleResize = () => {
@@ -51,7 +52,14 @@ const Header = ({ title='Dashboard', showBackButton, onHamburgerIconClick }) => 
       // You can also toggle the sidebar state here if needed:
       // setSidebarOpen(!isSidebarOpen);
     };
-
+    const toggleProfileDropdown = () => {
+      setIsProfileDropdownOpen(!isProfileDropdownOpen);
+    };
+  
+    const handleProfileItemClick = () => {
+      // Handle profile item click action here...
+    };
+  
     return (
       <div className="header">
         {isSmallScreen ? (
@@ -72,7 +80,20 @@ const Header = ({ title='Dashboard', showBackButton, onHamburgerIconClick }) => 
         <div className="header-options">
           <button className="create-button">+ Create</button>
           <img className='header-icons' src={notification} alt="Icon" />
-          <img className='header-icons' src={profile} alt="Icon" />
+          <div className="profile-dropdown">
+          <div className="profile-image-container" onClick={toggleProfileDropdown}>
+            <img
+              className='header-icons profile-image'
+              src={profile}
+              alt="Profile Icon"
+            />
+            {isProfileDropdownOpen && (
+              <div className="dropdown-content">
+                <button onClick={handleProfileItemClick}></button>
+              </div>
+            )}
+          </div>
+        </div>
         </div>
       </div>
     );

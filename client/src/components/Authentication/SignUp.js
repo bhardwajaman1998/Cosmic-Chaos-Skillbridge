@@ -12,14 +12,21 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_LIVE_API_BASE_URL//'https://skill-bridge-backend.onrender.com';
+  const API_BASE_URL = process.env.REACT_APP_DEV_API_BASE_URL
 
   const handleSignUp = async () => {
+    if (!email || !password || !username || !name) {
+      // Show an alert if fields are empty
+      alert('A field is empty!');
+      return;
+    }
     try {
-     //const response = await axios.post('http://localhost:3000//admin/signup', { email, password, username });
        const response = await axios.post(`${API_BASE_URL}/admin/signup`, { email, password, username, name });
-      console.log(response.data);
-      setIsSignUpSuccessful(true); // Set the sign-up success state to true
+       const { token } = response.data;
+       console.log(token)
+       console.log(response.data);
+       localStorage.setItem('token', token);
+       setIsSignUpSuccessful(true);
     } catch (error) {
       console.error('Error during signup:', error);
     }

@@ -8,13 +8,17 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const API_BASE_URL = process.env.REACT_APP_LIVE_API_BASE_URL//'https://skill-bridge-backend.onrender.com';
+  const API_BASE_URL = process.env.REACT_APP_DEV_API_BASE_URL
 
   const handleSignIn = async () => {
     try {
+      if (!email || !password) {
+        // Show an alert if fields are empty
+        alert('Please enter both email and password');
+        return;
+      }
       // Make an API call to log in the user
        const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
-      //const response = await axios.post('http://localhost:3000/admin/login', { email, password});
       console.log(response.data);
       const token = response.data.token;
       localStorage.setItem('token', token);
