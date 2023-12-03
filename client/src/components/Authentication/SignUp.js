@@ -12,7 +12,7 @@ const SignUp = () => {
   const [name, setName] = useState('');
 
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-  const API_BASE_URL = process.env.REACT_APP_LIVE_API_BASE_URL
+  const API_BASE_URL = "https://52.204.153.135:80"
 
   const handleSignUp = async () => {
     if (!email || !password || !username || !name) {
