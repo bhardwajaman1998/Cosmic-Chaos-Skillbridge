@@ -21,9 +21,9 @@ app.use(routes);
 console.log(process.env.BASE_URL);
 
 // SSL/TLS certificate and private key paths
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/chain.pem', 'utf8');
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/fullchain.pem');
+const ca = fs.readFileSync('/etc/letsencrypt/live/abhardwaj.wmdd4950.com/cert.pem');
 
 const credentials = {
   key: privateKey,
