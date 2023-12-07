@@ -22,7 +22,7 @@ const SignUp = () => {
     }
     try {
        const response = await axios.post(`${API_BASE_URL}/admin/signup`, { email, password, username, name });
-       const { token } = response.data;
+       const token = response.data.token;
        console.log(token)
        console.log(response.data);
        localStorage.setItem('token', token);

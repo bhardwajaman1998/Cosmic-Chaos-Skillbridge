@@ -18,7 +18,7 @@ const SignIn = () => {
         return;
       }
       // Make an API call to log in the user
-       const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
+      const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
       console.log(response.data);
       const token = response.data.token;
       localStorage.setItem('token', token);
