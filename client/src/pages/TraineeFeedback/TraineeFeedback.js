@@ -6,6 +6,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const TraineeFeedback = () => {
     const navigate = useNavigate();
@@ -33,9 +34,7 @@ const TraineeFeedback = () => {
             } catch (error) {
               const parsedError = JSON.parse(error.message);
               if (parsedError && parsedError.code === 403) {
-                localStorage.removeItem('token');
-                window.alert('Session timed out'); // Display the alert message
-                navigate('/');
+                removeTokenLogout()
               } else {
                 console.error('Error fetching data:', error);
               }
@@ -63,7 +62,11 @@ const closeBar = () => {
   dashboardLayout.classList.toggle("sidebar-show");
   setSidebarOpen(false);
 }
-
+const removeTokenLogout = () =>{
+  Cookies.remove('jwtToken');
+  window.alert('Session timed out'); // Display the alert message
+  navigate('/');
+}
   return (
 
     <React.Fragment>

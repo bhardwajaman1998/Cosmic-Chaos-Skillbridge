@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthNavigation from './AuthNavigation';
+import Cookies from 'js-cookie';
 // import WelcomeMessage from './WelcomeMessage';
 
 const SignUp = () => {
@@ -10,7 +11,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
-
+  const oneHour = 2/24;
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
   const API_BASE_URL = process.env.REACT_APP_LIVE_API_BASE_URL
 
@@ -22,10 +23,8 @@ const SignUp = () => {
     }
     try {
        const response = await axios.post(`${API_BASE_URL}/admin/signup`, { email, password, username, name });
-       const token = response.data.token;
-       console.log(token)
-       console.log(response.data);
-       localStorage.setItem('token', token);
+       const token = response.data.generatedToken;
+       Cookies.set('jwtToken', token, { expires: oneHour });
        setIsSignUpSuccessful(true);
     } catch (error) {
       console.error('Error during signup:', error);
@@ -36,7 +35,7 @@ const SignUp = () => {
     if (isSignUpSuccessful) {
       const timeout = setTimeout(() => {
         navigate('/WelcomeMessage');
-      }, 5000);
+      }, 2000);
 
       return () => clearTimeout(timeout);
     }

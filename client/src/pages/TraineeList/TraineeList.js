@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import TraineeListComponent from '../../components/TraineeList/TraineeListComponent';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllTrainees, fetchAllCourses } from '../../services/DashboardService';
+import Cookies from 'js-cookie';
 
 
 const TraineeList = () => {
@@ -19,9 +20,7 @@ const TraineeList = () => {
         } catch (error) {
           const parsedError = JSON.parse(error.message);
           if (parsedError && parsedError.code === 403) {
-            localStorage.removeItem('token');
-            window.alert('Session timed out'); // Display the alert message
-            navigate('/');
+            removeTokenLogout()
           } else {
             console.error('Error fetching data:', error);
           }
@@ -29,7 +28,11 @@ const TraineeList = () => {
     };
     fetchAllTrainee();
   }, []);
-
+  const removeTokenLogout = () =>{
+    Cookies.remove('jwtToken');
+    window.alert('Session timed out'); // Display the alert message
+    navigate('/');
+  }
 
 
     return (

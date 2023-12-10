@@ -7,6 +7,7 @@ import DashboardDataVisualSection from '../../components/DataVisualize/Dashboard
 import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 import { useNavigate } from 'react-router-dom';
 import { fetchAllCourses, fetchTraineesByCourseId } from '../../services/DashboardService';
+import Cookies from 'js-cookie';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,8 +21,6 @@ const Home = () => {
     const getCourses = async () => {
       try {
         setLoading(true);
-        //remove this, this is just to simulate loading spinner
-        // await new Promise((resolve) => setTimeout(resolve, 2000));
         const coursesData = await fetchAllCourses();
         setCourses(coursesData);
         if (coursesData.length > 0) {
@@ -31,9 +30,7 @@ const Home = () => {
       } catch (error) {
         const parsedError = JSON.parse(error.message);
         if (parsedError && parsedError.code === 403) {
-          localStorage.removeItem('token');
-          window.alert('Session timed out'); // Display the alert message
-          navigate('/');
+          removeTokenLogout()
         } else {
           console.error('Error fetching data:', error);
         }
@@ -53,14 +50,9 @@ const Home = () => {
       setSelectedCourse(courseId);
       setTraineesData(traineesData);
     } catch (error) {
-      console.log('-------')
-      console.log(error)
-      console.log('-------')
       const parsedError = JSON.parse(error.message);
       if (parsedError && parsedError.code === 403) {
-        localStorage.removeItem('token');
-        window.alert('Session timed out'); // Display the alert message
-        navigate('/');
+        removeTokenLogout()
       } else {
         console.error('Error fetching data:', error);
       }
@@ -82,6 +74,12 @@ const closeBar = () => {
   const dashboardLayout = document.querySelector(".dashboard-layout");
   dashboardLayout.classList.toggle("sidebar-show");
   setSidebarOpen(false);
+}
+
+const removeTokenLogout = () =>{
+  Cookies.remove('jwtToken');
+  window.alert('Session timed out'); // Display the alert message
+  navigate('/');
 }
 
   return (

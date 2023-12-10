@@ -2,7 +2,7 @@ import React from 'react'
 import SidebarIcons from './SidebarIcons';
 import DividerLine from './DividerLine';
 import { useNavigate } from 'react-router-dom';
-
+import Cookies from 'js-cookie';
 import logo from '../../assets/logo.svg';
 import dashboard from '../../assets/dashboard-icon.svg';
 import logout from '../../assets/logout-icon.svg';
@@ -24,7 +24,7 @@ const Sidebar = ({closeSidebar}) => {
       const isMobile = window.innerWidth <= 1000;
 
       const handleLogout = () => {
-        localStorage.removeItem('token');
+        Cookies.remove('jwtToken');
         navigate('/');
       };
     

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // import ChartLabel from '../DataVisualize/ChartLabel';
 // import ArrowRight from '../../assets/arrow-right-circle.svg'
 import LoadingSpinner from '../Loading/LoadingSpinner';
+import Cookies from 'js-cookie';
 
 const SingleTrainee = ({ traineeId, traineeData }) => {
     const navigate = useNavigate();
@@ -38,9 +39,7 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
             } catch (error) {
                 const parsedError = JSON.parse(error.message);
                 if (parsedError && parsedError.code === 403) {
-                    localStorage.removeItem('token');
-                    window.alert('Session timed out'); // Display the alert message
-                    navigate('/');
+                    removeTokenLogout()
                 } else {
                   console.error('Error fetching data:', error);
                 }
@@ -50,6 +49,12 @@ const SingleTrainee = ({ traineeId, traineeData }) => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [traineeId]);
+
+    const removeTokenLogout = () =>{
+        Cookies.remove('jwtToken');
+        window.alert('Session timed out'); // Display the alert message
+        navigate('/');
+    }
 
     const completedCourses = assignedPrograms.filter(course => course.evaluation === 1).length;
     const evaluatedCourses = assignedPrograms.filter(course => course.evaluation === 1 || course.evaluation === 0).length;

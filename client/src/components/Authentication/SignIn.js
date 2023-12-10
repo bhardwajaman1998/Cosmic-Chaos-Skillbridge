@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthNavigation from './AuthNavigation';
+import Cookies from 'js-cookie';
 
 const SignIn = () => {
   
@@ -9,6 +10,7 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const API_BASE_URL = process.env.REACT_APP_LIVE_API_BASE_URL
+  const oneHour = 2/24;
 
   const handleSignIn = async () => {
     try {
@@ -19,13 +21,11 @@ const SignIn = () => {
       }
       // Make an API call to log in the user
       const response = await axios.post(`${API_BASE_URL}/admin/login`, { email, password });
-      console.log(response.data);
       const token = response.data.token;
-      localStorage.setItem('token', token);
-  
+      Cookies.set('jwtToken', token, { expires: oneHour });
+      // localStorage.setItem('token', token);
       navigate('/dashboard');
     } catch (error) {
-      navigate('/dashboard');
       console.error('Error during login:', error);
     }
   };

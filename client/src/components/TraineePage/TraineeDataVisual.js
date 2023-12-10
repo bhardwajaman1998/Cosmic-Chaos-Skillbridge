@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import DoughnutChart from '../DataVisualize/DoughnutChart';
 import ProgressSection from '../DataVisualize/ProgressSection';
-
+import Cookies from 'js-cookie';
 // import ChartLabel from '../DataVisualize/ChartLabel';
 import EmployeeProgressChart from './EmployeeProgressChart';
 import { Bar } from 'react-chartjs-2';
@@ -33,9 +33,7 @@ const TraineeDataVisual = ({ traineeData }) => {
       } catch (error) {
         const parsedError = JSON.parse(error.message);
         if (parsedError && parsedError.code === 403) {
-          localStorage.removeItem('token');
-          window.alert('Session timed out'); // Display the alert message
-          navigate('/');
+          removeTokenLogout()
         } else {
           console.error('Error fetching data:', error);
         }
@@ -46,7 +44,11 @@ const TraineeDataVisual = ({ traineeData }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traineeData]);
 
-
+  const removeTokenLogout = () =>{
+    Cookies.remove('jwtToken');
+    window.alert('Session timed out'); // Display the alert message
+    navigate('/');
+  }
   const calculateCoursesInProgress = () => {
     const inProgressCourses = traineeData.assigned_training_programs.filter(
       (program) => program.status === 'In progress'

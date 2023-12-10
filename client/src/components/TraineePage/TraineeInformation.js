@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Select from "react-select";
 import EmployeesMobileView from './EmployeesMobileView';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 //import 'firebase/compat/storage';
 //import { SearchBar } from ‘react-native-elements’;
@@ -22,9 +23,7 @@ const TraineeInformation = () => {
       } catch (error) {
         const parsedError = JSON.parse(error.message);
         if (parsedError && parsedError.code === 403) {
-          localStorage.removeItem('token');
-          window.alert('Session timed out'); // Display the alert message
-          navigate('/');
+          removeTokenLogout()
         } else {
           console.error('Error fetching data:', error);
         }
@@ -41,6 +40,13 @@ const TraineeInformation = () => {
     const minutes = Math.floor(differenceInMilliseconds / 60000);
     return minutes ;
   };
+
+  const removeTokenLogout = () =>{
+    Cookies.remove('jwtToken');
+    window.alert('Session timed out'); // Display the alert message
+    navigate('/');
+  }
+
   const completedPrograms = (trainee) =>
   trainee.assigned_training_programs.filter(
     (program) => program.status === "Completed"
